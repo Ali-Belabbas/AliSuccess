@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KYC / KYB Analysis</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f6f3fb;
+      color: #2a1f3c;
+      margin: 0;
+      padding: 2rem;
+    }
+    .lang-toggle {
+      position: absolute;
+      top: 1.2rem;
+      right: 2.2rem;
+      background: none;
+      border: none;
+      color: #6c4ba7;
+      font-weight: bold;
+      font-size: 1.25rem;
+      cursor: pointer;
+      border-bottom: 2.5px solid transparent;
+      transition: border 0.15s, color 0.15s;
+      padding: 0 12px;
+      outline: none;
+      user-select: none;
+      z-index: 1001;
+    }
+    .lang-toggle.active, .lang-toggle:hover {
+      border-bottom: 2.5px solid #6c4ba7;
+      color: #3b2c50;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    section {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      background-color: #fafafa;
+      margin-bottom: 2.5rem;
+    }
+    h1, h2 {
+      color: #3b2c50;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.3rem;
+      margin-bottom: 1.8rem;
+    }
+    h2 {
+      font-size: 1.22rem;
+      margin-top: 1.6rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .subtitle {
+      font-size: 1.07rem;
+      font-weight: 600;
+      color: #222;
+      margin-top: 1.15rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .important-info {
+      border-left: 5px solid #fd7e14;
+      background: #fff7ea;
+      padding: 1rem 1.2rem;
+      border-radius: 7px;
+      margin-bottom: 1.6rem;
+      font-size: 1.05rem;
+      color: #a74a00;
+    }
+    .image-placeholder {
+      width: 96%;
+      max-width: 600px;
+      min-height: 120px;
+      background: #ececec;
+      color: #999;
+      border-radius: 8px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.05rem;
+      margin: 1.3rem auto 1.6rem auto;
+      border: 2px dashed #c1bcbc;
+      font-style: italic;
+    }
+    .tools {
+      margin-top: 0.7rem;
+      font-style: italic;
+      font-size: 0.99rem;
+    }
+    a { color: #6c4ba7; text-decoration: none; }
+    ul,ol { margin-top: 0.5rem; padding-left: 1.4rem;}
+    @media (max-width: 800px) {
+      .container { padding: 0.5rem; }
+      h1 { font-size: 1.4rem; }
+      section { padding: 0.7rem; }
+      .image-placeholder { min-height: 70px; font-size: 0.92rem; }
+      .lang-toggle { right: 0.7rem; top: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+  <button class="lang-toggle" id="lang-toggle">🇫🇷</button>
+  <p>
+    <a href="index.html" data-en="← Back to portfolio" data-fr="← Retour au portfolio">← Back to portfolio</a>
+  </p>
+  <div class="container">
+
+    <h1 data-en="KYC / KYB Analysis" data-fr="Analyse KYC / KYB">KYC / KYB Analysis</h1>
+
+    <!-- Section 1 -->
+    <section>
+      <h2 data-en="ℹ️ Important Information" data-fr="ℹ️ Informations importantes">ℹ️ Important Information</h2>
+      <div class="important-info"
+        data-en="Due to strict regulations and data sensitivity in this field, all data shown in these projects is fictitious, and names (clients, users, error messages) are made up and do not reflect reality. The goal is only to present my work during my experience at Mangopay and the expected results."
+        data-fr="En raison de la réglementation stricte et de la sensibilité des données dans ce domaine, toutes les données présentées dans ces projets sont fictives, et les noms (clients, utilisateurs, messages d’erreur) sont inventés et ne reflètent pas la réalité. Le but est uniquement de présenter mon travail lors de mon expérience chez Mangopay et les résultats attendus.">
+        Due to strict regulations and data sensitivity in this field, all data shown in these projects is fictitious, and names (clients, users, error messages) are made up and do not reflect reality. The goal is only to present my work during my experience at Mangopay and the expected results.
+      </div>
+      <h2 data-en="🌟 Preface" data-fr="🌟 Préambule">🌟 Preface</h2>
+      <p data-en="As stated, this project aims to present a sample of the kind of project I completed during my time at MANGOPAY. Here, the tool used is Looker Studio, a free version of Looker with fewer features than the Enterprise version."
+         data-fr="Comme indiqué, ce projet vise à présenter un exemple du type de projet que j'ai réalisé lors de mon passage chez MANGOPAY. Ici, l’outil utilisé est Looker Studio, la version gratuite de Looker avec moins de fonctionnalités que la version Entreprise.">
+        As stated, this project aims to present a sample of the kind of project I completed during my time at MANGOPAY. Here, the tool used is Looker Studio, a free version of Looker with fewer features than the Enterprise version.
+      </p>
+      <h2 data-en="🎯 Objective" data-fr="🎯 Objectif">🎯 Objective</h2>
+      <p data-en="This dashboard aims to monitor the performance of the KYC / KYB process and identify improvement levers for the customer experience. It provides real-time visualization of key KPIs for client user onboarding, such as processing, rejection, or completion times, in order to optimize operational efficiency and regulatory compliance. It also delivers insights to reduce user friction, personalize user journeys, and improve conversion in fintech services."
+         data-fr="Ce tableau de bord a pour but de suivre la performance du processus KYC / KYB et d’identifier des leviers d’amélioration de l’expérience client. Il offre une visualisation en temps réel des principaux KPIs de l’onboarding utilisateur client, comme les temps de traitement, de rejet ou de validation, pour optimiser l’efficacité opérationnelle et la conformité réglementaire. Il fournit également des insights pour réduire la friction utilisateur, personnaliser les parcours et améliorer la conversion dans les services fintech.">
+        This dashboard aims to monitor the performance of the KYC / KYB process and identify improvement levers for the customer experience. It provides real-time visualization of key KPIs for client user onboarding, such as processing, rejection, or completion times, in order to optimize operational efficiency and regulatory compliance. It also delivers insights to reduce user friction, personalize user journeys, and improve conversion in fintech services.
+      </p>
+      <h2 data-en="🗂️ Context" data-fr="🗂️ Contexte">🗂️ Context</h2>
+      <p data-en="Here, we simulate the KYC / KYB validation feature for individuals or legal entities of a platform (client) using a payment solution API."
+         data-fr="Ici, on simule la fonctionnalité de validation KYC / KYB pour des personnes physiques ou morales d’une plateforme (client) utilisant une API de solution de paiement.">
+        Here, we simulate the KYC / KYB validation feature for individuals or legal entities of a platform (client) using a payment solution API.
+      </p>
+      <h2 data-en="📊 Dashboard Content" data-fr="📊 Contenu du tableau de bord">📊 Dashboard Content</h2>
+      <p style="margin-top: 1.2rem;">
+        <b data-en="Dashboard Link:" data-fr="Lien du tableau de bord :">Dashboard Link:</b>
+        <a href="https://lookerstudio.google.com/reporting/8fdc3d69-8ff7-4873-872e-02f88bc52d5b/page/9AnPF" target="_blank"
+           data-en="Dashboard KYC/KYB Analysis" data-fr="Tableau de bord KYC/KYB">Dashboard KYC/KYB Analysis</a>
+      </p>
+      <ul>
+        <li data-en="This dashboard contains 2 tabs: General KPIs on the KYC/KYB document submission and processing process (Key Performance Indicators Overview), and information about document processing times (Processing Time Analysis)."
+            data-fr="Ce tableau de bord comporte 2 onglets : Indicateurs généraux sur la soumission et le traitement des documents KYC/KYB (Vue d’ensemble des indicateurs clés de performance) et informations sur les temps de traitement des documents (Analyse des temps de traitement).">
+          <b>This dashboard contains 2 tabs:</b> General KPIs on the KYC/KYB document submission and processing process (Key Performance Indicators Overview), and information about document processing times (Processing Time Analysis).
+        </li>
+        <li data-en="Data source: This is a CSV file generated from scratch with fictional data, following the document submission logic (KYC or KYB) for an application using an API. Data covers January to June 2025."
+            data-fr="Source des données : Il s’agit d’un fichier CSV généré de toutes pièces avec des données fictives, suivant la logique de soumission de documents (KYC ou KYB) pour une application utilisant une API. Les données couvrent la période de janvier à juin 2025.">
+          <b>Data source:</b> This is a CSV file generated from scratch with fictional data, following the document submission logic (KYC or KYB) for an application using an API. Data covers January to June 2025.
+        </li>
+        <li data-en="Filters: Includes filters for document creation date, client (platform) name, and user type (Natural or Legal)."
+            data-fr="Filtres : Inclut des filtres sur la date de création du document, le nom du client (plateforme) et le type d’utilisateur (personne physique ou morale).">
+          <b>Filters:</b> Includes filters for document creation date, client (platform) name, and user type (Natural or Legal).
+        </li>
+      </ul>
+      <div class="image-placeholder"><img src="img/KYC/dashboard.jpg" alt="Dashboard screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
+      <div class="tools" data-en="Tools used: Looker Studio, Excel" data-fr="Outils utilisés : Looker Studio, Excel"><b>Tools used:</b> Looker Studio, Excel</div>
+    </section>
+
+    <!-- Section 2 -->
+    <section>
+      <h2 data-en="📈 Key Performance Indicators Overview" data-fr="📈 Vue d’ensemble des indicateurs clés de performance">📈 Key Performance Indicators Overview</h2>
+      <div class="subtitle" data-en="📌 Key Information" data-fr="📌 Informations clés">📌 Key Information</div>
+      <ul>
+        <li data-en="Displays the overall KYC/KYB process: number of documents submitted, acceptance rate, and user distribution (Natural or Legal)."
+            data-fr="Affiche le processus global KYC/KYB : nombre de documents soumis, taux d’acceptation et répartition des utilisateurs (personne physique ou morale).">
+          Displays the overall KYC/KYB process: number of documents submitted, acceptance rate, and user distribution (Natural or Legal).
+        </li>
+        <li data-en="Enables real-time monitoring of user onboarding for compliance and operational efficiency."
+            data-fr="Permet le suivi en temps réel de l’onboarding des utilisateurs pour la conformité et l’efficacité opérationnelle.">
+          Enables real-time monitoring of user onboarding for compliance and operational efficiency.
+        </li>
+        <li data-en="Used to quickly detect bottlenecks or frictions in the onboarding journey."
+            data-fr="Sert à détecter rapidement les points de friction ou goulets d’étranglement dans le parcours d’onboarding.">
+          Used to quickly detect bottlenecks or frictions in the onboarding journey.
+        </li>
+      </ul>
+      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
+      <p data-en="These indicators present a global overview of the KYC/KYB process, showing total number of documents submitted, acceptance rate, and the breakdown between Natural and Legal users."
+         data-fr="Ces indicateurs présentent une vue globale du processus KYC/KYB, affichant le nombre total de documents soumis, le taux d’acceptation et la répartition entre utilisateurs physiques et moraux.">
+        These indicators present a global overview of the KYC/KYB process, showing total number of documents submitted, acceptance rate, and the breakdown between Natural and Legal users.
+      </p>
+      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
+      <ul>
+        <li data-en="Global, instant vision of the KYC/KYB process"
+            data-fr="Vision globale et instantanée du processus KYC/KYB">
+          Global, instant vision of the KYC/KYB process
+        </li>
+        <li data-en="Monitor efficiency and processed volumes"
+            data-fr="Suivi de l’efficacité et des volumes traités">
+          Monitor efficiency and processed volumes
+        </li>
+        <li data-en="Clear distribution of user types"
+            data-fr="Répartition claire des types d’utilisateurs">
+          Clear distribution of user types
+        </li>
+        <li data-en="Enables quick decision-making"
+            data-fr="Facilite la prise de décision rapide">
+          Enables quick decision-making
+        </li>
+      </ul>
+      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
+      <p data-en="The volume of cases is balanced between individuals and companies, but the acceptance rate of 35.7% reveals improvement potential (file quality, user education, process simplification...)."
+         data-fr="Le volume de dossiers est équilibré entre particuliers et entreprises, mais le taux d’acceptation de 35,7 % révèle un potentiel d’amélioration (qualité des dossiers, éducation des utilisateurs, simplification des processus…).">
+        The volume of cases is balanced between individuals and companies, but the acceptance rate of 35.7% reveals improvement potential (file quality, user education, process simplification...).
+      </p>
+      <div class="image-placeholder"><img src="img/KYC/infos.jpg" alt="infos screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
+
+      <div class="subtitle" style="margin-top:2.1rem;" data-en="📑 Status Breakdown" data-fr="📑 Répartition par statut">📑 Status Breakdown</div>
+      <p data-en="These visuals show the breakdown of documents by status, representing the processing step:"
+         data-fr="Ces visuels montrent la répartition des documents par statut, correspondant à l’étape de traitement :">
+        These visuals show the breakdown of documents by status, representing the processing step:
+        <ul>
+          <li data-en="Validated: Document processed and accepted" data-fr="Validé : Document traité et accepté"><b>Validated:</b> Document processed and accepted</li>
+          <li data-en="Refused: Document processed and refused" data-fr="Refusé : Document traité et refusé"><b>Refused:</b> Document processed and refused</li>
+          <li data-en="Pending: Document waiting for processing" data-fr="En attente : Document en attente de traitement"><b>Pending:</b> Document waiting for processing</li>
+          <li data-en="Creation pending: Document in creation" data-fr="Création en attente : Document en cours de création"><b>Creation pending:</b> Document in creation</li>
+        </ul>
+        <span data-en="The second visual shows monthly breakdown; the third shows breakdown by client."
+              data-fr="Le second visuel montre la répartition mensuelle ; le troisième, la répartition par client.">
+          The second visual shows monthly breakdown; the third shows breakdown by client.
+        </span>
+      </p>
+      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
+      <ul>
+        <li data-en="Quick view of KYC/KYB statuses" data-fr="Vue rapide des statuts KYC/KYB">Quick view of KYC/KYB statuses</li>
+        <li data-en="Monitor monthly changes" data-fr="Suivi mensuel des évolutions">Monitor monthly changes</li>
+        <li data-en="Immediate identification of improvement points" data-fr="Identification immédiate des axes d’amélioration">Immediate identification of improvement points</li>
+        <li data-en="Target support or improvement actions by client" data-fr="Ciblage des actions de support ou d’amélioration par client">Target support or improvement actions by client</li>
+      </ul>
+      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
+      <p data-en="The proportion of validated files (35.7%) is close to refused (34.3%), indicating a high rejection rate. Nearly 30% are pending or in creation, signaling possible delays or bottlenecks. Monthly trends show a temporary improvement, but refusals remain numerous. Client analysis reveals significant disparities: some exceed 40% validated files, while others accumulate more refusals or pending statuses."
+         data-fr="La proportion de dossiers validés (35,7 %) est proche des refusés (34,3 %), ce qui indique un taux de rejet élevé. Près de 30 % sont en attente ou en création, signalant des retards ou des blocages possibles. Les tendances mensuelles montrent une amélioration temporaire, mais les refus restent nombreux. L’analyse par client révèle des écarts importants : certains dépassent 40 % de dossiers validés, d’autres cumulent davantage de refus ou de statuts en attente.">
+        The proportion of validated files (35.7%) is close to refused (34.3%), indicating a high rejection rate. Nearly 30% are pending or in creation, signaling possible delays or bottlenecks. Monthly trends show a temporary improvement, but refusals remain numerous. Client analysis reveals significant disparities: some exceed 40% validated files, while others accumulate more refusals or pending statuses.
+      </p>
+      <div class="image-placeholder"><img src="img/KYC/status.jpg" alt="status screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
+
+      <div class="subtitle" style="margin-top:2.1rem;" data-en="📆 Monthly Acceptance Rate" data-fr="📆 Taux d’acceptation mensuel">📆 Monthly Acceptance Rate</div>
+      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
+      <p data-en="This graph combines monthly validations and acceptance rate, making it easy to track process dynamics."
+         data-fr="Ce graphique combine validations mensuelles et taux d’acceptation, facilitant le suivi de la dynamique du processus.">
+        This graph combines monthly validations and acceptance rate, making it easy to track process dynamics.
+      </p>
+      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
+      <ul>
+        <li data-en="Precise monitoring of acceptance rate evolution over time" data-fr="Suivi précis de l’évolution du taux d’acceptation dans le temps">Precise monitoring of acceptance rate evolution over time</li>
+        <li data-en="Quick identification of monthly performance changes" data-fr="Identification rapide des évolutions mensuelles de performance">Quick identification of monthly performance changes</li>
+        <li data-en="Helps measure the impact of improvement actions" data-fr="Aide à mesurer l’impact des actions d’amélioration">Helps measure the impact of improvement actions</li>
+      </ul>
+      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
+      <p data-en="The acceptance rate increases from 31% in April to 38.4% in May, then stabilizes at 37.3% in June. This suggests process improvement, but there is still room for progress."
+         data-fr="Le taux d’acceptation passe de 31 % en avril à 38,4 % en mai puis se stabilise à 37,3 % en juin. Cela suggère une amélioration des processus mais il reste encore une marge de progression.">
+        The acceptance rate increases from 31% in April to 38.4% in May, then stabilizes at 37.3% in June. This suggests process improvement, but there is still room for progress.
+      </p>
+      <div class="image-placeholder"><img src="img/KYC/rate.jpg" alt="rate screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
+
+      <div class="subtitle" style="margin-top:2.1rem;" data-en="🌍 Acceptance Rate by Country Residence" data-fr="🌍 Taux d’acceptation par pays de résidence">🌍 Acceptance Rate by Country Residence</div>
+      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
+      <p data-en="This view shows the geographical breakdown of KYC/KYB acceptance rates by country of residence, making it easy to spot performance differences and target improvement actions where rates are lowest."
+         data-fr="Cette vue affiche la répartition géographique des taux d’acceptation KYC/KYB par pays de résidence, facilitant l’identification des écarts de performance et le ciblage des actions d’amélioration dans les pays où le taux est le plus bas.">
+        This view shows the geographical breakdown of KYC/KYB acceptance rates by country of residence, making it easy to spot performance differences and target improvement actions where rates are lowest.
+      </p>
+      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
+      <ul>
+        <li data-en="Clear visualization of acceptance rates by country" data-fr="Visualisation claire des taux d’acceptation par pays">Clear visualization of acceptance rates by country</li>
+        <li data-en="Quickly identify countries with process challenges" data-fr="Identification rapide des pays rencontrant des difficultés dans le processus">Quickly identify countries with process challenges</li>
+        <li data-en="Target corrective/support actions by region" data-fr="Ciblage des actions correctives ou de support par région">Target corrective/support actions by region</li>
+      </ul>
+      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
+      <p data-en="Acceptance rate varies significantly by country, with notable differences. Some countries are below 30%, signaling specific issues (documents, procedures, client expectations...) that should be analyzed and prioritized for international performance."
+         data-fr="Le taux d’acceptation varie fortement selon les pays, avec des écarts notables. Certains pays sont en dessous de 30 %, ce qui signale des problématiques spécifiques (documents, procédures, attentes clients…) à analyser et à prioriser pour améliorer la performance internationale.">
+        Acceptance rate varies significantly by country, with notable differences. Some countries are below 30%, signaling specific issues (documents, procedures, client expectations...) that should be analyzed and prioritized for international performance.
+      </p>
+      <div class="image-placeholder"><img src="img/KYC/country.jpg" alt="country screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
+    </section>
+
+    <!-- Section 3 -->
+    <section>
+      <h2 data-en="⏱️ Processing Time Analysis" data-fr="⏱️ Analyse des temps de traitement">⏱️ Processing Time Analysis</h2>
+      <div class="subtitle" data-en="📌 Key Information" data-fr="📌 Informations clés">📌 Key Information</div>
+      <ul>
+        <li data-en="Compares average user submission time and internal processing time."
+            data-fr="Compare le temps moyen de soumission utilisateur et le temps de traitement interne.">Compares average user submission time and internal processing time.</li>
+        <li data-en="Includes a 36-hour SLA limit with conditional formatting if exceeded."
+            data-fr="Intègre une limite de SLA à 36 heures avec surlignage si dépassé.">Includes a 36-hour SLA limit with conditional formatting if exceeded.</li>
+        <li data-en="Highlights whether delays come from the internal process or the user side."
+            data-fr="Permet de voir si les retards viennent du process interne ou du côté utilisateur.">Highlights whether delays come from the internal process or the user side.</li>
+      </ul>
+      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
+      <p data-en="This visual compares average user submission time and internal processing time. Note: a 36-hour processing SLA is included. Conditional formatting is applied if the limit is exceeded to alert on non-compliance."
+         data-fr="Ce visuel compare le temps moyen de soumission utilisateur et le temps de traitement interne. À noter : une limite SLA de 36 heures est incluse. Un formatage conditionnel est appliqué si la limite est dépassée afin d’alerter sur la non-conformité.">
+        This visual compares average user submission time and internal processing time. Note: a 36-hour processing SLA is included. Conditional formatting is applied if the limit is exceeded to alert on non-compliance.
+      </p>
+      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
+      <ul>
+        <li data-en="Clear insight into process speed or slowness"
+            data-fr="Vision claire de la rapidité ou lenteur du processus">Clear insight into process speed or slowness</li>
+        <li data-en="Instantly see if delays come from processing or from users"
+            data-fr="Permet de voir instantanément si les retards viennent du traitement ou des utilisateurs">Instantly see if delays come from processing or from users</li>
+        <li data-en="Helps prioritize improvement efforts"
+            data-fr="Aide à prioriser les axes d’amélioration">Helps prioritize improvement efforts</li>
+      </ul>
+      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
+      <p data-en="Average user submission time is normal but could be improved (0.4 min), while average processing time is very high (36.5 hours), showing the main latency comes from internal process, not from users."
+         data-fr="Le temps moyen de soumission utilisateur est normal mais améliorable (0,4 min), tandis que le temps de traitement moyen est très élevé (36,5 heures), montrant que la principale latence provient du processus interne, pas des utilisateurs.">
+        Average user submission time is normal but could be improved (0.4 min), while average processing time is very high (36.5 hours), showing the main latency comes from internal process, not from users.
+      </p>
+      <div class="image-placeholder"><img src="img/KYC/infos_times.jpg" alt="infos_times screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
+
+      <div class="subtitle" style="margin-top:2.1rem;" data-en="📊 Average Processing Time (User Type/Month) & MoM Delta" data-fr="📊 Temps de traitement moyen (type d’utilisateur/mois) & évolution MoM">📊 Average Processing Time (User Type/Month) & MoM Delta</div>
+      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
+      <p data-en="These visuals show the evolution of processing time by user type, plus a table for each client showing average processing time and its monthly delta, making operational management and SLA monitoring easier."
+         data-fr="Ces visuels montrent l’évolution du temps de traitement par type d’utilisateur, avec un tableau par client affichant le temps moyen de traitement et son évolution mensuelle, ce qui facilite la gestion opérationnelle et le suivi du SLA.">
+        These visuals show the evolution of processing time by user type, plus a table for each client showing average processing time and its monthly delta, making operational management and SLA monitoring easier.
+      </p>
+      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
+      <ul>
+        <li data-en="Clear tracking by user type and month" data-fr="Suivi détaillé par type d’utilisateur et par mois">Clear tracking by user type and month</li>
+        <li data-en="Immediate spotting of highest or improving delays" data-fr="Repérage immédiat des plus gros retards ou des améliorations">Immediate spotting of highest or improving delays</li>
+        <li data-en="Follow SLA compliance and quickly detect deviations" data-fr="Suivi de la conformité au SLA et détection rapide des écarts">Follow SLA compliance and quickly detect deviations</li>
+      </ul>
+      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
+      <p data-en="Processing time varies by client and month: some clients exceed the 36h SLA, while others show clear improvement. “Legal” users are generally processed faster than “Natural” users, except rare exceptions."
+         data-fr="Le temps de traitement varie selon les clients et les mois : certains clients dépassent le SLA de 36h, d’autres montrent une amélioration nette. Les utilisateurs « Moraux » sont généralement traités plus rapidement que les « Physiques », sauf rares exceptions.">
+        Processing time varies by client and month: some clients exceed the 36h SLA, while others show clear improvement. “Legal” users are generally processed faster than “Natural” users, except rare exceptions.
+      </p>
+      <div class="image-placeholder"><img src="img/KYC/processing.jpg" alt="processing screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
+
+      <div class="subtitle" style="margin-top:2.1rem;" data-en="📊 Average Processing Time (Client/Month) & % Above SLA" data-fr="📊 Temps de traitement moyen (client/mois) & % au-dessus du SLA">📊 Average Processing Time (Client/Month) & % Above SLA</div>
+      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
+      <p data-en="This visual shows average processing time per client/month with an SLA limit at 36h. Below, indicators display the % and number of clients above this threshold, allowing rapid targeting for SLA improvement."
+         data-fr="Ce visuel montre le temps de traitement moyen par client/mois avec une limite SLA fixée à 36h. En dessous, des indicateurs affichent le % et le nombre de clients au-dessus de ce seuil, permettant de cibler rapidement les actions pour améliorer la conformité SLA.">
+        This visual shows average processing time per client/month with an SLA limit at 36h. Below, indicators display the % and number of clients above this threshold, allowing rapid targeting for SLA improvement.
+      </p>
+      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
+      <ul>
+        <li data-en="Instant visualization of SLA compliance for each client" data-fr="Visualisation instantanée de la conformité SLA par client">Instant visualization of SLA compliance for each client</li>
+        <li data-en="Quickly identify clients/periods exceeding SLA" data-fr="Identification rapide des clients/périodes dépassant le SLA">Quickly identify clients/periods exceeding SLA</li>
+        <li data-en="Monitor % and number of clients above SLA" data-fr="Suivi du % et du nombre de clients au-dessus du SLA">Monitor % and number of clients above SLA</li>
+      </ul>
+      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
+      <p data-en="Nearly half of all processing (49.89%) exceeds the 36-hour SLA, and all clients are affected at least once, showing generalized difficulty in meeting deadlines."
+         data-fr="Près de la moitié des traitements (49,89 %) dépassent le SLA de 36 heures, et tous les clients sont concernés au moins une fois, ce qui traduit une difficulté généralisée à respecter les délais.">
+        Nearly half of all processing (49.89%) exceeds the 36-hour SLA, and all clients are affected at least once, showing generalized difficulty in meeting deadlines.
+      </p>
+      <div class="image-placeholder"><img src="img/KYC/processing_client.jpg" alt="processing_client screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
+
+      <div class="subtitle" style="margin-top:2.1rem;" data-en="⏳ Average Submission Time (User Type/Month) & MoM Delta" data-fr="⏳ Temps de soumission moyen (type d’utilisateur/mois) & évolution MoM">⏳ Average Submission Time (User Type/Month) & MoM Delta</div>
+      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
+      <p data-en="These visuals combine a chart of average submission time by user type over several months and a table per client with mean submission time and its monthly delta. The goal is a full view of trends and detailed client/platform performance."
+         data-fr="Ces visuels combinent un graphique du temps moyen de soumission par type d’utilisateur sur plusieurs mois et un tableau par client avec le temps moyen de soumission et son évolution mensuelle. L’objectif est d’avoir une vision complète des tendances et une analyse détaillée par client/plateforme.">
+        These visuals combine a chart of average submission time by user type over several months and a table per client with mean submission time and its monthly delta. The goal is a full view of trends and detailed client/platform performance.
+      </p>
+      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
+      <ul>
+        <li data-en="Direct comparison between clients and user segments" data-fr="Comparaison directe entre clients et segments utilisateurs">Direct comparison between clients and user segments</li>
+        <li data-en="Highlights those exceeding SLA limit" data-fr="Repérage des dépassements de la limite SLA">Highlights those exceeding SLA limit</li>
+        <li data-en="Facilitates detection of progress or drift via the monthly delta" data-fr="Détection facilitée des progrès ou dérives grâce à l’évolution mensuelle">Facilitates detection of progress or drift via the monthly delta</li>
+        <li data-en="Concrete support for targeting process improvements" data-fr="Appui concret pour cibler les améliorations de processus">Concrete support for targeting process improvements</li>
+      </ul>
+      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
+      <p data-en="Some clients are far above the 36h limit, while others show continuous improvement. “Legal” users are generally processed faster than “Natural” users. The delta highlights improvements and priorities."
+         data-fr="Certains clients sont très au-dessus de la limite des 36h, d’autres montrent une amélioration continue. Les « Moraux » sont en général traités plus rapidement que les « Physiques ». L’évolution mensuelle permet de repérer les améliorations et les priorités.">
+        Some clients are far above the 36h limit, while others show continuous improvement. “Legal” users are generally processed faster than “Natural” users. The delta highlights improvements and priorities.
+      </p>
+      <div class="image-placeholder"><img src="img/KYC/submission.jpg" alt="submission screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
+
+      <div class="subtitle" style="margin-top:2.1rem;" data-en="⏳ Average Submission Time (Client/Month) & % Above 60s" data-fr="⏳ Temps de soumission moyen (client/mois) & % au-dessus de 60s">⏳ Average Submission Time (Client/Month) & % Above 60s</div>
+      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
+      <p data-en="This chart shows average submission time per client/month, compared to a 60s threshold. Indicators below show the % and number of clients above this, allowing monitoring of user-side completion speed."
+         data-fr="Ce graphique montre le temps de soumission moyen par client/mois, comparé à un seuil de 60s. Des indicateurs en dessous affichent le % et le nombre de clients au-dessus de ce seuil, permettant de suivre la rapidité de complétion côté utilisateur.">
+        This chart shows average submission time per client/month, compared to a 60s threshold. Indicators below show the % and number of clients above this, allowing monitoring of user-side completion speed.
+      </p>
+      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
+      <ul>
+        <li data-en="Easy comparison between clients' submission performance" data-fr="Comparaison facile de la performance de soumission entre clients">Easy comparison between clients' submission performance</li>
+        <li data-en="Highlights clients or times with user reactivity below expectations" data-fr="Repérage des clients ou périodes où la réactivité utilisateur est inférieure aux attentes">Highlights clients or times with user reactivity below expectations</li>
+        <li data-en="Immediate indicator for support or UX improvement" data-fr="Indicateur immédiat pour l’accompagnement ou l’amélioration UX">Immediate indicator for support or UX improvement</li>
+        <li data-en="Track achievement of smooth onboarding goals" data-fr="Suivi des objectifs d’onboarding fluide">Track achievement of smooth onboarding goals</li>
+      </ul>
+      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
+      <p data-en="About a quarter of documents (26.3%) are above the 60s threshold, all clients concerned at least once. Overall user speed is good, but there are possible improvement areas."
+         data-fr="Environ un quart des documents (26,3 %) dépassent le seuil de 60s, tous les clients étant concernés au moins une fois. La réactivité globale des utilisateurs est bonne, mais des axes d’amélioration existent.">
+        About a quarter of documents (26.3%) are above the 60s threshold, all clients concerned at least once. Overall user speed is good, but there are possible improvement areas.
+      </p>
+      <div class="image-placeholder"><img src="img/KYC/submission_client.jpg" alt="submission_client screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
+    </section>
+
+    <!-- Section 4 -->
+    <section>
+      <h2 data-en="✅ Overall Conclusion" data-fr="✅ Conclusion générale">✅ Overall Conclusion</h2>
+      <p data-en="The simulation shows that user submission time could be improved, but the main levers of optimization mainly concern reducing processing time and improving KYC/KYB processes, which will in turn benefit conversion and compliance."
+         data-fr="La simulation montre que le temps de soumission utilisateur pourrait être amélioré, mais les principaux leviers d’optimisation concernent surtout la réduction du temps de traitement et l’amélioration des processus KYC/KYB, ce qui bénéficiera à la fois à la conversion et à la conformité.">
+        The simulation shows that user submission time could be improved, but the main levers of optimization mainly concern reducing processing time and improving KYC/KYB processes, which will in turn benefit conversion and compliance.
+      </p>
+
+      <div class="subtitle" data-en="💡 Commercial Added Value" data-fr="💡 Valeur ajoutée commerciale">💡 Commercial Added Value</div>
+      <ul>
+        <li 
+          data-en="Acceleration of client onboarding: Faster KYC/KYB validation allows client platforms to activate their users more quickly, increasing their own business volume via the payment API."
+          data-fr="Accélération de l’onboarding client : Une validation KYC/KYB plus rapide permet aux plateformes clientes d’activer leurs utilisateurs plus vite, augmentant leur propre volume d’affaires via l’API de paiement.">
+          <b>Acceleration of client onboarding:</b> Faster KYC/KYB validation allows client platforms to activate their users more quickly, increasing their own business volume via the payment API.
+        </li>
+        <li 
+          data-en="Reduction of operational costs: Precisely targeting friction points prevents resource waste and improves the productivity of support or compliance teams."
+          data-fr="Réduction des coûts opérationnels : Cibler précisément les points de friction évite le gaspillage de ressources et améliore la productivité des équipes support ou conformité.">
+          <b>Reduction of operational costs:</b> Precisely targeting friction points prevents resource waste and improves the productivity of support or compliance teams.
+        </li>
+        <li 
+          data-en="Decrease in abandonment rate: By reducing delays and unjustified refusals, the conversion rate is maximized, which directly impacts clients’ revenue growth."
+          data-fr="Diminution du taux d’abandon : En réduisant les délais et les refus injustifiés, le taux de conversion est maximisé, ce qui impacte directement la croissance du chiffre d’affaires des clients.">
+          <b>Decrease in abandonment rate:</b> By reducing delays and unjustified refusals, the conversion rate is maximized, which directly impacts clients’ revenue growth.
+        </li>
+        <li 
+          data-en="Increased commercial attractiveness: An API that guarantees a fast and reliable KYC/KYB process becomes a major differentiator for attracting new partner platforms."
+          data-fr="Attractivité commerciale accrue : Une API garantissant un process KYC/KYB rapide et fiable devient un argument majeur pour attirer de nouvelles plateformes partenaires.">
+          <b>Increased commercial attractiveness:</b> An API that guarantees a fast and reliable KYC/KYB process becomes a major differentiator for attracting new partner platforms.
+        </li>
+        <li 
+          data-en="Reduction of non-compliance risks: Proactive monitoring of SLAs and rejection rates helps avoid penalties and strengthens trust with regulators and partners."
+          data-fr="Réduction des risques de non-conformité : Le suivi proactif du SLA et des taux de rejet permet d’éviter des pénalités et renforce la confiance des régulateurs et partenaires.">
+          <b>Reduction of non-compliance risks:</b> Proactive monitoring of SLAs and rejection rates helps avoid penalties and strengthens trust with regulators and partners.
+        </li>
+      </ul>
+
+      <div class="subtitle" data-en="📅 Next Analyses or Charts to Create" data-fr="📅 Analyses ou graphiques à créer ensuite">📅 Next Analyses or Charts to Create</div>
+      <ul>
+        <li 
+          data-en="Detailed analysis of KYC/KYB rejection or failure reasons (by client and user type), to guide improvements in document collection and the user experience."
+          data-fr="Analyse détaillée des motifs de refus ou d’échec KYC/KYB (par client et type d’utilisateur), pour orienter les actions d’amélioration de la collecte documentaire et de l’expérience utilisateur.">
+          <b>Detailed analysis of KYC/KYB rejection or failure reasons</b> (by client and user type), to guide improvements in document collection and the user experience.
+        </li>
+        <li 
+          data-en="Onboarding conversion funnel monitoring: Visualize every process step, from creation to validation, to identify drop-off points."
+          data-fr="Suivi du funnel de conversion onboarding : Visualiser chaque étape du process, de la création à la validation, pour identifier les points de décrochage.">
+          <b>Onboarding conversion funnel monitoring:</b> Visualize every process step, from creation to validation, to identify drop-off points.
+        </li>
+        <li 
+          data-en="Analysis of the financial cost of delays or failures: Estimate the business impact (lost revenue, support costs, etc.) due to files not validated on time."
+          data-fr="Analyse du coût financier des retards ou échecs : Estimer l’impact business (revenu perdu, coûts de support…) dû aux dossiers non validés dans les délais.">
+          <b>Analysis of the financial cost of delays or failures:</b> Estimate the business impact (lost revenue, support costs, etc.) due to files not validated on time.
+        </li>
+        <li 
+          data-en="Correlation between processing time and user activation/retention: Quantify the effect of faster validation on user activation rate and API usage recurrence."
+          data-fr="Corrélation entre temps de traitement et activation/rétention utilisateur : Quantifier l’effet d’une validation plus rapide sur le taux d’activation utilisateur et la récurrence d’utilisation de l’API.">
+          <b>Correlation between processing time and user activation/retention:</b> Quantify the effect of faster validation on user activation rate and API usage recurrence.
+        </li>
+      </ul>
+    </section>
+  </div>
+  <script>
+    const toggleBtn = document.getElementById('lang-toggle');
+    let currentLang = "en";
+    function switchLang() {
+      currentLang = currentLang === "en" ? "fr" : "en";
+      toggleBtn.textContent = currentLang === "en" ? "🇫🇷" : "🇬🇧";
+      document.querySelectorAll('[data-en]').forEach(el => {
+        let val = el.getAttribute('data-' + currentLang);
+        if (val) {
+          if (el.tagName === 'P' || el.tagName === 'DIV' || el.tagName === 'SPAN' || el.tagName === 'B') {
+            el.innerHTML = val;
+          } else {
+            el.textContent = val;
+          }
+        }
+      });
+    }
+    toggleBtn.onclick = switchLang;
+  </script>
+</body>
+</html>

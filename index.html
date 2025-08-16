@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ali Belabbas – Data Analyst Freelance</title>
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #f6f3fb; color: #2a1f3c; }
+    .navbar {
+      position: sticky; top: 0; z-index: 1000; background: #fff;
+      box-shadow: 0 2px 8px rgba(60,40,120,0.08);
+      padding: 0.5rem 2rem; display: flex; align-items: center;
+      border-bottom: 1.5px solid #e6e1f7; font-size:1.08rem;
+    }
+    .navbar-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      gap: 2.2rem;
+    }
+    .navbar a, .lang-toggle {
+      color: #6c4ba7; text-decoration: none; font-weight: 500;
+      letter-spacing: 0.01em; padding-bottom: 3px;
+      border-bottom: 2.5px solid transparent; transition: border 0.15s, color 0.15s;
+      background: none; border: none; cursor: pointer; font-size: 1.08rem;
+    }
+    .navbar a:hover, .navbar a.active, .lang-toggle.active {
+      border-bottom: 2.5px solid #6c4ba7; color: #3b2c50;
+    }
+    .lang-toggle { margin-left: auto; font-weight: bold; }
+    header {
+      background-color: #e5dffc;
+      padding: 4rem 2rem;
+      display: flex;
+      align-items: flex-start; /* Aligns top of photo and text */
+      justify-content: flex-start;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    header .profile {
+      width: 150px;
+      height: 180px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin: 0;
+      box-shadow: 0 2px 10px #c7b4e6;
+      flex-shrink: 0;
+    }
+    header .text {
+      flex: 1 1 0%;
+      min-width: 320px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* Align text to the top */
+    }
+    header h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #3b2c50; }
+    header p {
+      font-size: 0.98rem;
+      margin: 0 0 1.2rem 0;
+      line-height: 1.6;
+      word-break: break-word;
+      width: 100%;
+      max-width: unset;
+    }
+    .badges { display:flex; gap:12px; margin:16px 0 0 0; flex-wrap:wrap;}
+    .badges span { border-radius:7px; padding:7px 13px; font-size:0.97em;}
+    .badge-data { background:#f0eafd; color:#6c4ba7; }
+    .badge-business { background:#e7f6ed; color:#256d4a; }
+    .badge-python { background:#fff5e3; color:#a96a00; }
+    .header-stats { margin-top:18px; font-size:1.08em; color:#888; }
+    .header-stats span { display:inline-block; margin-right:22px; }
+    .header-stats img { width:20px; vertical-align:middle; margin-right:6px;}
+    header .cta {
+      margin-top: 1.1rem;
+      background: #6c4ba7;
+      color: white;
+      border: none;
+      padding: 0.82rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      width: fit-content;
+    }
+    section { padding: 3rem 2rem; }
+    h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+    .services, .projects { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    .card { background: white; padding: 1.1rem 1.2rem 1rem 1.2rem; border-radius: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); flex: 1 1 240px; display: flex; flex-direction: column; align-items: flex-start; position: relative; overflow: hidden; font-size: 0.98rem; min-width: 270px; }
+    .card img.icon { width: 34px; height: 34px; margin-bottom: 0.3rem; }
+    .compact-section { display: flex; align-items: flex-start; gap: 0.45rem; margin: 0.15rem 0 0.15rem 0; font-size: 0.97rem; }
+    .compact-section img { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; }
+    .edu-container { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1rem; }
+    .edu-group { flex: 1 1 280px; background: #fff; border-radius: 10px; padding: 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+    .edu-group h3 { font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; color: #6c4ba7; }
+    .edu-icon { width: 24px; height: 24px; margin-right: 0.5rem; }
+    .edu-group ul { list-style: none; padding: 0; margin: 0; }
+    .edu-group li { position: relative; padding-left: 1.5rem; margin-bottom: 0.6rem; font-size: 0.95rem; line-height: 1.4; }
+    .edu-group li:before { content: ''; position: absolute; left: 0; top: 0.4rem; width: 8px; height: 8px; background: #6c4ba7; border-radius: 50%; }
+    .project-card { background-color: #f6f3fb; height: 250px; flex: 1 1 45%; position: relative; border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .project-card img { width:100%; height:100%; object-fit:cover; }
+    .overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.65); opacity:0; transition:opacity .3s; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:1rem; text-align:center; }
+    .project-card:hover .overlay { opacity:1; }
+    .overlay strong, .overlay p { color:#fff; margin:.5rem 0; }
+    .overlay a { margin-top:1rem; background:#6c4ba7; color:#fff; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:bold; }
+    footer { padding:2rem; text-align:center; background:#e5dffc; font-size:.9rem; }
+    a { color:#6c4ba7; text-decoration:none; }
+    @media (max-width: 900px) {
+      .services, .projects { flex-direction: column; }
+      .edu-container { flex-direction: column; }
+      .navbar-center { gap: 1.1rem; }
+      header { flex-direction: column; align-items:center; }
+      header .text { max-width: 100%; }
+    }
+  
+/* ===== PITCH COMPACTION (desktop only) ===== */
+@media (min-width: 1024px) {
+  header { padding: 2.2rem 2rem; gap: 1.5rem; }
+  header h1 { margin-bottom: .2rem; font-size: 2.35rem; }
+  header .text { max-width: 920px; }
+  .pitch-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 0.75rem 1.75rem; align-items: start; }
+  .pitch-left p { margin: 0; line-height: 1.45; }
+  .pitch-right ul { margin: .2rem 0 .35rem 0 !important; }
+  .pitch-right li { margin: .18rem 0 !important; }
+  .badges { margin: .35rem 0 .35rem 0 !important; }
+  .header-stats { margin: .2rem 0 .2rem 0 !important; }
+  header .cta { margin-top: .6rem; }
+}
+
+
+/* ===== PITCH FOOTER CENTERING ===== */
+@media (min-width: 1024px) {
+  .pitch-footer { display:flex; flex-direction:column; align-items:center; gap:.6rem; margin-top:.6rem; }
+  header .badges { display:flex; justify-content:center; flex-wrap:wrap; }
+  header .cta-row { display:flex; justify-content:center; }
+}
+
+
+/* ===== Footer centered at bottom of pitch area ===== */
+@media (min-width: 1024px) {
+  header .text { display: flex; flex-direction: column; }
+  .pitch-grid { flex: 0 0 auto; }
+  .pitch-footer { margin-top: auto; width: 100%; display: flex; flex-direction: column; align-items: center; gap: .7rem; }
+  header .badges { display: flex; justify-content: center; flex-wrap: wrap; }
+  header .cta-row { display: flex; justify-content: center; }
+}
+
+</style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-center">
+      <a href="#services" data-en="Services" data-fr="Services">Services</a>
+      <a href="#experience" data-en="Experiences" data-fr="Expériences">Experiences</a>
+      <a href="#education" data-en="Education" data-fr="Formation">Education</a>
+      <a href="#projects" data-en="Projects" data-fr="Projets">Projects</a>
+      <a href="#contact" data-en="Contact" data-fr="Contact">Contact</a>
+    </div>
+    <button class="lang-toggle" id="lang-toggle">FR</button>
+  </nav>
+  <header style="display: flex; align-items: flex-start; justify-content: center; gap: 2rem; padding: 2rem 2rem 2.5rem 2rem; background-color: #e5dffc;">
+  <img class="profile" src="img/photo_ali.jpg" alt="Ali Belabbas" style="width:160px; height:200px; border-radius:12px; object-fit:cover; margin-top:0; align-self:flex-start;">
+  <div class="text" style="max-width: 700px; text-align: left; margin-top:0;">
+    <h1 data-en="Ali Belabbas" data-fr="Ali Belabbas" style="margin-top:0;">Ali Belabbas</h1>
+
+    
+    <div class="pitch-grid">
+      <div class="pitch-left">
+<p
+      data-en=" Data & Business Performance Consultant with strong experience in Fintech.<br><br>
+I help you go further with data by transforming complex information into actionable insights and measurable performance.<br><br>
+My DNA: clarity, efficiency, results!<br><br>
+Expert in data analysis & cleaning, dashboard creation, SQL queries and Python automation.<br>"
+      data-fr="Consultant Data & Performance Business avec une solide expérience en Fintech.<br><br>
+Je vous aide à aller plus loin grâce à vos données, en transformant l’information complexe en décisions concrètes et en performances mesurables.<br><br>
+Mon ADN : clarté, efficacité, résultats !<br><br>
+Expert en analyse & nettoyage de données, création de dashboards, requêtes SQL et automatisation Python.<br>
+Ma promesse : des insights actionnables, des processus optimisés et une vraie valeur ajoutée pour vos équipes.
+">
+     Data & Business Performance Consultant with strong experience in Fintech.<br><br>
+I help you go further with data by transforming complex information into actionable insights and measurable performance.<br><br>
+My DNA: clarity, efficiency, results!<br><br>
+Expert in data analysis & cleaning, dashboard creation, SQL queries and Python automation.</p>
+      </div>
+      <div class="pitch-right">
+
+
+    <ul style="list-style:none; padding:0; margin:0.8rem 0 1.0rem 0;">
+	      <li style="margin:0.4rem 0;">
+        <img src="https://cdn-icons-png.flaticon.com/512/4762/4762314.png" alt="Audit Icon" style="width:18px;height:18px;margin-right:6px;vertical-align:middle;">
+        <span data-en="Diagnostic & audit of data processes" data-fr="Diagnostic & audit des processus data">Diagnostic & audit of data processes</span>
+      </li>
+      <li style="margin:0.4rem 0;">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Automation Icon" style="width:18px;height:18px;margin-right:6px;vertical-align:middle;">
+        <span data-en="Automation & workflow optimization" data-fr="Automatisation & optimisation des workflows">Automation & workflow optimization</span>
+      </li>
+      <li style="margin:0.4rem 0;">
+        <img src="https://cdn-icons-png.flaticon.com/512/1829/1829586.png" alt="Dashboard Icon" style="width:18px;height:18px;margin-right:6px;vertical-align:middle;">
+        <span data-en="Tailor-made dashboards" data-fr="Dashboards sur-mesure">Tailor-made dashboards</span>
+      </li>
+      <li style="margin:0.4rem 0;">
+        <img src="https://cdn-icons-png.flaticon.com/512/2983/2983788.png" alt="Analysis Icon" style="width:18px;height:18px;margin-right:6px;vertical-align:middle;">
+        <span data-en="Sharp, actionable analysis" data-fr="Analyses claires et concrètes">Sharp, actionable analysis</span>
+      </li>
+    </ul>
+
+
+      </div>
+    </div>
+    </div>
+
+    
+
+<div class="pitch-footer">
+<div class="badges" style="display:flex; gap:10px; flex-wrap:wrap; margin:8px 0 10px 0;">
+      <span class="badge-data" style="background:#ece6ff; color:#5141a3; padding:6px 12px; border-radius:10px; font-size:.92rem;"
+            data-en="Data-Driven" data-fr="Data-Driven">Data-Driven</span>
+      <span class="badge-business" style="background:#e9f7ee; color:#2d7a50; padding:6px 12px; border-radius:10px; font-size:.92rem;"
+            data-en="Business Oriented" data-fr="Vision business">Business Oriented</span>
+      <span class="badge-python" style="background:#fff1d6; color:#a66a00; padding:6px 12px; border-radius:10px; font-size:.92rem;"
+            data-en="Python & SQL addict" data-fr="Python & SQL">Python & SQL addict</span>
+    </div>
+
+    
+    <div class="header-stats" style="display:flex; justify-content:center; align-items:center; gap:1.25rem; margin:6px 0 2px 0; font-size:1.05rem;">
+      <span class="stat-item" data-en="+50 dashboards delivered" data-fr="+50 tableaux de bord livrés" style="display:inline-flex; align-items:center; gap:6px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/3106/3106807.png" alt="" style="width:16px;height:16px; vertical-align:middle;">
+        <span>+50 dashboards delivered</span>
+      </span>
+      <span class="stat-item" data-en="8 years in IT & Data" data-fr="8 ans en IT & Data" style="display:inline-flex; align-items:center; gap:6px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077976.png" alt="" style="width:16px;height:16px; vertical-align:middle;">
+        <span>8 years in IT &amp; Data</span>
+      </span>
+    </div>
+
+    <div class="cta-row" style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;">
+  <a href="mailto:albelabbas@gmail.com?subject=Health%20Check"
+     class="cta"
+     style="background:#fff; color:#6c4ba7; border:2px solid #6c4ba7; padding:10px 18px; border-radius:10px; text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:8px;"
+     data-en="Project Diagnostic" data-fr="Diagnostic du projet">
+     <img src="https://cdn-icons-png.flaticon.com/512/4289/4289198.png" alt="" style="width:18px;height:18px;"> Project Diagnostic
+  </a>
+  <a href="https://calendly.com/" target="_blank"
+     class="cta"
+     style="background:#6c4ba7; color:#fff; padding:10px 18px; border-radius:10px; text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:8px;"
+     data-en="Book a call" data-fr="Réserver un appel">
+     <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="" style="width:18px;height:18px;"> Book a call
+  </a>
+</div>
+</div>
+
+  </div>
+</header>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <h2 data-en="Services" data-fr="Services">Services</h2>
+    <div class="services">
+      <div class="card">
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" alt="Data Cleaning Icon">
+        <strong data-en="Data Cleaning" data-fr="Nettoyage de données">Data Cleaning</strong>
+        <p data-en="Clean and structure raw data to improve readability and relevance. Handle errors, outliers, and type transformations."
+           data-fr="Nettoyez et structurez vos données pour les rendre exploitables et fiables. Traitement des erreurs, outliers, typage.">
+           Clean and structure raw data to improve readability and relevance. Handle errors, outliers, and type transformations.</p>
+        <p data-en="Tools: Python, Excel, Google Sheets, PySpark (for large datasets)"
+           data-fr="Outils : Python, Excel, Google Sheets, PySpark (gros volumes)">Tools: Python, Excel, Google Sheets, PySpark (for large datasets)</p>
+      </div>
+      <div class="card">
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/4299/4299717.png" alt="Data Analysis Icon">
+        <strong data-en="Data Analysis" data-fr="Analyse de données">Data Analysis</strong>
+        <p data-en="Transform your data sources into clear and actionable insights using SQL, Python, and more to inform both technical and non-technical teams."
+           data-fr="Transformez vos sources en insights clairs et actionnables (SQL, Python...). Vulgarisation métier ou tech.">
+           Transform your data sources into clear and actionable insights using SQL, Python, and more to inform both technical and non-technical teams.</p>
+        <p data-en="Tools: SQL, Python, Spreadsheets (Excel, Google Sheets), Kibana (ElasticSearch)"
+           data-fr="Outils : SQL, Python, Tableurs (Excel, Google Sheets), Kibana (ElasticSearch)">Tools: SQL, Python, Spreadsheets (Excel, Google Sheets), Kibana (ElasticSearch)</p>
+      </div>
+      <div class="card">
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2799/2799577.png" alt="Dashboard Icon">
+        <strong data-en="Dashboards" data-fr="Dashboards">Dashboards</strong>
+        <p data-en="Design and implement interactive dashboards to consolidate and visualize your data for continuous performance tracking."
+           data-fr="Création de dashboards interactifs, visualisez vos KPIs et vos performances en temps réel.">
+           Design and implement interactive dashboards to consolidate and visualize your data for continuous performance tracking.</p>
+        <p data-en="Tools: Looker, PowerBI, Salesforce Dashboards"
+           data-fr="Outils : Looker, PowerBI, Dashboards Salesforce">Tools: Looker, PowerBI, Salesforce Dashboards</p>
+      </div>
+      <div class="card">
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/3964/3964079.png" alt="API Icon">
+        <strong data-en="REST APIs & Technical Expertise" data-fr="APIs & Expertise technique">REST APIs & Technical Expertise</strong>
+        <p data-en="Expertise in REST APIs and request structures. I help define optimal workflows for your clients based on data analysis."
+           data-fr="Expertise REST APIs, structure de requêtes, définition de workflows optimums pour vos clients via l’analyse data.">
+           Expertise in REST APIs and request structures. I help define optimal workflows for your clients based on data analysis.</p>
+        <p data-en="Tools: API Collections, Postman, Kibana"
+           data-fr="Outils : Collections API, Postman, Kibana">Tools: API Collections, Postman, Kibana</p>
+      </div>
+      <div class="card">
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2857/2857380.png" alt="Process Icon">
+        <strong data-en="Process Improvement" data-fr="Amélioration de process">Process Improvement</strong>
+        <p data-en="Improve internal workflows or client lifecycles to streamline operations and reduce onboarding time across teams."
+           data-fr="Optimisez vos process internes ou cycles clients. Réduction des délais et de la charge sur les équipes.">
+           Improve internal workflows or client lifecycles to streamline operations and reduce onboarding time across teams.</p>
+        <p data-en="Tools: Salesforce, Confluence, Ticketing tools"
+           data-fr="Outils : Salesforce, Confluence, outils de ticketing">Tools: Salesforce, Confluence, Ticketing tools</p>
+      </div>
+      <div class="card">
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/4350/4350644.png" alt="Consulting Icon">
+        <strong data-en="Consulting & Decision Support" data-fr="Conseil & aide à la décision">Consulting & Decision Support</strong>
+        <p data-en="Strategic advice based on data analysis. Support decision-making on pricing, operations, payment methods, countries, and business strategy."
+           data-fr="Conseil stratégique basé sur la data : tarification, méthodes de paiement, pays, vision business, opérations.">
+           Strategic advice based on data analysis. Support decision-making on pricing, operations, payment methods, countries, and business strategy.</p>
+        <p data-en="Tools: Market knowledge, Data insight, Collaboration"
+           data-fr="Outils : Veille marché, insights data, collaboration">Tools: Market knowledge, Data insight, Collaboration</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2 data-en="Professional Experience" data-fr="Expérience professionnelle">Professional Experience</h2>
+    <div class="services">
+      <!-- Other Experiences -->
+      <div class="card">
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png" alt="Experience Icon" />
+        <strong data-en="Other Experiences" data-fr="Autres expériences">Other Experiences</strong>
+        <span style="font-size:0.96em;color:#555;">2016 – 2018</span>
+        <div class="compact-section">
+          <img src="https://cdn-icons-png.flaticon.com/512/3703/3703300.png" alt="Consultant Icon"/>
+          <span data-en="IT Consultant (permanent contract), Devoteam – Top Team / AXA France, Nanterre Prefecture<br><img src='https://cdn-icons-png.flaticon.com/512/3721/3721743.png' style='width:16px;height:16px;vertical-align:middle;margin-right:3px;'> Production monitoring (GED and Web application)"
+                data-fr="Consultant IT (CDI), Devoteam – Top Team / AXA France, Nanterre Préfecture<br><img src='https://cdn-icons-png.flaticon.com/512/3721/3721743.png' style='width:16px;height:16px;vertical-align:middle;margin-right:3px;'> Suivi de production GED & application web">
+            IT Consultant (permanent contract), Devoteam – Top Team / AXA France, Nanterre Prefecture<br>
+            <img src="https://cdn-icons-png.flaticon.com/512/3721/3721743.png" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;">
+            Production monitoring (GED and Web application)
+          </span>
+        </div>
+        <span style="font-size:0.96em;color:#555;">2015 – 2016</span>
+        <div class="compact-section">
+          <img src="https://cdn-icons-png.flaticon.com/512/3819/3819895.png" alt="Developer Icon"/>
+          <span data-en="IT Developer (apprenticeship), Paris City Hall – Paris 12th<br><img src='https://cdn-icons-png.flaticon.com/512/5948/5948425.png' style='width:16px;height:16px;vertical-align:middle;margin-right:3px;'> Deployment & customization of Alfresco GED application"
+                data-fr="Développeur informatique (alternance), Mairie de Paris – Paris 12e<br><img src='https://cdn-icons-png.flaticon.com/512/5948/5948425.png' style='width:16px;height:16px;vertical-align:middle;margin-right:3px;'> Mise en place et personnalisation GED Alfresco">
+            IT Developer (apprenticeship), Paris City Hall – Paris 12th<br>
+            <img src="https://cdn-icons-png.flaticon.com/512/5948/5948425.png" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;">
+            Deployment & customization of Alfresco GED application
+          </span>
+        </div>
+      </div>
+      <!-- Mangopay -->
+      <div class="card">
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" alt="Mangopay Icon" />
+        <strong>MANGOPAY – Senior Customer Success Analyst</strong>
+        <span style="font-size:0.96em;color:#555;">2018 – 2024</span>
+        <div class="compact-section">
+          <img src="https://cdn-icons-png.flaticon.com/512/2636/2636989.png" alt="Projects Icon"/>
+          <span data-en="Projects: Data support, dashboards (Snowflake/Looker), process automation, Tier 3 support"
+                data-fr="Projets : Support data, dashboards (Snowflake/Looker), automatisation de process, support Tier 3">
+            Projects: Data support, dashboards (Snowflake/Looker), process automation, Tier 3 support
+          </span>
+        </div>
+        <div class="compact-section">
+          <img src="https://cdn-icons-png.flaticon.com/512/1183/1183672.png" alt="Skills Icon"/>
+          <span data-en="Skills: Data modeling, Excel analytics, client-facing support, project management"
+                data-fr="Compétences : Modélisation data, Excel, support client, gestion de projet">
+            Skills: Data modeling, Excel analytics, client-facing support, project management
+          </span>
+        </div>
+        <div class="compact-section">
+          <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Tools Icon"/>
+          <span data-en="Tools: Snowflake, Looker, CRM Analytics, Excel, Confluence, JIRA, Postman, Kibana"
+                data-fr="Outils : Snowflake, Looker, CRM Analytics, Excel, Confluence, JIRA, Postman, Kibana">
+            Tools: Snowflake, Looker, CRM Analytics, Excel, Confluence, JIRA, Postman, Kibana
+          </span>
+        </div>
+      </div>
+      <!-- Freelance -->
+      <div class="card">
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/3649/3649465.png" alt="Freelance Icon" />
+        <strong data-en="Freelance – Data Analyst & Consultant" data-fr="Freelance – Data Analyst & Consultant">Freelance – Data Analyst & Consultant</strong>
+        <span style="font-size:0.96em;color:#555;">2025 – Present</span>
+        <div class="compact-section">
+          <img src="https://cdn-icons-png.flaticon.com/512/3534/3534066.png" alt="Domain Icon" />
+          <span data-en="Business insights, data pipelines, dashboarding, strategy (tech & finance clients)"
+                data-fr="Business insights, pipelines data, dashboarding, stratégie (clients tech & finance)">
+            Business insights, data pipelines, dashboarding, strategy (tech & finance clients)
+          </span>
+        </div>
+        <div class="compact-section">
+          <img src="https://cdn-icons-png.flaticon.com/512/1907/1907555.png" alt="Skills Icon" />
+          <span data-en="Consulting, automation, process improvement, training"
+                data-fr="Consulting, automatisation, amélioration process, formation">
+            Consulting, automation, process improvement, training
+          </span>
+        </div>
+        <div class="compact-section">
+          <img src="https://cdn-icons-png.flaticon.com/512/3192/3192541.png" alt="Tools Icon" />
+          <span data-en="Python, Power BI, SQL, Salesforce, Looker, Notion"
+                data-fr="Python, Power BI, SQL, Salesforce, Looker, Notion">
+            Python, Power BI, SQL, Salesforce, Looker, Notion
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2 data-en="Education & Certifications" data-fr="Formation & Certifications">Education & Certifications</h2>
+    <div class="edu-container">
+      <div class="edu-group">
+        <h3><img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" class="edu-icon" alt="Degree Icon"> <span data-en="Academic Background" data-fr="Parcours académique">Academic Background</span></h3>
+        <ul>
+          <li data-en="BTS SLAM, CFA IMC Randstad – 2014" data-fr="BTS SLAM, CFA IMC Randstad – 2014">BTS SLAM, CFA IMC Randstad – 2014</li>
+          <li data-en="Professional License, University of Versailles – 2016" data-fr="Licence Pro, Université de Versailles – 2016">Professional License, University of Versailles – 2016</li>
+        </ul>
+      </div>
+      <div class="edu-group">
+        <h3><img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" class="edu-icon" alt="Certificate Icon"> <span data-en="Certifications & Training" data-fr="Certifications & Formations">Certifications & Training</span></h3>
+        <ul>
+          <li data-en="Python for Data (Udemy) – 2025" data-fr="Python pour la Data (Udemy) – 2025">Python for Data (Udemy) – 2025</li>
+          <li data-en="Power BI (Udemy) – 2025" data-fr="Power BI (Udemy) – 2025">Power BI (Udemy) – 2025</li>
+          <li data-en="Agile: Scrum Master (Udemy) – 2025" data-fr="Agile : Scrum Master (Udemy) – 2025">Agile: Scrum Master (Udemy) – 2025</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 data-en="Projects" data-fr="Projets">Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="img/Behavioral_Payment_Analysis.jpg" alt="Behavioral Payment Analysis">
+        <div class="overlay">
+          <strong data-en="Behavioral Payment Analysis" data-fr="Analyse comportementale des paiements">Behavioral Payment Analysis</strong>
+          <p data-en="Built SQL queries to extract user payment patterns and conversion rates."
+             data-fr="Extraction des parcours & taux de conversion via requêtes SQL.">
+             Built SQL queries to extract user payment patterns and conversion rates.</p>
+          <a href="project1.html" data-en="View project" data-fr="Voir le projet">View project</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="img/KYC_project.jpg" alt="KYC/KYB Dashboard">
+        <div class="overlay">
+          <strong data-en="KYC/KYB Dashboard" data-fr="Dashboard KYC/KYB">KYC/KYB Dashboard</strong>
+          <p data-en="Created an interactive dashboard to monitor KYC/KYB status and risk scoring."
+             data-fr="Dashboard interactif : suivi des statuts KYC/KYB et scoring risques.">
+             Created an interactive dashboard to monitor KYC/KYB status and risk scoring.</p>
+          <a href="project2.html" data-en="View project" data-fr="Voir le projet">View project</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="img/python.jpg" alt="Data Processing with Python & PySpark">
+        <div class="overlay">
+          <strong data-en="Data Processing with Python & PySpark" data-fr="Traitement Data avec Python & PySpark">Data Processing with Python & PySpark</strong>
+          <p data-en="Automated large CSV transformations and cleaned customer data pipelines."
+             data-fr="Automatisation de la transformation de gros CSV & pipelines data clients.">
+             Automated large CSV transformations and cleaned customer data pipelines.</p>
+          <a href="project3.html" data-en="View project" data-fr="Voir le projet">View project</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="img/customer.jpg" alt="Customer Acquisition Monitoring">
+        <div class="overlay">
+          <strong data-en="Customer Acquisition Monitoring" data-fr="Suivi acquisition clients">Customer Acquisition Monitoring</strong>
+          <p data-en="Built Salesforce dashboard to track acquisition funnel and conversion KPIs."
+             data-fr="Dashboard Salesforce : suivi funnel acquisition et KPIs conversion.">
+             Built Salesforce dashboard to track acquisition funnel and conversion KPIs.</p>
+          <a href="project4.html" data-en="View project" data-fr="Voir le projet">View project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 data-en="Contact" data-fr="Contact">Contact</h2>
+    <p data-en="If you're interested in collaborating, reach me at" data-fr="Pour tout projet, contactez-moi à">
+      If you're interested in collaborating, reach me at <a href="mailto:albelabbas@gmail.com">albelabbas@gmail.com</a>
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 Ali Belabbas – All rights reserved
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('lang-toggle');
+    let currentLang = "en";
+    function switchLang() {
+      currentLang = currentLang === "en" ? "fr" : "en";
+      toggleBtn.textContent = currentLang.toUpperCase() === "EN" ? "FR" : "EN";
+      document.querySelectorAll('[data-en]').forEach(el => {
+        let val = el.getAttribute('data-' + currentLang);
+        if (val) {
+          if (el.tagName === 'A' && el.classList.contains('cta')) { el.textContent = val; }
+          else if (el.tagName === 'A' && el.classList.contains('navbar')) { el.textContent = val; }
+          else if (el.tagName === 'A') { el.textContent = val; }
+          else if (el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'STRONG' || el.tagName === 'BUTTON') { el.textContent = val; }
+          else { el.innerHTML = val; }
+        }
+      });
+    }
+    toggleBtn.onclick = switchLang;
+  </script>
+</body>
+</html>
