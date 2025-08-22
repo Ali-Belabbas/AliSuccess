@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="favicon-as-plain.ico">
-  <title>Ali Belabbas – Data Analyst Freelance</title>
+  <title>Ali Belabbas — Data Analyst Freelance</title>
   <style>
     body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #f6f3fb; color: #2a1f3c; }
 
@@ -18,8 +18,8 @@
     .nav__toggle{margin-left:auto; border:0; background:transparent; padding:8px; border-radius:10px; display:inline-flex;}
     .nav__toggle:focus-visible{outline:2px solid #6c4ba7}
     .lang-switch{display:flex; gap:2px; border:1px solid #e6e1f7; border-radius:999px; padding:2px; margin-left:8px;}
-    .lang-btn{border:0;background:transparent;padding:6px 10px;border-radius:999px;font-weight:700;line-height:1}
-    .lang-btn[aria-pressed="true"]{background:#6c4ba7; color:#fff}
+    .lang-btn{border:0;background:transparent;padding:6px 10px;border-radius:999px;font-weight:700;line-height:1; cursor:pointer;}
+    .lang-btn.active{background:#6c4ba7; color:#fff}
 
     /* Menu panel (mobile) */
     .nav__menu{
@@ -48,87 +48,288 @@
       .lang-switch{ margin-left:8px; }
     }
 
-    /* ===== Rest of existing styles (unchanged) ===== */
-    header { background-color: #e5dffc; padding: 4rem 2rem; display: flex; align-items: flex-start; justify-content: flex-start; gap: 2.5rem; flex-wrap: wrap; }
-    header .profile { width: 150px; height: 180px; border-radius: 12px; object-fit: cover; margin: 0; box-shadow: 0 2px 10px #c7b4e6; flex-shrink: 0; }
-    header .text { flex: 1 1 0%; min-width: 320px; width: 100%; display: flex; flex-direction: column; justify-content: flex-start; }
-    header h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #3b2c50; }
-    header p { font-size: 0.98rem; margin: 0 0 1.2rem 0; line-height: 1.6; word-break: break-word; width: 100%; max-width: unset; }
+    /* ===== Header styles ===== */
+    header { 
+      background-color: #e5dffc; 
+      padding: 2rem; 
+      display: flex; 
+      align-items: flex-start; 
+      justify-content: flex-start; 
+      gap: 2rem; 
+      min-height: calc(100vh - 56px);
+      box-sizing: border-box;
+    }
+    header .profile { 
+      width: 160px; 
+      height: 200px; 
+      border-radius: 12px; 
+      object-fit: cover; 
+      margin: 0; 
+      box-shadow: 0 2px 10px #c7b4e6; 
+      flex-shrink: 0; 
+    }
+    header .text { 
+      flex: 1; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center;
+      max-width: 900px;
+    }
+    header h1 { 
+      font-size: 2.5rem; 
+      margin: 0 0 1.2rem 0; 
+      color: #3b2c50; 
+    }
 
-    .badges { display:flex; gap:12px; margin:16px 0 0 0; flex-wrap:wrap;}
-    .badges span { border-radius:7px; padding:7px 13px; font-size:0.97em;}
-    .badge-data { background:#f0eafd; color:#6c4ba7; }
-    .badge-business { background:#e7f6ed; color:#256d4a; }
-    .badge-python { background:#fff5e3; color:#a96a00; }
+    .content-layout {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .pitch-main {
+      flex: 1;
+    }
+    .pitch-main p {
+      font-size: 1.1rem;
+      line-height: 1.45;
+      margin-bottom: 1rem;
+      color: #2a1f3c;
+    }
+    .specializations {
+      flex: 0 0 auto;
+    }
+    .specializations > div {
+      background: #f8f6ff;
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      border-left: 4px solid #6c4ba7;
+      max-width: 320px;
+    }
+    .specializations h3 {
+      margin: 0 0 0.8rem 0;
+      color: #3b2c50;
+      font-size: 1rem;
+      text-align: center;
+    }
+    .specializations ul {
+      margin: 0;
+      padding-left: 0;
+      color: #2a1f3c;
+      list-style: none;
+      text-align: left;
+    }
+    .specializations li {
+      margin: 0.5rem 0;
+      line-height: 1.3;
+      font-size: 0.9rem;
+    }
 
-    .header-stats { margin-top:18px; font-size:1.08em; color:#888; }
-    .header-stats span { display:inline-block; margin-right:22px; }
-    .header-stats img { width:20px; vertical-align:middle; margin-right:6px;}
-    header .cta { margin-top: 1.1rem; background: #6c4ba7; color: white; border: none; padding: 0.82rem 1.5rem; border-radius: 8px; cursor: pointer; font-size: 1rem; text-decoration: none; display: inline-block; width: fit-content; }
+    .badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 1.2rem 0;
+      justify-content: center;
+    }
+    .badges span {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
 
-    section { padding: 3rem 2rem; }
-    h2 { font-size: 1.8rem; margin-bottom: 1rem; }
-    .services, .projects { display: flex; flex-wrap: wrap; gap: 1.5rem; }
-    .card { background: white; padding: 1.1rem 1.2rem 1rem 1.2rem; border-radius: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; flex-direction: column; align-items: flex-start; position: relative; overflow: hidden; font-size: 0.98rem; flex: 1 1 280px; min-width: 260px; max-width: 420px; }
-    .card img.icon { width: 34px; height: 34px; margin-bottom: 0.3rem; }
-    .compact-section { display: flex; align-items: flex-start; gap: 0.45rem; margin: 0.15rem 0 0.15rem 0; font-size: 0.97rem; }
-    .compact-section img { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; }
+    .header-stats {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.2rem;
+      margin: 0 0 1.2rem 0;
+      font-size: 0.95rem;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .stat-item img {
+      width: 14px;
+      height: 14px;
+    }
 
-    .edu-container { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1rem; }
-    .edu-group { flex: 1 1 280px; background: #fff; border-radius: 10px; padding: 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
-    .edu-group h3 { font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; color: #6c4ba7; }
-    .edu-icon { width: 24px; height: 24px; margin-right: 0.5rem; }
+    .cta-section {
+      text-align: center;
+    }
+    .cta-intro {
+      font-weight: 600;
+      color: #3b2c50;
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 0.8rem;
+    }
+    .cta-buttons a {
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+    .cta-primary {
+      background: #6c4ba7;
+      color: #fff;
+    }
+    .cta-secondary {
+      background: #fff;
+      color: #6c4ba7;
+      border: 2px solid #6c4ba7;
+    }
+    .cta-footer {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    section { padding: 2rem; }
+    h2 { font-size: 1.6rem; margin-bottom: 1rem; }
+    .services, .projects { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+    .card { 
+      background: white; 
+      padding: 1rem; 
+      border-radius: 12px; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+      display: flex; 
+      flex-direction: column; 
+      align-items: flex-start; 
+      position: relative; 
+      overflow: hidden; 
+      font-size: 0.9rem; 
+      flex: 1 1 280px; 
+      min-width: 250px; 
+      max-width: 380px; 
+    }
+    .card img.icon { width: 28px; height: 28px; margin-bottom: 0.3rem; }
+    .compact-section { display: flex; align-items: flex-start; gap: 0.4rem; margin: 0.1rem 0; font-size: 0.9rem; }
+    .compact-section img { width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; }
+
+    .edu-container { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; }
+    .edu-group { 
+      flex: 1 1 280px; 
+      background: #fff; 
+      border-radius: 10px; 
+      padding: 1.2rem; 
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08); 
+    }
+    .edu-group h3 { font-size: 1.2rem; margin-bottom: 0.8rem; display: flex; align-items: center; color: #6c4ba7; }
+    .edu-icon { width: 20px; height: 20px; margin-right: 0.4rem; }
     .edu-group ul { list-style: none; padding: 0; margin: 0; }
-    .edu-group li { position: relative; padding-left: 1.5rem; margin-bottom: 0.6rem; font-size: 0.95rem; line-height: 1.4; }
-    .edu-group li:before { content: ''; position: absolute; left: 0; top: 0.4rem; width: 8px; height: 8px; background: #6c4ba7; border-radius: 50%; }
+    .edu-group li { 
+      position: relative; 
+      padding-left: 1.2rem; 
+      margin-bottom: 0.5rem; 
+      font-size: 0.9rem; 
+      line-height: 1.3; 
+    }
+    .edu-group li:before { 
+      content: ''; 
+      position: absolute; 
+      left: 0; 
+      top: 0.4rem; 
+      width: 6px; 
+      height: 6px; 
+      background: #6c4ba7; 
+      border-radius: 50%; 
+    }
 
-    .project-card { background-color: #f6f3fb; height: 250px; flex: 1 1 45%; position: relative; border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .project-card img { width:100%; height:100%; object-fit:cover; }
-    .overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.65); opacity:0; transition:opacity .3s; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:1rem; text-align:center; }
-    .project-card:hover .overlay { opacity:1; }
-    .overlay strong, .overlay p { color:#fff; margin:.5rem 0; }
-    .overlay a { margin-top:1rem; background:#6c4ba7; color:#fff; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:bold; }
+    .project-card { 
+      background-color: #f6f3fb; 
+      height: 220px; 
+      flex: 1 1 45%; 
+      position: relative; 
+      border-radius: 12px; 
+      overflow: hidden; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+    }
+    .project-card img { width: 100%; height: 100%; object-fit: cover; }
+    .overlay { 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: rgba(0,0,0,0.65); 
+      opacity: 0; 
+      transition: opacity .3s; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+      padding: 1rem; 
+      text-align: center; 
+    }
+    .project-card:hover .overlay { opacity: 1; }
+    .overlay strong, .overlay p { color: #fff; margin: .4rem 0; }
+    .overlay a { 
+      margin-top: 0.8rem; 
+      background: #6c4ba7; 
+      color: #fff; 
+      padding: .4rem .8rem; 
+      border-radius: 6px; 
+      text-decoration: none; 
+      font-weight: bold; 
+      font-size: 0.9rem;
+    }
 
-    footer { padding:2rem; text-align:center; background:#e5dffc; font-size:.9rem; }
-    a { color:#6c4ba7; text-decoration:none; }
+    footer { 
+      padding: 1.5rem; 
+      text-align: center; 
+      background: #e5dffc; 
+      font-size: 0.85rem; 
+    }
+    a { color: #6c4ba7; text-decoration: none; }
 
     @media (max-width: 900px) {
       .services, .projects { flex-direction: column; }
       .edu-container { flex-direction: column; }
-      header { flex-direction: column; align-items:center; }
-      header .text { max-width: 100%; }
+      header { 
+        flex-direction: column; 
+        align-items: center; 
+        padding: 1.5rem 1rem;
+        min-height: auto;
+      }
+      header .profile { width: 140px; height: 170px; }
+      header h1 { font-size: 2rem; text-align: center; }
+      header .text { text-align: center; max-width: 100%; }
+      .content-layout { flex-direction: column !important; gap: 1.2rem !important; }
+      .specializations { order: 2; }
+      .pitch-main { order: 1; }
+      .specializations > div { max-width: 100%; margin: 0; }
+      .header-stats { flex-direction: column; gap: 0.6rem; }
+      section { padding: 1.5rem 1rem; }
     }
 
     /* Desktop refinements */
     @media (min-width: 1024px) {
-      header { padding: 2.2rem 2rem; gap: 1.5rem; }
-      header h1 { margin-bottom: .2rem; font-size: 2.35rem; }
-      header .text { max-width: 920px; }
-      .pitch-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 0.75rem 1.75rem; align-items: start; }
-      .pitch-left p { margin: 0; line-height: 1.45; }
-      .pitch-right ul { margin: .2rem 0 .35rem 0 !important; }
-      .pitch-right li { margin: .18rem 0 !important; }
-      .badges { margin: .35rem 0 .35rem 0 !important; }
-      .header-stats { margin: .2rem 0 .2rem 0 !important; }
-      header .cta { margin-top: .6rem; }
-      .pitch-footer { display:flex; flex-direction:column; align-items:center; gap:.6rem; margin-top:.6rem; }
-      header .badges { display:flex; justify-content:center; flex-wrap:wrap; }
-      header .cta-row { display:flex; justify-content:center; }
-      header .text { display:flex; flex-direction:column; }
-      .pitch-grid { flex:0 0 auto; }
-      .pitch-footer { margin-top:auto; width:100%; display:flex; flex-direction:column; align-items:center; gap:.7rem; }
+      header { padding: 2.5rem; }
+      header h1 { font-size: 2.8rem; margin-bottom: 1.5rem; }
+      .specializations > div { max-width: 350px; }
     }
-    .cta-intro{
-  font-weight:600;
-  margin-top:10px;
-  margin-bottom:4px; /* petit espace au-dessus des boutons */
-}
   </style>
 </head>
 <body>
   <!-- Responsive Navbar -->
   <nav class="navbar">
-    <a class="nav__brand" href="#top" data-en="Ali’s Success – Analytics & Insights" data-fr="Ali Success — Analyse & Conseil">Ali’s Success – Analytics & Insights</a>
+    <a class="nav__brand" href="#top" data-en="Ali's Success — Analytics & Insights" data-fr="Ali Success — Analyse & Conseil">Ali's Success — Analytics & Insights</a>
 
     <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-controls="primary-nav" aria-expanded="false">
       <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
@@ -137,105 +338,108 @@
     </button>
 
     <div id="primary-nav" class="nav__menu" role="navigation" aria-label="Primary">
-      <a href="#services"   data-en="Services"     data-fr="Services"    class="i18n-link">Services</a>
-      <a href="#experience" data-en="Experience"  data-fr="Expérience" class="i18n-link">Experiences</a>
-      <a href="#education"  data-en="Education"    data-fr="Formation"   class="i18n-link">Education</a>
-      <a href="#projects"   data-en="Projects"     data-fr="Projets"     class="i18n-link">Projects</a>
-      <a href="#contact"    data-en="Contact"      data-fr="Contact"     class="i18n-link">Contact</a>
+      <a href="#services" data-en="Services" data-fr="Services" class="i18n-link">Services</a>
+      <a href="#experience" data-en="Experience" data-fr="Expérience" class="i18n-link">Experience</a>
+      <a href="#education" data-en="Education" data-fr="Formation" class="i18n-link">Education</a>
+      <a href="#projects" data-en="Projects" data-fr="Projets" class="i18n-link">Projects</a>
+      <a href="#contact" data-en="Contact" data-fr="Contact" class="i18n-link">Contact</a>
     </div>
 
     <div class="lang-switch" role="group" aria-label="Language">
-      <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
-      <button class="lang-btn" data-lang="en" aria-pressed="true">GB</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn active" data-lang="en">EN</button>
     </div>
   </nav>
 
   <!-- HEADER -->
-  <header style="display:flex; align-items:flex-start; justify-content:flex-start; gap:2rem; padding:2rem 2rem 2.5rem; background-color:#e5dffc;">
-    <img class="profile" src="img/photo_ali.jpg" alt="Ali Belabbas" style="width:160px; height:200px; border-radius:12px; object-fit:cover;">
-    <div class="text" style="max-width:700px; text-align:left;">
-      <h1 data-en="Ali Belabbas" data-fr="Ali Belabbas" style="margin-top:0;">Ali Belabbas</h1>
+  <header>
+    <img class="profile" src="img/photo_ali.jpg" alt="Ali Belabbas">
+    
+    <div class="text">
+      <h1 data-en="Ali Belabbas" data-fr="Ali Belabbas">Ali Belabbas</h1>
 
-      <div class="pitch-grid">
-        <div class="pitch-left">
-          <p
-            data-en=" Data & Business Performance Consultant with strong experience in Fintech.<br><br>
-I help you go further with data by transforming complex information into actionable insights and measurable performance.<br><br>
-My DNA: clarity, efficiency, results!<br><br>
-Expert in data analysis & cleaning, dashboard creation, SQL queries and Python automation.<br>"
-            data-fr="Consultant Data & Performance Business avec une solide expérience en Fintech.<br><br>
-Je vous aide à aller plus loin grâce à vos données, en transformant l’information complexe en décisions concrètes et en performances mesurables.<br><br>
-Mon ADN : clarté, efficacité, résultats !<br><br>
-Expert en analyse & nettoyage de données, création de dashboards, requêtes SQL et automatisation Python.<br>">
-            Data & Business Performance Consultant with strong experience in Fintech.<br><br>
-I help you go further with data by transforming complex information into actionable insights and measurable performance.<br><br>
-My DNA: clarity, efficiency, results!<br><br>
-Expert in data analysis & cleaning, dashboard creation, SQL queries and Python automation.
+      <div class="content-layout">
+        <div class="pitch-main">
+          <p data-en="<strong>Your data overwhelming you? I transform it into profitable decisions.</strong><br><br>
+<span style='color: #6c4ba7; font-weight: 600;'>Data & Business Performance Expert</span> with 6 years of Fintech experience, 
+I reveal hidden insights in your data to boost your performance by <strong>25% on average</strong>.<br><br>
+<span style='color: #4CAF50; font-weight: 600;'>✓ +50 dashboards delivered</span> • 
+<span style='color: #4CAF50; font-weight: 600;'>✓ 300% average ROI</span> • 
+<span style='color: #4CAF50; font-weight: 600;'>✓ Deadlines respected</span>"
+             data-fr="<strong>Vos données vous submergent ? Je les transforme en décisions rentables.</strong><br><br>
+<span style='color: #6c4ba7; font-weight: 600;'>Expert Data & Performance Business</span> avec 6 ans d'expérience en Fintech, 
+je révèle les insights cachés dans vos données pour booster vos performances de <strong>25% en moyenne</strong>.<br><br>
+<span style='color: #4CAF50; font-weight: 600;'>✓ +50 dashboards livrés</span> • 
+<span style='color: #4CAF50; font-weight: 600;'>✓ ROI moyen 300%</span> • 
+<span style='color: #4CAF50; font-weight: 600;'>✓ Délais respectés</span>">
+            <strong>Your data overwhelming you? I transform it into profitable decisions.</strong><br><br>
+<span style='color: #6c4ba7; font-weight: 600;'>Data & Business Performance Expert</span> with 6 years of Fintech experience, 
+I reveal hidden insights in your data to boost your performance by <strong>25% on average</strong>.<br><br>
+<span style='color: #4CAF50; font-weight: 600;'>✓ +50 dashboards delivered</span> • 
+<span style='color: #4CAF50; font-weight: 600;'>✓ 300% average ROI</span> • 
+<span style='color: #4CAF50; font-weight: 600;'>✓ Deadlines respected</span>
           </p>
         </div>
-        <div class="pitch-right">
-          <ul style="list-style:none; padding:0; margin:0.8rem 0 1.0rem 0;">
-            <li style="margin:0.4rem 0;">
-              <img src="https://cdn-icons-png.flaticon.com/512/4762/4762314.png" alt="Audit Icon" style="width:18px;height:18px;margin-right:6px;vertical-align:middle;">
-              <span data-en="Diagnostic & audit of data processes" data-fr="Diagnostic & audit des processus data">Diagnostic & audit of data processes</span>
-            </li>
-            <li style="margin:0.4rem 0;">
-              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Automation Icon" style="width:18px;height:18px;margin-right:6px;vertical-align:middle;">
-              <span data-en="Automation & workflow optimization" data-fr="Automatisation & optimisation des workflows">Automation & workflow optimization</span>
-            </li>
-            <li style="margin:0.4rem 0;">
-              <img src="https://cdn-icons-png.flaticon.com/512/1829/1829586.png" alt="Dashboard Icon" style="width:18px;height:18px;margin-right:6px;vertical-align:middle;">
-              <span data-en="Tailor-made dashboards" data-fr="Dashboards sur-mesure">Tailor-made dashboards</span>
-            </li>
-            <li style="margin:0.4rem 0;">
-              <img src="https://cdn-icons-png.flaticon.com/512/2983/2983788.png" alt="Analysis Icon" style="width:18px;height:18px;margin-right:6px;vertical-align:middle;">
-              <span data-en="Sharp, actionable analysis" data-fr="Analyses claires et concrètes">Sharp, actionable analysis</span>
-            </li>
-          </ul>
+        
+        <div class="specializations">
+          <div>
+            <h3 data-en="🎯 Key Specializations" data-fr="🎯 Spécialisations clés">🎯 Key Specializations</h3>
+            <ul>
+              <li>
+                <strong data-en="Data audit:" data-fr="Audit data :">Data audit:</strong> 
+                <span data-en="Complete diagnosis in 1 week" data-fr="Diagnostic complet en 1 semaine">Complete diagnosis in 1 week</span>
+              </li>
+              <li>
+                <strong data-en="ROI dashboards:" data-fr="Dashboards ROI :">ROI dashboards:</strong> 
+                <span data-en="KPIs that boost revenue" data-fr="KPIs qui boostent les revenus">KPIs that boost revenue</span>
+              </li>
+              <li>
+                <strong data-en="Automation:" data-fr="Automatisation :">Automation:</strong> 
+                <span data-en="Python/SQL to save 70% time" data-fr="Python/SQL pour gagner 70% de temps">Python/SQL to save 70% time</span>
+              </li>
+              <li>
+                <strong data-en="Team training:" data-fr="Formation équipes :">Team training:</strong> 
+                <span data-en="Guaranteed autonomy" data-fr="Autonomie garantie">Guaranteed autonomy</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      <div class="pitch-footer">
-        <div class="badges" style="display:flex; gap:10px; flex-wrap:wrap; margin:8px 0 10px 0;">
-          <span class="badge-data" style="background:#ece6ff; color:#5141a3; padding:6px 12px; border-radius:10px; font-size:.92rem;"
-                data-en="Data-Driven" data-fr="Data-Driven">Data-Driven</span>
-          <span class="badge-business" style="background:#e9f7ee; color:#2d7a50; padding:6px 12px; border-radius:10px; font-size:.92rem;"
-                data-en="Business Oriented" data-fr="Vision business">Business Oriented</span>
-          <span class="badge-python" style="background:#fff1d6; color:#a66a00; padding:6px 12px; border-radius:10px; font-size:.92rem;"
-                data-en="Python & SQL addict" data-fr="Python & SQL">Python & SQL addict</span>
-        </div>
+      <div class="badges">
+        <span style="background:#ece6ff; color:#5141a3;" data-en="📊 Data-Driven" data-fr="📊 Data-Driven">📊 Data-Driven</span>
+        <span style="background:#e9f7ee; color:#2d7a50;" data-en="💰 ROI-Focused" data-fr="💰 Focus ROI">💰 ROI-Focused</span>
+        <span style="background:#fff1d6; color:#a66a00;" data-en="⚡ Fast Delivery" data-fr="⚡ Livraison Rapide">⚡ Fast Delivery</span>
+      </div>
 
-        <div class="header-stats" style="display:flex; justify-content:center; align-items:center; gap:1.25rem; margin:6px 0 2px 0; font-size:1.05rem;">
-          <img src="https://cdn-icons-png.flaticon.com/512/3106/3106807.png" alt="" style="width:16px;height:16px; vertical-align:middle;">
-          <span class="stat-item" data-en="+50 dashboards delivered" data-fr="+50 tableaux de bord livrés" style="display:inline-flex; align-items:center; gap:6px;">
-            <span>+50 dashboards delivered</span>
-          </span>
-          <img src="https://cdn-icons-png.flaticon.com/512/1077/1077976.png" alt="" style="width:16px;height:16px; vertical-align:middle;">
-          <span class="stat-item" data-en="8 years in IT & Data" data-fr="8 ans en IT & Data" style="display:inline-flex; align-items:center; gap:6px;">
-            <span>8 years in IT &amp; Data</span>
-          </span>
+      <div class="header-stats">
+        <span class="stat-item" data-en="+50 dashboards delivered" data-fr="+50 tableaux de bord livrés">
+          <img src="https://cdn-icons-png.flaticon.com/512/3106/3106807.png" alt="">
+          <span>+50 dashboards delivered</span>
+        </span>
+        <span class="stat-item" data-en="8 years in IT & Data" data-fr="8 ans en IT & Data">
+          <img src="https://cdn-icons-png.flaticon.com/512/1077/1077976.png" alt="">
+          <span>8 years in IT & Data</span>
+        </span>
+      </div>
+
+      <div class="cta-section">
+        <p class="cta-intro" data-en="🎁 <strong>Free 30-minute audit:</strong> I diagnose your data blockers" data-fr="🎁 <strong>Audit gratuit de 30 minutes :</strong> Je diagnostique vos blocages data">
+          🎁 <strong>Free 30-minute audit:</strong> I diagnose your data blockers
+        </p>
+        
+        <div class="cta-buttons">
+          <a href="https://calendly.com/ali-belabbas-success/30min" target="_blank" class="cta-primary" data-en="📅 Book my free audit" data-fr="📅 Réserver mon audit gratuit">
+            📅 Book my free audit
+          </a>
+          <a href="mailto:ali.belabbas.success@gmail.com?subject=Data%20audit%20request" class="cta-secondary" data-en="✉️ Describe my need" data-fr="✉️ Décrire mon besoin">
+            ✉️ Describe my need
+          </a>
         </div>
         
-
-        <div class="cta-row" style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;">
-          <p class="cta-intro"
-   data-en="Get a free 30-minute audit:"
-   data-fr="Obtenez un audit gratuit de 30 minutes:">
-  Get a free 30-minute audit:
-</p>
-          <a href="mailto:ali.belabbas.success@gmail.com?subject=Health%20Check"
-             class="cta"
-             style="background:#fff; color:#6c4ba7; border:2px solid #6c4ba7; padding:10px 18px; border-radius:10px; text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:8px;"
-             data-en="Send audit request" data-fr="Demander un audit">
-             <img src="https://cdn-icons-png.flaticon.com/512/4289/4289198.png" alt="" style="width:18px;height:18px;"> Send audit request
-          </a>
-          <a href="https://calendly.com/ali-belabbas-success/30min" target="_blank"
-             class="cta"
-             style="background:#6c4ba7; color:#fff; padding:10px 18px; border-radius:10px; text-decoration:none; font-weight:600; display:inline-flex; align-items:center; gap:8px;"
-             data-en="Book a call" data-fr="Réserver un appel">
-             <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="" style="width:18px;height:18px;"> Book a call
-          </a>
-        </div>
+        <p class="cta-footer" data-en="⚡ <strong>Response within 24h</strong> • 🔒 <strong>No commitment</strong> • 🎯 <strong>Actionable advice guaranteed</strong>" data-fr="⚡ <strong>Réponse sous 24h</strong> • 🔒 <strong>Sans engagement</strong> • 🎯 <strong>Conseils actionnables garantis</strong>">
+          ⚡ <strong>Response within 24h</strong> • 🔒 <strong>No commitment</strong> • 🎯 <strong>Actionable advice guaranteed</strong>
+        </p>
       </div>
     </div>
   </header>
