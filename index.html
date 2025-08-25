@@ -777,9 +777,12 @@ I reveal hidden insights in your data to boost your performance by <strong>25% o
     </div>
   </section>
 
-  <footer>&copy; 2025 Ali Belabbas – All rights reserved</footer>
+  <footer>&copy; 2025 Ali Belabbas – All rights reserved
+    <br>
+  <a href="mentions_legales.html">Legal Notices / Mentions légales</a>
+  </footer>
 
-  <script>
+ <script>
     // --- Mobile menu ---
     const navToggle = document.getElementById('navToggle');
     const menu = document.getElementById('primary-nav');
@@ -795,42 +798,53 @@ I reveal hidden insights in your data to boost your performance by <strong>25% o
 
     // --- Language switch (FR / GB) ---
     const langBtns = document.querySelectorAll('.lang-btn');
-    function setLang(lang){
+    function setLang(lang) {
+      // Set document language attribute
       document.documentElement.lang = lang;
-      langBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang===lang)));
 
+      // Update control states (visual + a11y)
+      langBtns.forEach(b => {
+        const isActive = b.dataset.lang === lang;
+        b.setAttribute('aria-pressed', String(isActive));
+        b.classList.toggle('active', isActive);
+      });
+
+      // Swap text based on data-en / data-fr
       document.querySelectorAll('[data-en]').forEach(el => {
         const val = el.getAttribute('data-' + lang);
-        if(!val) return;
+        if (!val) return;
 
-        // Preserve paragraphs that contain links (e.g., Contact email)
-        if (el.tagName === 'P' && el.querySelector('a')) {
-          const a = el.querySelector('a');
-          // Find first text node before the link
-          let textNode = null;
-          for (const n of el.childNodes) { if (n.nodeType === Node.TEXT_NODE) { textNode = n; break; } }
-          if (textNode) {
-            textNode.textContent = val + ' ';
-          } else {
-            el.insertBefore(document.createTextNode(val + ' '), a);
-          }
-          return;
-        }
-
-        // Simple labels: links, headings, buttons, strong
-        if (['A','H1','H2','STRONG','BUTTON'].includes(el.tagName)) {
+        // For links, headings, buttons, strong => use textContent
+        if (['A','H1','H2','H3','H4','H5','H6','STRONG','BUTTON'].includes(el.tagName)) {
           el.textContent = val;
           return;
         }
 
-        // Allow HTML for paragraphs with <br> etc.
+        // Preserve paragraphs containing a link (keep the <a>, switch the surrounding text)
+        if (el.tagName === 'P' && el.querySelector('a')) {
+          const a = el.querySelector('a');
+          // Keep link node, replace text before and after with the translated val (split on the link text if present)
+          // Simple approach: set innerHTML to val and re-append the existing link if val contains a placeholder {link}
+          if (val.includes('{link}')) {
+            const linkHTML = a.outerHTML;
+            el.innerHTML = val.replace('{link}', linkHTML);
+          } else {
+            // Fallback: just replace textContent; link will be lost if present in val.
+            el.textContent = val;
+          }
+          return;
+        }
+
+        // Default: allow HTML (to keep <br>, etc.)
         el.innerHTML = val;
       });
     }
 
+    // Click handlers
     langBtns.forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
+
     // Init: English first
     setLang('en');
-  </script>
+</script>
 </body>
 </html>
