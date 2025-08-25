@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="favicon-as-plain.ico">
   <title>Ali Belabbas — Data Analyst Freelance</title>
-  <style>
+ <style>
     body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #f6f3fb; color: #2a1f3c; }
 
     /* ===== Responsive Navbar (mobile-first) ===== */
@@ -290,6 +290,78 @@
       font-size: 0.9rem;
     }
 
+    /* ===== Contact Section ===== */
+    .contact-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #fff;
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      flex: 1;
+      min-width: 250px;
+      max-width: 320px;
+    }
+    .contact-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(108, 75, 167, 0.15);
+    }
+    .contact-item img {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .contact-item div {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-item strong {
+      color: #3b2c50;
+      margin-bottom: 0.2rem;
+      font-size: 1rem;
+    }
+    .contact-item span {
+      color: #666;
+      font-size: 0.85rem;
+    }
+
+    .contact-cta {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      background: #f8f6ff;
+      border-radius: 12px;
+      border-left: 4px solid #6c4ba7;
+    }
+    .contact-cta p {
+      margin-bottom: 1rem;
+      color: #2a1f3c;
+    }
+    .contact-btn {
+      display: inline-block;
+      background: #6c4ba7;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .contact-btn:hover {
+      background: #5a3d91;
+      color: #fff;
+    }
+
     footer { 
       padding: 1.5rem; 
       text-align: center; 
@@ -316,6 +388,8 @@
       .specializations > div { max-width: 100%; margin: 0; }
       .header-stats { flex-direction: column; gap: 0.6rem; }
       section { padding: 1.5rem 1rem; }
+      .contact-links { flex-direction: column; align-items: center; }
+      .contact-item { min-width: auto; max-width: 100%; }
     }
 
     /* Desktop refinements */
@@ -663,9 +737,44 @@ I reveal hidden insights in your data to boost your performance by <strong>25% o
   <!-- CONTACT -->
   <section id="contact">
     <h2 data-en="Contact" data-fr="Contact">Contact</h2>
-    <p data-en="If you're interested in collaborating, reach me at" data-fr="Pour tout projet, contactez-moi à">
-      If you're interested in collaborating, reach me at <a href="mailto:ali.belabbas.success@gmail.com">ali.belabbas.success@gmail.com</a>
+    <p data-en="Ready to transform your data into growth? Let's discuss your project!" data-fr="Prêt à transformer vos données en croissance ? Discutons de votre projet !">
+      Ready to transform your data into growth? Let's discuss your project!
     </p>
+    
+    <div class="contact-links">
+      <a href="mailto:ali.belabbas.success@gmail.com" class="contact-item" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email Icon">
+        <div>
+          <strong data-en="Email" data-fr="Email">Email</strong>
+          <span>ali.belabbas.success@gmail.com</span>
+        </div>
+      </a>
+      
+      <a href="https://www.linkedin.com/in/ali-success" class="contact-item" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Icon">
+        <div>
+          <strong>LinkedIn</strong>
+          <span data-en="Professional profile" data-fr="Profil professionnel">Professional profile</span>
+        </div>
+      </a>
+      
+      <a href="https://www.malt.fr/profile/alibelabbas" class="contact-item" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Malt Icon">
+        <div>
+          <strong>Malt</strong>
+          <span data-en="Freelance profile & reviews" data-fr="Profil freelance & avis">Freelance profile & reviews</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="contact-cta">
+      <p data-en="🎁 <strong>Free 1-hour consultation</strong> to analyze your data challenges" data-fr="🎁 <strong>Consultation gratuite de 1h</strong> pour analyser vos défis data">
+        🎁 <strong>Free 1-hour consultation</strong> to analyze your data challenges
+      </p>
+      <a href="https://calendly.com/ali-belabbas-success/30min" target="_blank" class="contact-btn" data-en="📅 Schedule a call" data-fr="📅 Planifier un appel">
+        📅 Schedule a call
+      </a>
+    </div>
   </section>
 
   <footer>&copy; 2025 Ali Belabbas – All rights reserved</footer>
