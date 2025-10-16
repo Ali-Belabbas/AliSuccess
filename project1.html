@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="favicon-as-plain.ico">
-  <title>Payment Insights by Method</title>
+  <title>Payment Analysis - Multi-PSP SQL Analysis</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -13,82 +13,6 @@
       margin: 0;
       padding: 2rem;
     }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 12px;
-      padding: 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .important-info {
-      border-left: 5px solid #fd7e14;
-      background: #fff7ea;
-      padding: 1rem 1.2rem;
-      border-radius: 7px;
-      margin-bottom: 1.6rem;
-      font-size: 1.05rem;
-      color: #a74a00;
-    }
-    img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 1.5rem;
-    }
-    h1, h2 {
-      color: #3b2c50;
-    }
-    p {
-      line-height: 1.6;
-    }
-    pre {
-      background: #eee;
-      padding: 1rem;
-      border-radius: 8px;
-      overflow-x: auto;
-    }
-    code {
-      font-family: monospace;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 0.5rem;
-      text-align: left;
-    }
-    .tools {
-      margin-top: 1rem;
-      font-style: italic;
-    }
-    a {
-      color: #6c4ba7;
-    }
-    section {
-      margin-bottom: 3rem;
-    }
-  
-    .image-placeholder {
-      width: 96%;
-      max-width: 600px;
-      min-height: 120px;
-      background: #ececec;
-      color: #999;
-      border-radius: 8px;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.05rem;
-      margin: 1.3rem auto 1.6rem auto;
-      border: 2px dashed #c1bcbc;
-      font-style: italic;
-    }
-
-    /* Language toggle button (same spirit as project2) */
     .lang-toggle {
       position: absolute;
       top: 1.2rem;
@@ -110,325 +34,260 @@
       border-bottom: 2.5px solid #6c4ba7;
       color: #3b2c50;
     }
-
-    @media (max-width: 800px) {
-      .container { padding: 0.5rem; }
-      h1 { font-size: 1.4rem; }
-      section { padding: 0.7rem; }
-      .image-placeholder { min-height: 70px; font-size: 0.92rem; }
-      .lang-toggle { right: 0.7rem; top: 0.7rem; }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-</style>
+    h1 {
+      color: #3b2c50;
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle-main {
+      text-align: center;
+      color: #6c4ba7;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    .important-info {
+      border-left: 4px solid #fd7e14;
+      background: #fff7ea;
+      padding: 1rem 1.2rem;
+      border-radius: 6px;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      color: #a74a00;
+    }
+    .context-box {
+      background: #f8f6ff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .context-box h2 {
+      color: #3b2c50;
+      font-size: 1.3rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .key-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .result-card {
+      background: white;
+      border: 2px solid #e8e4f3;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .result-number {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #6c4ba7;
+      margin-bottom: 0.3rem;
+    }
+    .result-label {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .use-case {
+      margin: 2rem 0;
+      border-top: 1px solid #e8e4f3;
+      padding-top: 1.5rem;
+    }
+    .use-case h3 {
+      color: #3b2c50;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    .use-case img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 1rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .tech-stack {
+      background: #f8f6ff;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 2rem 0;
+      text-align: center;
+      font-weight: 500;
+      color: #6c4ba7;
+    }
+    .cta-section {
+      background: #f8f6ff;
+      border-radius: 12px;
+      padding: 2.5rem;
+      text-align: center;
+      margin-top: 3rem;
+      border: 2px solid #e8e4f3;
+    }
+    .cta-section h2 {
+      color: #3b2c50;
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+    .cta-section p {
+      color: #666;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
+    .cta-button {
+      display: inline-block;
+      background: #6c4ba7;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .cta-button:hover {
+      background: #5a3d8f;
+    }
+    a {
+      color: #6c4ba7;
+      text-decoration: none;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 1.5rem; }
+      h1 { font-size: 1.5rem; }
+      .key-results { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-  <button class="lang-toggle" id="lang-toggle">🇫🇷</button>
-  <p><a href="index.html" data-en="← Back to portfolio" data-fr="← Retour au portfolio">← Back to portfolio</a></p>
-  <div class="container">
-    
-    <h1 style="text-align: center;" data-en="Sample Payment Analysis" data-fr="Exemple d’analyse de paiements">Sample Payment Analysis</h1>
-
-
-    <section style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; background-color: #fafafa;">
-      <h2 data-en="ℹ️ Important Information" data-fr="ℹ️ Informations importantes">ℹ️ Important Information</h2>
-      <div class="important-info"
-           data-en="Due to strict regulations and data sensitivity in the domain I had the opportunity to work in, all data shown in these projects is fictional. Names of banks, partners, and other entities are also fictional and do not reflect real-world entities. My aim is to demonstrate the type of work I carried out during my experience at Mangopay and the expected outcomes."
-           data-fr="En raison d’une réglementation stricte et de la sensibilité des données dans le domaine dans lequel j’ai eu l’occasion de travailler, toutes les données présentées dans ces projets sont fictives. Les noms des banques, partenaires et autres entités sont également fictifs et ne reflètent pas des entités réelles. Mon objectif est de montrer le type de travail que j’ai réalisé durant mon expérience chez Mangopay ainsi que les résultats attendus.">
-        <p>Due to strict regulations and data sensitivity in the domain I had the opportunity to work in, all data shown in these projects is fictional. Names of banks, partners, and other entities are also fictional and do not reflect real-world entities. My aim is to demonstrate the type of work I carried out during my experience at Mangopay and the expected outcomes.</p>
-      </div>
-      <h2 data-en="📜 Preface" data-fr="📜 Préambule">📜 Preface</h2>
-      <p data-en="As stated, this project aims to present a sample of the type of tasks I carried out during my experience at MANGOPAY. In this simulation, the tool used is Supabase, an open-source platform for interacting with databases. The tables and information have been simplified to make this simulation possible."
-         data-fr="Comme indiqué, ce projet vise à présenter un échantillon du type de tâches que j’ai réalisées lors de mon expérience chez MANGOPAY. Dans cette simulation, l’outil utilisé est Supabase, une plateforme open source pour interagir avec des bases de données. Les tables et informations ont été simplifiées pour rendre cette simulation possible.">
-        As stated, this project aims to present a sample of the type of tasks I carried out during my experience at MANGOPAY. In this simulation, the tool used is Supabase, an open-source platform for interacting with databases. The tables and information have been simplified to make this simulation possible.
-      </p>
-      <h2 data-en="🌟 Objective" data-fr="🌟 Objectif">🌟 Objective</h2>
-      <p data-en="I designed structured analyses of payment flows to monitor profitability, secure transactions, detect anomalies, and optimize payment journeys."
-         data-fr="J’ai conçu des analyses structurées des flux de paiement pour suivre la rentabilité, sécuriser les transactions, détecter les anomalies et optimiser les parcours de paiement.">
-        I designed structured analyses of payment flows to monitor profitability, secure transactions, detect anomalies, and optimize payment journeys.
-      </p>
-      <h2 data-en="🔎 Context" data-fr="🔎 Contexte">🔎 Context</h2>
-      <p data-en="Here, we simulate a payment API solution managing “IN” payments for multiple platforms (clients). The acronym PSP stands for Payment Solution Provider, which is licensed and authorized to securely handle payments. We select two PSPs—one for each type of payment method (wallet payments and card payments). Additionally, we include a bank transfer payment option without going through a PSP."
-         data-fr="Ici, nous simulons une solution d’API de paiement gérant des paiements « IN » pour plusieurs plateformes (clients). L’acronyme PSP signifie Payment Solution Provider (prestataire de services de paiement), habilité et autorisé à traiter les paiements en toute sécurité. Nous sélectionnons deux PSP — un pour chaque type de méthode de paiement (paiements via portefeuille et paiements par carte). En complément, nous incluons une option de virement bancaire sans passer par un PSP.">
-        Here, we simulate a payment API solution managing “IN” payments for multiple platforms (clients). The acronym PSP stands for Payment Solution Provider, which is licensed and authorized to securely handle payments. We select two PSPs—one for each type of payment method (wallet payments and card payments). Additionally, we include a bank transfer payment option without going through a PSP.
-      </p>
-
-    </section>
-
-    <section style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; background-color: #fafafa;">
-      <h2 data-en="🗃️ Database Structure" data-fr="🗃️ Structure de la base de données">🗃️ Database Structure</h2>
-      <p data-en="The payments table is the central dataset. Each row represents a transaction. A transaction may be a card payment (via psp1), a wallet payment (via psp2), or a validated bank transfer (via bank_transfer)."
-         data-fr="La table payments est l’ensemble de données central. Chaque ligne représente une transaction. Une transaction peut être un paiement par carte (via psp1), un paiement via portefeuille (via psp2) ou un virement bancaire validé (via bank_transfer).">
-        The <code>payments</code> table is the central dataset. Each row represents a transaction. A transaction may be a card payment (via <code>psp1</code>), a wallet payment (via <code>psp2</code>), or a validated bank transfer (via <code>bank_transfer</code>).
-      </p>
-      <img src="img/db_schema.png" alt="Database schema" />
-
-      <h2 data-en="🔗 Relationships" data-fr="🔗 Relations">🔗 Relationships</h2>
-      <table style="width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem;">
-        <thead style="background-color: #f0edf8;">
-          <tr>
-            <th style="border: 1px solid #ccc; padding: 0.75rem;" data-en="Source" data-fr="Source">Source</th>
-            <th style="border: 1px solid #ccc; padding: 0.75rem;" data-en="Target" data-fr="Cible">Target</th>
-            <th style="border: 1px solid #ccc; padding: 0.75rem;" data-en="Relation" data-fr="Relation">Relation</th>
-            <th style="border: 1px solid #ccc; padding: 0.75rem;" data-en="Description" data-fr="Description">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="payments" data-fr="payments">payments</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="psp1" data-fr="psp1">psp1</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="payments.psp1_id → psp1.psp_id" data-fr="payments.psp1_id → psp1.psp_id">payments.psp1_id → psp1.psp_id</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="Links a card payment to its PSP1 entry" data-fr="Lie un paiement par carte à son entrée PSP1">Links a card payment to its PSP1 entry</td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="payments" data-fr="payments">payments</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="psp2" data-fr="psp2">psp2</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="payments.psp2_id → psp2.psp_id" data-fr="payments.psp2_id → psp2.psp_id">payments.psp2_id → psp2.psp_id</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="Links a wallet payment to PSP2" data-fr="Lie un paiement via portefeuille à PSP2">Links a wallet payment to PSP2</td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="payments" data-fr="payments">payments</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="bank_transfer" data-fr="bank_transfer">bank_transfer</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="payments.bank_transfer_id → bank_transfer.transfer_id" data-fr="payments.bank_transfer_id → bank_transfer.transfer_id">payments.bank_transfer_id → bank_transfer.transfer_id</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="Associates payment with a bank transfer" data-fr="Associe un paiement à un virement bancaire">Associates payment with a bank transfer</td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="psp1" data-fr="psp1">psp1</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="psp_details" data-fr="psp_details">psp_details</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="psp1.psp_details_id → psp_details.psp_details_id" data-fr="psp1.psp_details_id → psp_details.psp_details_id">psp1.psp_details_id → psp_details.psp_details_id</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="Details of the PSP transaction" data-fr="Détails de la transaction PSP">Details of the PSP transaction</td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="psp1" data-fr="psp1">psp1</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="card_details" data-fr="card_details">card_details</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="psp1.card_id → card_details.card_id" data-fr="psp1.card_id → card_details.card_id">psp1.card_id → card_details.card_id</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="Links PSP1 to the card used" data-fr="Lie PSP1 à la carte utilisée">Links PSP1 to the card used</td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="psp2" data-fr="psp2">psp2</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="psp_details" data-fr="psp_details">psp_details</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="psp2.psp_details_id → psp_details.psp_details_id" data-fr="psp2.psp_details_id → psp_details.psp_details_id">psp2.psp_details_id → psp_details.psp_details_id</td>
-            <td style="border: 1px solid #ccc; padding: 0.5rem;" data-en="Wallet PSP details" data-fr="Détails du PSP du portefeuille">Wallet PSP details</td>
-          </tr>
-        </tbody>
-      </table>
-      <p data-en="This structure allows the aggregation and detailed analysis of transactions, card data, PSPs, and associated banking operations."
-         data-fr="Cette structure permet l’agrégation et l’analyse détaillée des transactions, des données de carte, des PSP et des opérations bancaires associées.">
-        This structure allows the aggregation and detailed analysis of transactions, card data, PSPs, and associated banking operations.
-      </p>
-    </section>
-
-    <section style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; background-color: #fafafa;">
-      <h1 data-en="Use Case 1 – Volume and Revenue by Payment Method" data-fr="Cas d’usage 1 – Volume et revenu par méthode de paiement">Use Case 1 – Volume and Revenue by Payment Method</h1>
-
-      <h2 data-en="🧪 SQL Query" data-fr="🧪 Requête SQL">🧪 SQL Query</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC1_SQL.JPG" alt="SQL1 screenshot" style="max-width:80%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-      <h2 data-en="🔍 Explanation" data-fr="🔍 Explication">🔍 Explanation</h2>
-      <p data-en="This query groups transactions by payment type and calculates:"
-         data-fr="Cette requête regroupe les transactions par type de paiement et calcule :">This query groups transactions by payment type and calculates:</p>
-      <ul>
-        <li data-en="Total number of payments" data-fr="Nombre total de paiements">Total number of payments</li>
-        <li data-en="Total processed amount" data-fr="Montant total traité">Total processed amount</li>
-        <li data-en="Total collected fees" data-fr="Total des frais collectés">Total collected fees</li>
-        <li data-en="Average fee rate (profitability indicator)" data-fr="Taux moyen de frais (indicateur de rentabilité)">Average fee rate (profitability indicator)</li>
-      </ul>
-
-      <h2 data-en="📊 Observed Results" data-fr="📊 Résultats observés">📊 Observed Results</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC1_res.JPG" alt="res1 screenshot" style="max-width:80%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-
-      <h2 data-en="✅ Conclusion" data-fr="✅ Conclusion">✅ Conclusion</h2>
-      <p data-en="The three payment methods (Web, Card, and Bank Transfer) show very similar transaction volumes and total amounts. The fee rates are almost identical (around 3%), indicating no significant cost advantage between them. This suggests that platform or user preference, rather than cost efficiency, may be the main driver for choosing one payment method over another."
-         data-fr="Les trois méthodes de paiement (Web, Carte et Virement bancaire) présentent des volumes de transactions et des montants totaux très similaires. Les taux de frais sont presque identiques (autour de 3 %), ce qui ne montre pas d’avantage de coût significatif entre elles. Cela suggère que la préférence de la plateforme ou de l’utilisateur, plutôt que l’efficacité des coûts, peut être le principal facteur de choix d’une méthode plutôt qu’une autre.">
-        The three payment methods (Web, Card, and Bank Transfer) show very similar transaction volumes and total amounts. The fee rates are almost identical (around 3%), indicating no significant cost advantage between them. This suggests that platform or user preference, rather than cost efficiency, may be the main driver for choosing one payment method over another.
-      </p>
-
-      <h2 data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</h2>
-      <ul>
-        <li data-en="Supports decision-making to reduce payment processing costs" data-fr="Aide à la décision pour réduire les coûts de traitement des paiements">Supports decision-making to reduce payment processing costs</li>
-        <li data-en="Basis for PSP fee negotiations or UX improvements" data-fr="Base pour des négociations de frais avec les PSP ou des améliorations UX">Basis for PSP fee negotiations or UX improvements</li>
-        <li data-en="Feeds into automated finance dashboards" data-fr="Alimente des tableaux de bord financiers automatisés">Feeds into automated finance dashboards</li>
-      </ul>
-    </section>
-
-    <!-- Use Case 2 -->
-    <section style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; background-color: #fafafa;">
-      <h1 data-en="Use Case 2 – Monthly Payment Volume Tracking" data-fr="Cas d’usage 2 – Suivi mensuel du volume de paiements">Use Case 2 – Monthly Payment Volume Tracking</h1>
-      <h2 data-en="🧪 SQL Query" data-fr="🧪 Requête SQL">🧪 SQL Query</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC2_SQL.JPG" alt="SQL2 screenshot" style="max-width:80%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-      <h2 data-en="🔍 Explanation" data-fr="🔍 Explication">🔍 Explanation</h2>
-      <p data-en="This query aggregates payment data by month to track the number of executed payments and the corresponding total amount."
-         data-fr="Cette requête agrège les données de paiement par mois afin de suivre le nombre de paiements exécutés et le montant total correspondant.">
-        This query aggregates payment data by month to track the number of executed payments and the corresponding total amount.
-      </p>
-      <h2 data-en="📊 Observed Results" data-fr="📊 Résultats observés">📊 Observed Results</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC2_res.JPG" alt="res2 screenshot" style="max-width:60%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-      <h2 data-en="✅ Conclusion" data-fr="✅ Conclusion">✅ Conclusion</h2>
-      <p data-en="Helps monitor financial growth over time, identify seasonal trends, and detect unusual spikes or drops in activity."
-         data-fr="Aide à suivre la croissance financière dans le temps, à identifier les tendances saisonnières et à détecter des pics ou baisses inhabituels d’activité.">
-        Helps monitor financial growth over time, identify seasonal trends, and detect unusual spikes or drops in activity.
-      </p>
-      <h2 data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</h2>
-      <ul>
-        <li data-en="Supports financial forecasting and performance monitoring" data-fr="Appuie la prévision financière et le suivi de performance">Supports financial forecasting and performance monitoring</li>
-        <li data-en="Useful for comparing actuals with business KPIs" data-fr="Utile pour comparer les réalisations aux KPIs métiers">Useful for comparing actuals with business KPIs</li>
-        <li data-en="Feeds into monthly reporting dashboards" data-fr="Alimente les tableaux de bord de reporting mensuel">Feeds into monthly reporting dashboards</li>
-      </ul>
-    </section>
-
-    <!-- Use Case 3 -->
-    <section style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; background-color: #fafafa;">
-      <h1 data-en="Use Case 3 – Card Payment Details with PSP Info" data-fr="Cas d’usage 3 – Détails des paiements par carte avec infos PSP">Use Case 3 – Card Payment Details with PSP Info</h1>
-      <h2 data-en="🧪 SQL Query" data-fr="🧪 Requête SQL">🧪 SQL Query</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC3_SQL.JPG" alt="SQL3 screenshot" style="max-width:80%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-      <h2 data-en="🔍 Explanation" data-fr="🔍 Explication">🔍 Explanation</h2>
-      <p data-en="This query provides full visibility into card payments, combining technical and geographic card metadata with PSP tracking info."
-         data-fr="Cette requête offre une visibilité complète sur les paiements par carte, en combinant les métadonnées techniques et géographiques de la carte avec les informations de suivi du PSP.">
-        This query provides full visibility into card payments, combining technical and geographic card metadata with PSP tracking info.
-      </p>
-      <h2 data-en="📊 Observed Results" data-fr="📊 Résultats observés">📊 Observed Results</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC3_res.JPG" alt="res3 screenshot" style="max-width:80%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-      <h2 data-en="✅ Conclusion" data-fr="✅ Conclusion">✅ Conclusion</h2>
-      <p data-en="Useful for fraud analysis, dispute resolution, or compliance requirements (KYC/AML)."
-         data-fr="Utile pour l’analyse de la fraude, la résolution des litiges ou les exigences de conformité (KYC/AML).">
-        Useful for fraud analysis, dispute resolution, or compliance requirements (KYC/AML).
-      </p>
-      <h2 data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</h2>
-      <ul>
-        <li data-en="Improves traceability of card transactions" data-fr="Améliore la traçabilité des transactions par carte">Improves traceability of card transactions</li>
-        <li data-en="Enhances fraud and compliance monitoring capabilities" data-fr="Renforce les capacités de suivi de la fraude et de la conformité">Enhances fraud and compliance monitoring capabilities</li>
-      </ul>
-    </section>
-
-    <!-- Use Case 4 -->
-    <section style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; background-color: #fafafa;">
-      <h1 data-en="Use Case 4 – Validated Bank Transfers + Beneficiaries" data-fr="Cas d’usage 4 – Virements bancaires validés + bénéficiaires">Use Case 4 – Validated Bank Transfers + Beneficiaries</h1>
-      <h2 data-en="🧪 SQL Query" data-fr="🧪 Requête SQL">🧪 SQL Query</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC4_SQL.JPG" alt="SQL4 screenshot" style="max-width:80%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-      <h2 data-en="🔍 Explanation" data-fr="🔍 Explication">🔍 Explanation</h2>
-      <p data-en="Enables detailed tracking of validated wire transfers and their beneficiaries, including dates and references."
-         data-fr="Permet un suivi détaillé des virements bancaires validés et de leurs bénéficiaires, y compris les dates et les références.">
-        Enables detailed tracking of validated wire transfers and their beneficiaries, including dates and references.
-      </p>
-      <h2 data-en="📊 Observed Results" data-fr="📊 Résultats observés">📊 Observed Results</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC4_res.JPG" alt="res4 screenshot" style="max-width:80%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-      <h2 data-en="✅ Conclusion" data-fr="✅ Conclusion">✅ Conclusion</h2>
-      <p data-en="Ideal for audits, reconciliation with bank statements, and preventing double payments."
-         data-fr="Idéal pour les audits, la réconciliation avec les relevés bancaires et la prévention des doubles paiements.">
-        Ideal for audits, reconciliation with bank statements, and preventing double payments.
-      </p>
-      <h2 data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</h2>
-      <ul>
-        <li data-en="Improves accuracy in manual or external confirmations" data-fr="Améliore la précision lors des confirmations manuelles ou externes">Improves accuracy in manual or external confirmations</li>
-        <li data-en="Supports compliance and financial integrity" data-fr="Soutient la conformité et l’intégrité financière">Supports compliance and financial integrity</li>
-      </ul>
-    </section>
-
-    <!-- Use Case 5 -->
-    <section style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; background-color: #fafafa;">
-      <h1 data-en="Use Case 5 – Expired Cards Still in Use" data-fr="Cas d’usage 5 – Cartes expirées encore utilisées">Use Case 5 – Expired Cards Still in Use</h1>
-      <h2 data-en="🧪 SQL Query" data-fr="🧪 Requête SQL">🧪 SQL Query</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC5_SQL.JPG" alt="SQL5 screenshot" style="max-width:80%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-      <h2 data-en="🔍 Explanation" data-fr="🔍 Explication">🔍 Explanation</h2>
-      <p data-en="Detects abnormal behavior by identifying payments executed with expired cards, potentially revealing system loopholes or fraud."
-         data-fr="Détecte des comportements anormaux en identifiant les paiements effectués avec des cartes expirées, révélant potentiellement des failles du système ou des fraudes.">
-        Detects abnormal behavior by identifying payments executed with expired cards, potentially revealing system loopholes or fraud.
-      </p>
-      <h2 data-en="📊 Observed Results" data-fr="📊 Résultats observés">📊 Observed Results</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC5_res.JPG" alt="res5 screenshot" style="max-width:80%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-      <h2 data-en="✅ Conclusion" data-fr="✅ Conclusion">✅ Conclusion</h2>
-      <p data-en="Can be used for alerting and incident investigation workflows."
-         data-fr="Peut être utilisé pour l’alerte et les workflows d’investigation d’incidents.">
-        Can be used for alerting and incident investigation workflows.
-      </p>
-      <h2 data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</h2>
-      <ul>
-        <li data-en="Improves system security monitoring" data-fr="Améliore la surveillance de la sécurité du système">Improves system security monitoring</li>
-        <li data-en="Supports detection of abuse or technical faults" data-fr="Aide à détecter les abus ou les défauts techniques">Supports detection of abuse or technical faults</li>
-      </ul>
-    </section>
-
-    <!-- Use Case 6 -->
-    <section style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; background-color: #fafafa;">
-      <h1 data-en="Use Case 6 – Failed Payments with Error Codes" data-fr="Cas d’usage 6 – Paiements échoués avec codes d’erreur">Use Case 6 – Failed Payments with Error Codes</h1>
-      <h2 data-en="🧪 SQL Query" data-fr="🧪 Requête SQL">🧪 SQL Query</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC6_SQL.JPG" alt="SQL6 screenshot" style="max-width:80%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-      <h2 data-en="🔍 Explanation" data-fr="🔍 Explication">🔍 Explanation</h2>
-      <p data-en="This query captures failed payments by fetching relevant error codes and messages, grouped by platform."
-         data-fr="Cette requête recense les paiements échoués en récupérant les codes et messages d’erreur pertinents, groupés par plateforme.">
-        This query captures failed payments by fetching relevant error codes and messages, grouped by platform.
-      </p>
-      <h2 data-en="📊 Observed Results" data-fr="📊 Résultats observés">📊 Observed Results</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC6_res.JPG" alt="res6 screenshot" style="max-width:80%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-      <h2 data-en="✅ Conclusion" data-fr="✅ Conclusion">✅ Conclusion</h2>
-      <p data-en="Centralized view of errors facilitates technical debugging and improves system resilience."
-         data-fr="Une vue centralisée des erreurs facilite le débogage technique et améliore la résilience du système.">
-        Centralized view of errors facilitates technical debugging and improves system resilience.
-      </p>
-      <h2 data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</h2>
-      <ul>
-        <li data-en="Helps automate support and issue tracking" data-fr="Aide à automatiser le support et le suivi des incidents">Helps automate support and issue tracking</li>
-        <li data-en="Feeds internal logs and SLA monitoring tools" data-fr="Alimente les journaux internes et les outils de suivi du SLA">Feeds internal logs and SLA monitoring tools</li>
-      </ul>
-    </section>
-
-    <!-- Use Case 7 -->
-    <section style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; background-color: #fafafa;">
-      <h1 data-en="Use Case 7 – Platform-Level Payment Analysis" data-fr="Cas d’usage 7 – Analyse des paiements au niveau plateforme">Use Case 7 – Platform-Level Payment Analysis</h1>
-      <h2 data-en="🧪 SQL Query" data-fr="🧪 Requête SQL">🧪 SQL Query</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC7_SQL.JPG" alt="SQL7 screenshot" style="max-width:80%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-      <h2 data-en="🔍 Explanation" data-fr="🔍 Explication">🔍 Explanation</h2>
-      <p data-en="Provides insight into which platforms generate the most volume and fees, helping prioritize business efforts."
-         data-fr="Fournit des informations sur les plateformes qui génèrent le plus de volume et de frais, aidant à prioriser les efforts business.">
-        Provides insight into which platforms generate the most volume and fees, helping prioritize business efforts.
-      </p>
-      <h2 data-en="📊 Observed Results" data-fr="📊 Résultats observés">📊 Observed Results</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC7_res.JPG" alt="res7 screenshot" style="max-width:80%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-      <h2 data-en="✅ Conclusion" data-fr="✅ Conclusion">✅ Conclusion</h2>
-      <p data-en="Supports client segmentation, bonus logic, or partnership prioritization based on financial value."
-         data-fr="Soutient la segmentation client, la logique de bonus ou la priorisation des partenariats selon la valeur financière.">
-        Supports client segmentation, bonus logic, or partnership prioritization based on financial value.
-      </p>
-      <h2 data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</h2>
-      <ul>
-        <li data-en="Feeds client scoring models" data-fr="Alimente les modèles de scoring client">Feeds client scoring models</li>
-        <li data-en="Helps detect churn risk and promote high-value clients" data-fr="Aide à détecter le risque de churn et à promouvoir les clients à forte valeur">Helps detect churn risk and promote high-value clients</li>
-      </ul>
-    </section>
-
-    <!-- Use Case 8 -->
-    <section style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; background-color: #fafafa;">
-      <h1 data-en="Use Case 8 – Payments by Card Origin Country" data-fr="Cas d’usage 8 – Paiements par pays d’émission de la carte">Use Case 8 – Payments by Card Origin Country</h1>
-      <h2 data-en="🧪 SQL Query" data-fr="🧪 Requête SQL">🧪 SQL Query</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC8_SQL.JPG" alt="SQL8 screenshot" style="max-width:80%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-      <h2 data-en="🔍 Explanation" data-fr="🔍 Explication">🔍 Explanation</h2>
-      <p data-en="Aggregates payments based on the issuing country of cards, revealing geographical patterns and compliance triggers."
-         data-fr="Agrège les paiements selon le pays émetteur des cartes, révélant des schémas géographiques et des déclencheurs de conformité.">
-        Aggregates payments based on the issuing country of cards, revealing geographical patterns and compliance triggers.
-      </p>
-      <h2 data-en="📊 Observed Results" data-fr="📊 Résultats observés">📊 Observed Results</h2>
-      <div class="image-placeholder"><img src="img/SQL/UC8_res.JPG" alt="res8 screenshot" style="max-width:60%; height:auto; border-radius:8px; box-shadow:0 2px 8px #0001; display:block; margin:0 auto;"></div>
-      <h2 data-en="✅ Conclusion" data-fr="✅ Conclusion">✅ Conclusion</h2>
-      <p data-en="Useful for marketing targeting or regulatory audits (cross-border payments)."
-         data-fr="Utile pour le ciblage marketing ou les audits réglementaires (paiements transfrontaliers).">
-        Useful for marketing targeting or regulatory audits (cross-border payments).
-      </p>
-      <h2 data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</h2>
-      <ul>
-        <li data-en="Supports geographic segmentation" data-fr="Soutient la segmentation géographique">Supports geographic segmentation</li>
-        <li data-en="Improves targeting and fraud prevention by country" data-fr="Améliore le ciblage et la prévention de la fraude par pays">Improves targeting and fraud prevention by country</li>
-      </ul>
-    </section>
-
-  </div>
+  <button class="lang-toggle" id="lang-toggle">🇬🇧</button>
+  <p style="margin-bottom: 2rem;">
+    <a href="index.html" data-en="← Back to portfolio" data-fr="← Retour au portfolio">← Retour au portfolio</a>
+  </p>
   
+  <div class="container">
+    <h1 data-en="Payment Analysis - Multi-PSP Comparison" data-fr="Analyse Paiements - Comparaison Multi-PSP">
+      Analyse Paiements - Comparaison Multi-PSP
+    </h1>
+    <p class="subtitle-main" data-en="SQL Analysis • Fintech • 8 Use Cases" data-fr="Analyse SQL • Fintech • 8 Cas d'usage">
+      Analyse SQL • Fintech • 8 Cas d'usage
+    </p>
+
+    <!-- Important Info -->
+    <div class="important-info">
+      <strong data-en="ℹ️ Important Information" data-fr="ℹ️ Informations importantes">ℹ️ Informations importantes</strong><br>
+      <span data-en="All data shown is fictional for demonstration purposes. This project showcases the type of analysis performed during my experience at Mangopay."
+            data-fr="Toutes les données présentées sont fictives à des fins de démonstration. Ce projet illustre le type d'analyse réalisée lors de mon expérience chez Mangopay.">
+        Toutes les données présentées sont fictives à des fins de démonstration. Ce projet illustre le type d'analyse réalisée lors de mon expérience chez Mangopay.
+      </span>
+    </div>
+
+    <!-- Context -->
+    <div class="context-box">
+      <h2 data-en="🎯 Context & Objective" data-fr="🎯 Contexte & Objectif">🎯 Contexte & Objectif</h2>
+      <p data-en="<strong>Challenge:</strong> Payment API managing transactions across multiple platforms with 3 payment methods (Card, Wallet, Bank Transfer) via 2 PSPs."
+         data-fr="<strong>Challenge :</strong> API de paiement gérant des transactions sur plusieurs plateformes avec 3 méthodes de paiement (Carte, E-wallet, Virement) via 2 PSP.">
+        <strong>Challenge :</strong> API de paiement gérant des transactions sur plusieurs plateformes avec 3 méthodes de paiement (Carte, E-wallet, Virement) via 2 PSP.
+      </p>
+      <p data-en="<strong>Goal:</strong> Structured SQL analyses to monitor profitability, detect anomalies, optimize payment flows, and compare PSP performance."
+         data-fr="<strong>Objectif :</strong> Analyses SQL structurées pour suivre la rentabilité, détecter les anomalies, optimiser les flux de paiement et comparer les performances des PSP.">
+        <strong>Objectif :</strong> Analyses SQL structurées pour suivre la rentabilité, détecter les anomalies, optimiser les flux de paiement et comparer les performances des PSP.
+      </p>
+    </div>
+
+    <!-- Key Results -->
+    <h2 style="color: #3b2c50; margin-top: 2rem;" data-en="📊 Key Analyses Performed" data-fr="📊 Analyses Clés Réalisées">📊 Analyses Clés Réalisées</h2>
+    <div class="key-results">
+      <div class="result-card">
+        <div class="result-number">8</div>
+        <div class="result-label" data-en="SQL Use Cases" data-fr="Cas d'usage SQL">Cas d'usage SQL</div>
+      </div>
+      <div class="result-card">
+        <div class="result-number">3</div>
+        <div class="result-label" data-en="PSPs Compared" data-fr="PSP Comparés">PSP Comparés</div>
+      </div>
+      <div class="result-card">
+        <div class="result-number">~3%</div>
+        <div class="result-label" data-en="Avg Fee Rate" data-fr="Taux Moyen Frais">Taux Moyen Frais</div>
+      </div>
+    </div>
+
+    <!-- Sample Use Cases -->
+    <div class="use-case">
+      <h3 data-en="Use Case 1: Volume & Revenue by Payment Method" data-fr="Cas d'usage 1 : Volume & Revenu par Méthode">Cas d'usage 1 : Volume & Revenu par Méthode</h3>
+      <p data-en="Analysis comparing transaction volumes, total amounts, and profitability across Card, Wallet, and Bank Transfer methods."
+         data-fr="Analyse comparant les volumes de transactions, montants totaux et rentabilité entre Carte, E-wallet et Virement.">
+        Analyse comparant les volumes de transactions, montants totaux et rentabilité entre Carte, E-wallet et Virement.
+      </p>
+      <img src="img/SQL/UC1_SQL.JPG" alt="SQL Query 1">
+      <img src="img/SQL/UC1_res.JPG" alt="Results 1">
+      <p><strong data-en="Impact:" data-fr="Impact :">Impact :</strong> 
+        <span data-en="Supports PSP negotiation and UX optimization based on cost efficiency."
+              data-fr="Aide aux négociations PSP et à l'optimisation UX basée sur l'efficacité des coûts.">
+          Aide aux négociations PSP et à l'optimisation UX basée sur l'efficacité des coûts.
+        </span>
+      </p>
+    </div>
+
+    <div class="use-case">
+      <h3 data-en="Use Case 5: Expired Cards Detection" data-fr="Cas d'usage 5 : Détection Cartes Expirées">Cas d'usage 5 : Détection Cartes Expirées</h3>
+      <p data-en="Identifies payments executed with expired cards to reveal system vulnerabilities or fraud attempts."
+         data-fr="Identifie les paiements effectués avec des cartes expirées pour révéler les vulnérabilités système ou tentatives de fraude.">
+        Identifie les paiements effectués avec des cartes expirées pour révéler les vulnérabilités système ou tentatives de fraude.
+      </p>
+      <img src="img/SQL/UC5_SQL.JPG" alt="SQL Query 5">
+      <img src="img/SQL/UC5_res.JPG" alt="Results 5">
+      <p><strong data-en="Impact:" data-fr="Impact :">Impact :</strong>
+        <span data-en="Enables automated alerts and improves security monitoring."
+              data-fr="Permet des alertes automatisées et améliore la surveillance sécurité.">
+          Permet des alertes automatisées et améliore la surveillance sécurité.
+        </span>
+      </p>
+    </div>
+
+    <p style="text-align: center; color: #666; margin: 2rem 0;">
+      <em data-en="+ 6 additional use cases covering monthly trends, PSP details, bank transfers, error tracking, platform analysis, and geographic distribution."
+          data-fr="+ 6 cas d'usage supplémentaires couvrant tendances mensuelles, détails PSP, virements bancaires, suivi erreurs, analyse plateformes et distribution géographique.">
+        + 6 cas d'usage supplémentaires couvrant tendances mensuelles, détails PSP, virements bancaires, suivi erreurs, analyse plateformes et distribution géographique.
+      </em>
+    </p>
+
+    <!-- Tech Stack -->
+    <div class="tech-stack" data-en="🛠️ Stack: SQL • Supabase • PostgreSQL • Fintech APIs" data-fr="🛠️ Stack : SQL • Supabase • PostgreSQL • API Fintech">
+      🛠️ Stack : SQL • Supabase • PostgreSQL • API Fintech
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2 data-en="Need Similar Analysis?" data-fr="Besoin d'Analyses Similaires ?">Besoin d'Analyses Similaires ?</h2>
+      <p data-en="I can design custom SQL analyses and dashboards tailored to your payment flows and business needs."
+         data-fr="Je peux concevoir des analyses SQL et tableaux de bord sur-mesure adaptés à vos flux de paiement et besoins métier.">
+        Je peux concevoir des analyses SQL et tableaux de bord sur-mesure adaptés à vos flux de paiement et besoins métier.
+      </p>
+      <a href="mailto:ali.belabbas.success@gmail.com?subject=Payment Analysis Project" class="cta-button" 
+         data-en="Get in Touch" data-fr="Me Contacter">
+        Me Contacter
+      </a>
+    </div>
+  </div>
+
   <script>
     const toggleBtn = document.getElementById('lang-toggle');
-    let currentLang = "en";
+    let currentLang = "fr";
     function switchLang() {
-      currentLang = currentLang === "en" ? "fr" : "en";
-      toggleBtn.textContent = currentLang === "en" ? "🇫🇷" : "🇬🇧";
+      currentLang = currentLang === "fr" ? "en" : "fr";
+      toggleBtn.textContent = currentLang === "fr" ? "🇬🇧" : "🇫🇷";
       document.querySelectorAll('[data-en]').forEach(el => {
         let val = el.getAttribute('data-' + currentLang);
         if (val) {
-          if (el.tagName === 'P' || el.tagName === 'DIV' || el.tagName === 'SPAN' || el.tagName === 'B' || el.tagName === 'TD') {
+          if (['P', 'DIV', 'SPAN', 'STRONG', 'EM', 'H1', 'H2', 'H3', 'A'].includes(el.tagName)) {
             el.innerHTML = val;
           } else {
             el.textContent = val;
