@@ -1,8 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ali Belabbas - Data Analyst Freelance. 6 ans Fintech (Mangopay). Dashboards Looker, Power BI, automatisation Python/SQL. Paris.">
+  <meta name="keywords" content="Data Analyst, Freelance, Looker, Power BI, Python, SQL, Fintech, Paris">
+  
+  <!-- Open Graph pour LinkedIn/réseaux sociaux -->
+  <meta property="og:title" content="Ali Belabbas - Data Analyst Freelance">
+  <meta property="og:description" content="6 ans Fintech • Dashboards opérationnels • Automatisation data">
+  <meta property="og:image" content="https://ali-belabbas.github.io/AliSuccess/img/photo_ali.jpg">
+  <meta property="og:url" content="https://ali-belabbas.github.io/AliSuccess/">
+  
   <link rel="icon" href="favicon-as-plain.ico">
   <title>Ali Belabbas — Data Analyst Freelance</title>
  <style>
@@ -54,7 +63,7 @@
       padding: 2rem; 
       display: flex; 
       align-items: flex-start; 
-      justify-content: flex-start; 
+      justify-content: center; 
       gap: 2rem; 
       min-height: calc(100vh - 56px);
       box-sizing: border-box;
@@ -125,23 +134,9 @@
       font-size: 0.9rem;
     }
 
-    .badges {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin: 0 0 1.2rem 0;
-      justify-content: center;
-    }
-    .badges span {
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
     .header-stats {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       gap: 1.2rem;
       margin: 0 0 1.2rem 0;
@@ -159,7 +154,7 @@
     }
 
     .cta-section {
-      text-align: center;
+      text-align: left;
     }
     .cta-intro {
       font-weight: 600;
@@ -171,7 +166,7 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
       margin-bottom: 0.8rem;
     }
     .cta-buttons a {
@@ -192,10 +187,6 @@
       background: #fff;
       color: #6c4ba7;
       border: 2px solid #6c4ba7;
-    }
-    .cta-footer {
-      font-size: 0.8rem;
-      color: #666;
     }
 
     section { padding: 2rem; }
@@ -403,7 +394,7 @@
 <body>
   <!-- Responsive Navbar -->
   <nav class="navbar">
-    <a class="nav__brand" href="#top" data-en="Ali's Success — Analytics & Insights" data-fr="Ali Success — Analyse & Conseil">Ali's Success — Analytics & Insights</a>
+    <a class="nav__brand" href="#top" data-en="Ali's Success — Analytics & Insights" data-fr="Ali Success — Analyse & Conseil">Ali Success — Analyse & Conseil</a>
 
     <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-controls="primary-nav" aria-expanded="false">
       <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
@@ -412,16 +403,17 @@
     </button>
 
     <div id="primary-nav" class="nav__menu" role="navigation" aria-label="Primary">
+      <a href="#offres" data-en="Offers" data-fr="Offres" class="i18n-link">Offres</a>
       <a href="#services" data-en="Services" data-fr="Services" class="i18n-link">Services</a>
-      <a href="#experience" data-en="Experience" data-fr="Expérience" class="i18n-link">Experience</a>
-      <a href="#education" data-en="Education" data-fr="Formation" class="i18n-link">Education</a>
-      <a href="#projects" data-en="Projects" data-fr="Projets" class="i18n-link">Projects</a>
+      <a href="#experience" data-en="Experience" data-fr="Expérience" class="i18n-link">Expérience</a>
+      <a href="#education" data-en="Education" data-fr="Formation" class="i18n-link">Formation</a>
+      <a href="#projects" data-en="Projects" data-fr="Projets" class="i18n-link">Projets</a>
       <a href="#contact" data-en="Contact" data-fr="Contact" class="i18n-link">Contact</a>
     </div>
 
     <div class="lang-switch" role="group" aria-label="Language">
-      <button class="lang-btn" data-lang="fr">FR</button>
-      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
     </div>
   </nav>
 
@@ -434,89 +426,350 @@
 
       <div class="content-layout">
         <div class="pitch-main">
-          <p data-en="<strong>Your data overwhelming you? I transform it into profitable decisions.</strong><br><br>
-<span style='color: #6c4ba7; font-weight: 600;'>Data & Business Performance Expert</span> with 6 years of Fintech experience, 
-I reveal hidden insights in your data to boost your performance by <strong>25% on average</strong>.<br><br>
-<span style='color: #4CAF50; font-weight: 600;'>✓ +50 dashboards delivered</span> • 
-<span style='color: #4CAF50; font-weight: 600;'>✓ Measurable results</span> • 
-<span style='color: #4CAF50; font-weight: 600;'>✓ Deadlines respected</span>"
-             data-fr="<strong>Vos données vous submergent ? Je les transforme en décisions rentables.</strong><br><br>
-<span style='color: #6c4ba7; font-weight: 600;'>Expert Data & Performance Business</span> avec 6 ans d'expérience en Fintech, 
-je révèle les insights cachés dans vos données pour booster vos performances de <strong>25% en moyenne</strong>.<br><br>
-<span style='color: #4CAF50; font-weight: 600;'>✓ +50 dashboards livrés</span> • 
-<span style='color: #4CAF50; font-weight: 600;'>✓ Résultats mesurables</span> • 
-<span style='color: #4CAF50; font-weight: 600;'>✓ Délais respectés</span>">
-            <strong>Your data overwhelming you? I transform it into profitable decisions.</strong><br><br>
-<span style='color: #6c4ba7; font-weight: 600;'>Data & Business Performance Expert</span> with 6 years of Fintech experience, 
-I reveal hidden insights in your data to boost your performance by <strong>25% on average</strong>.<br><br>
-<span style='color: #4CAF50; font-weight: 600;'>✓ +50 dashboards delivered</span> • 
-<span style='color: #4CAF50; font-weight: 600;'>✓ Measurable results</span> • 
-<span style='color: #4CAF50; font-weight: 600;'>✓ Deadlines respected</span>
+          <p data-fr="<strong>Vos données vous submergent ? Je les transforme en décisions exploitables.</strong><br><br>
+Data Analyst freelance avec <strong>6 ans d'expérience Fintech</strong> (Mangopay), 
+je conçois des dashboards opérationnels et automatise vos process data.<br><br>
+✓ Snowflake, Looker, Power BI, Python, SQL<br>
+✓ Formation équipes pour autonomie complète<br>
+✓ Livraison rapide, résultats mesurables"
+             data-en="<strong>Your data overwhelming you? I transform it into actionable decisions.</strong><br><br>
+Freelance Data Analyst with <strong>6 years of Fintech experience</strong> (Mangopay), 
+I design operational dashboards and automate your data processes.<br><br>
+✓ Snowflake, Looker, Power BI, Python, SQL<br>
+✓ Team training for complete autonomy<br>
+✓ Fast delivery, measurable results">
+            <strong>Vos données vous submergent ? Je les transforme en décisions exploitables.</strong><br><br>
+Data Analyst freelance avec <strong>6 ans d'expérience Fintech</strong> (Mangopay), 
+je conçois des dashboards opérationnels et automatise vos process data.<br><br>
+✓ Snowflake, Looker, Power BI, Python, SQL<br>
+✓ Formation équipes pour autonomie complète<br>
+✓ Livraison rapide, résultats mesurables
           </p>
         </div>
         
         <div class="specializations">
           <div>
-            <h3 data-en="🎯 Key Specializations" data-fr="🎯 Spécialisations clés">🎯 Key Specializations</h3>
+            <h3 data-en="🎯 Key Specializations" data-fr="🎯 Spécialisations clés">🎯 Spécialisations clés</h3>
             <ul>
               <li>
-                <strong data-en="Data audit:" data-fr="Audit data :">Data audit:</strong> 
-                <span data-en="Complete diagnosis in 1 week" data-fr="Diagnostic complet en 1 semaine">Complete diagnosis in 1 week</span>
+                <strong data-en="Data audit:" data-fr="Audit data :">Audit data :</strong> 
+                <span data-en="Complete diagnosis & quick wins" data-fr="Diagnostic complet & quick wins">Diagnostic complet & quick wins</span>
               </li>
               <li>
-                <strong data-en="ROI dashboards:" data-fr="Dashboards ROI :">ROI dashboards:</strong> 
-                <span data-en="KPIs that boost revenue" data-fr="KPIs qui boostent les revenus">KPIs that boost revenue</span>
+                <strong data-en="Operational dashboards:" data-fr="Dashboards opérationnels :">Dashboards opérationnels :</strong> 
+                <span data-en="KPIs that drive decisions" data-fr="KPIs qui pilotent les décisions">KPIs qui pilotent les décisions</span>
               </li>
               <li>
-                <strong data-en="Automation:" data-fr="Automatisation :">Automation:</strong> 
-                <span data-en="Python/SQL to save 70% time" data-fr="Python/SQL pour gagner 70% de temps">Python/SQL to save 70% time</span>
+                <strong data-en="Automation:" data-fr="Automatisation :">Automatisation :</strong> 
+                <span data-en="Python/SQL to save time" data-fr="Python/SQL pour gagner du temps">Python/SQL pour gagner du temps</span>
               </li>
               <li>
-                <strong data-en="Team training:" data-fr="Formation équipes :">Team training:</strong> 
-                <span data-en="Guaranteed autonomy" data-fr="Autonomie garantie">Guaranteed autonomy</span>
+                <strong data-en="Team training:" data-fr="Formation équipes :">Formation équipes :</strong> 
+                <span data-en="Guaranteed autonomy" data-fr="Autonomie garantie">Autonomie garantie</span>
               </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="badges">
-        <span style="background:#ece6ff; color:#5141a3;" data-en="📊 Data-Driven" data-fr="📊 Data-Driven">📊 Data-Driven</span>
-        <span style="background:#e9f7ee; color:#2d7a50;" data-en="💰 ROI-Focused" data-fr="💰 Focus ROI">💰 ROI-Focused</span>
-        <span style="background:#fff1d6; color:#a66a00;" data-en="⚡ Fast Delivery" data-fr="⚡ Livraison Rapide">⚡ Fast Delivery</span>
-      </div>
-
       <div class="header-stats">
-        <span class="stat-item" data-en="+50 dashboards delivered" data-fr="+50 tableaux de bord livrés">
-          <img src="https://cdn-icons-png.flaticon.com/512/3106/3106807.png" alt="">
-          <span>+50 dashboards delivered</span>
-        </span>
-        <span class="stat-item" data-en="8 years in IT & Data" data-fr="8 ans en IT & Data">
+        <span class="stat-item">
           <img src="https://cdn-icons-png.flaticon.com/512/1077/1077976.png" alt="">
-          <span>8 years in IT & Data</span>
+          <span data-fr="8 ans en IT & Data" data-en="8 years in IT & Data">8 ans en IT & Data</span>
+        </span>
+        <span class="stat-item">
+          <img src="https://cdn-icons-png.flaticon.com/512/3106/3106807.png" alt="">
+          <span data-fr="6 ans chez Mangopay (Fintech)" data-en="6 years at Mangopay (Fintech)">6 ans chez Mangopay (Fintech)</span>
         </span>
       </div>
 
       <div class="cta-section">
-        <p class="cta-intro" data-en="🎁 <strong>Free 1-hour audit:</strong> I diagnose your data blockers" data-fr="🎁 <strong>Audit gratuit de 1-heure :</strong> Je diagnostique vos blocages data">
-          🎁 <strong>Free 1-hour audit:</strong> I diagnose your data blockers
+        <p class="cta-intro" 
+           data-fr="📅 <strong>Échange gratuit de 30 min</strong> pour discuter de votre projet"
+           data-en="📅 <strong>Free 30-min call</strong> to discuss your project">
+          📅 <strong>Échange gratuit de 30 min</strong> pour discuter de votre projet
         </p>
         
         <div class="cta-buttons">
-          <a href="https://calendly.com/ali-belabbas-success/30min" target="_blank" class="cta-primary" data-en="📅 Book my free audit" data-fr="📅 Réserver mon audit gratuit">
-            📅 Book my free audit
+          <a href="https://calendly.com/ali-belabbas-success/30min" target="_blank" class="cta-primary" 
+             data-fr="📅 Prendre rendez-vous" 
+             data-en="📅 Schedule a call">
+            📅 Prendre rendez-vous
           </a>
-          <a href="mailto:ali.belabbas.success@gmail.com?subject=Data%20audit%20request" class="cta-secondary" data-en="✉️ Describe my need" data-fr="✉️ Décrire mon besoin">
-            ✉️ Describe my need
+          <a href="mailto:ali.belabbas.success@gmail.com?subject=Demande%20projet%20data" class="cta-secondary" 
+             data-fr="✉️ Envoyer un email" 
+             data-en="✉️ Send an email">
+            ✉️ Envoyer un email
           </a>
         </div>
-        
-        <p class="cta-footer" data-en="⚡ <strong>Response within 24h</strong> • 🔒 <strong>No commitment</strong> • 🎯 <strong>Actionable advice guaranteed</strong>" data-fr="⚡ <strong>Réponse sous 24h</strong> • 🔒 <strong>Sans engagement</strong> • 🎯 <strong>Conseils actionnables garantis</strong>">
-          ⚡ <strong>Response within 24h</strong> • 🔒 <strong>No commitment</strong> • 🎯 <strong>Actionable advice guaranteed</strong>
-        </p>
       </div>
     </div>
   </header>
+
+  <!-- OFFRES -->
+  <section id="offres" style="background: #fff;">
+    <h2 data-en="What I Do" data-fr="Ce que je fais">Ce que je fais</h2>
+    
+    <div style="max-width: 900px; margin: 0 auto 2rem;">
+      <p style="font-size: 1.05rem; line-height: 1.6; color: #2a1f3c; margin-bottom: 1.5rem;">
+        <span data-en="I structure the data strategy for customer-facing teams in B2B SaaS scale-ups, or I create on-demand dashboards based on your needs."
+              data-fr="Je structure la stratégie data pour les équipes face client des scale-ups SaaS B2B, ou je crée des dashboards ponctuels selon vos besoins.">
+          Je structure la stratégie data pour les équipes face client des scale-ups SaaS B2B, ou je crée des dashboards ponctuels selon vos besoins.
+        </span>
+      </p>
+      
+      <div style="background: #f8f6ff; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #6c4ba7; margin-bottom: 1.5rem;">
+        <p style="margin: 0 0 1rem 0; font-weight: 600; color: #3b2c50;">
+          <span data-en="The problem:" data-fr="Le problème :">Le problème :</span>
+        </p>
+        <p style="margin: 0 0 1rem 0; line-height: 1.5;">
+          <span data-en="Your teams have many tools and data, but no clear strategy. Everyone does their own thing, no common metric definitions, and risks appear by surprise."
+                data-fr="Vos équipes ont plein d'outils et de données, mais aucune stratégie claire. Chaque personne fait à sa sauce, pas de définition commune des métriques, et les risques arrivent par surprise.">
+            Vos équipes ont plein d'outils et de données, mais aucune stratégie claire. Chaque personne fait à sa sauce, pas de définition commune des métriques, et les risques arrivent par surprise.
+          </span>
+        </p>
+        <p style="margin: 0; font-weight: 600; color: #3b2c50;">
+          <span data-en="My solution:" data-fr="Ma solution :">Ma solution :</span>
+        </p>
+        <p style="margin: 0; line-height: 1.5;">
+          <span data-en="I set up the data strategy from A to Z and implement it, or I build specific dashboards for targeted needs."
+                data-fr="Je pose la stratégie data de A à Z et je l'implémente, ou je construis des dashboards spécifiques pour des besoins ciblés.">
+            Je pose la stratégie data de A à Z et je l'implémente, ou je construis des dashboards spécifiques pour des besoins ciblés.
+          </span>
+        </p>
+      </div>
+      
+      <div style="background: #e9f7ee; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
+        <h3 style="margin: 0 0 1rem 0; color: #2d7a50; font-size: 1.1rem;">
+          <span data-en="🔄 My Process" data-fr="🔄 Mon processus">🔄 Mon processus</span>
+        </h3>
+        <ol style="margin: 0; padding-left: 1.5rem; line-height: 1.8;">
+          <li>
+            <strong data-en="Audit & Definition" data-fr="Audit & Définition">Audit & Définition</strong>
+            <span data-en=" → Stack audit, key metrics definition and data strategy"
+                  data-fr=" → Audit de votre stack, définition des métriques clés et stratégie data">
+              → Audit de votre stack, définition des métriques clés et stratégie data
+            </span>
+          </li>
+          <li>
+            <strong data-en="Data Architecture" data-fr="Architecture Data">Architecture Data</strong>
+            <span data-en=" → Structuring and connecting all your tools"
+                  data-fr=" → Structuration et connexion de tous vos outils">
+              → Structuration et connexion de tous vos outils
+            </span>
+          </li>
+          <li>
+            <strong data-en="Automated Dashboards" data-fr="Dashboards Automatisés">Dashboards Automatisés</strong>
+            <span data-en=" → Building custom dashboards according to your needs"
+                  data-fr=" → Construction des dashboards sur mesure selon vos besoins">
+              → Construction des dashboards sur mesure selon vos besoins
+            </span>
+          </li>
+          <li>
+            <strong data-en="Training & Autonomy" data-fr="Formation & Autonomie">Formation & Autonomie</strong>
+            <span data-en=" → Team training and complete documentation"
+                  data-fr=" → Formation de l'équipe et documentation complète">
+              → Formation de l'équipe et documentation complète
+            </span>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <h3 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.4rem; color: #3b2c50;">
+      <span data-en="📦 My Offers" data-fr="📦 Mes offres">📦 Mes offres</span>
+    </h3>
+    
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 2rem;">
+  <!-- Offre 1 -->
+  <div style="background: #fff; border: 2px solid #e6e1f7; border-radius: 12px; padding: 1.5rem; flex: 1 1 280px; max-width: 340px; min-width: 280px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column;">
+    <div style="background: #f8f6ff; padding: 0.5rem 1rem; border-radius: 8px; display: inline-block; margin-bottom: 1rem; align-self: flex-start;">
+      <span style="font-weight: 700; color: #6c4ba7; font-size: 0.9rem;" data-en="STARTER" data-fr="STARTER">STARTER</span>
+    </div>
+    <h4 style="margin: 0 0 0.5rem 0; font-size: 1.3rem; color: #3b2c50;">
+      <span data-en="Dashboard Starter" data-fr="Dashboard Starter">Dashboard Starter</span>
+    </h4>
+    <p style="font-size: 2rem; font-weight: 800; color: #6c4ba7; margin: 0 0 0.5rem 0;">3,5k - 6k€</p>
+    <p style="color: #666; font-size: 0.9rem; margin: 0 0 1rem 0;">
+      <span data-en="⏱️ 2-3 weeks" data-fr="⏱️ 2-3 semaines">⏱️ 2-3 semaines</span>
+    </p>
+    <p style="font-size: 0.85rem; color: #666; font-style: italic; margin: 0 0 1.5rem 0; line-height: 1.4;">
+      <span data-en="For one specific need (ex: churn dashboard, performance tracking)" 
+            data-fr="Pour un besoin ponctuel (ex : dashboard churn, suivi performance)">
+        Pour un besoin ponctuel (ex : dashboard churn, suivi performance)
+      </span>
+    </p>
+    <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem 0; line-height: 1.8; flex-grow: 1;">
+      <li style="padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem;">
+        <span style="position: absolute; left: 0; color: #4CAF50;">✓</span>
+        <span data-en="1 operational dashboard" data-fr="1 dashboard opérationnel">1 dashboard opérationnel</span>
+      </li>
+      <li style="padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem;">
+        <span style="position: absolute; left: 0; color: #4CAF50;">✓</span>
+        <span data-en="Data connection & automation" data-fr="Connexion données & automatisation">Connexion données & automatisation</span>
+      </li>
+      <li style="padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem;">
+        <span style="position: absolute; left: 0; color: #4CAF50;">✓</span>
+        <span data-en="Team training" data-fr="Formation équipe">Formation équipe</span>
+      </li>
+      <li style="padding-left: 1.5rem; position: relative;">
+        <span style="position: absolute; left: 0; color: #4CAF50;">✓</span>
+        <span data-en="Documentation" data-fr="Documentation">Documentation</span>
+      </li>
+    </ul>
+    <a href="mailto:ali.belabbas.success@gmail.com?subject=Demande Dashboard Starter" 
+       style="display: block; text-align: center; background: #6c4ba7; color: #fff; padding: 0.8rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.3s; margin-top: auto;"
+       onmouseover="this.style.background='#5a3d91'" 
+       onmouseout="this.style.background='#6c4ba7'">
+      <span data-en="Contact me" data-fr="Me contacter">Me contacter</span>
+    </a>
+  </div>
+
+  <!-- Offre 2 -->
+  <div style="background: #fff; border: 2px solid #e6e1f7; border-radius: 12px; padding: 1.5rem; flex: 1 1 280px; max-width: 340px; min-width: 280px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column;">
+    <div style="background: #6c4ba7; color: #fff; padding: 0.5rem 1rem; border-radius: 8px; display: inline-block; margin-bottom: 1rem; align-self: flex-start;">
+      <span style="font-weight: 700; font-size: 0.9rem;" data-en="COMPLETE" data-fr="COMPLET">COMPLET</span>
+    </div>
+    <h4 style="margin: 0 0 0.5rem 0; font-size: 1.3rem; color: #3b2c50;">
+      <span data-en="Multi-Dashboards" data-fr="Multi-Dashboards">Multi-Dashboards</span>
+    </h4>
+    <p style="font-size: 2rem; font-weight: 800; color: #6c4ba7; margin: 0 0 0.5rem 0;">
+      <span data-en="On quote" data-fr="Sur devis">Sur devis</span>
+    </p>
+    <p style="color: #666; font-size: 0.9rem; margin: 0 0 1rem 0;">
+      <span data-en="⏱️ 4-6 weeks" data-fr="⏱️ 4-6 semaines">⏱️ 4-6 semaines</span>
+    </p>
+    <p style="font-size: 0.85rem; color: #666; font-style: italic; margin: 0 0 1.5rem 0; line-height: 1.4;">
+      <span data-en="Coordinated strategy with connected dashboards & complete data architecture" 
+            data-fr="Stratégie coordonnée avec dashboards reliés & architecture data complète">
+        Stratégie coordonnée avec dashboards reliés & architecture data complète
+      </span>
+    </p>
+    <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem 0; line-height: 1.8; flex-grow: 1;">
+      <li style="padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem;">
+        <span style="position: absolute; left: 0; color: #4CAF50;">✓</span>
+        <span data-en="3-5 custom dashboards" data-fr="3-5 dashboards personnalisés">3-5 dashboards personnalisés</span>
+      </li>
+      <li style="padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem;">
+        <span style="position: absolute; left: 0; color: #4CAF50;">✓</span>
+        <span data-en="Complete data architecture" data-fr="Architecture data complète">Architecture data complète</span>
+      </li>
+      <li style="padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem;">
+        <span style="position: absolute; left: 0; color: #4CAF50;">✓</span>
+        <span data-en="Automated alerts" data-fr="Alertes automatiques">Alertes automatiques</span>
+      </li>
+      <li style="padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem;">
+        <span style="position: absolute; left: 0; color: #4CAF50;">✓</span>
+        <span data-en="Team training & documentation" data-fr="Formation équipe & documentation">Formation équipe & documentation</span>
+      </li>
+      <li style="padding-left: 1.5rem; position: relative;">
+        <span style="position: absolute; left: 0; color: #4CAF50;">✓</span>
+        <span data-en="1 month support" data-fr="Support 1 mois">Support 1 mois</span>
+      </li>
+    </ul>
+    <a href="mailto:ali.belabbas.success@gmail.com?subject=Demande de devis Multi-Dashboards" 
+       style="display: block; text-align: center; background: #6c4ba7; color: #fff; padding: 0.8rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.3s; margin-top: auto;"
+       onmouseover="this.style.background='#5a3d91'" 
+       onmouseout="this.style.background='#6c4ba7'">
+      <span data-en="Request a quote" data-fr="Demander un devis">Demander un devis</span>
+    </a>
+  </div>
+
+  <!-- Offre 3 -->
+  <div style="background: #fff; border: 2px solid #e6e1f7; border-radius: 12px; padding: 1.5rem; flex: 1 1 280px; max-width: 340px; min-width: 280px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column;">
+    <div style="background: #fff1d6; padding: 0.5rem 1rem; border-radius: 8px; display: inline-block; margin-bottom: 1rem; align-self: flex-start;">
+      <span style="font-weight: 700; color: #a66a00; font-size: 0.9rem;" data-en="STRATEGIC" data-fr="STRATÉGIQUE">STRATÉGIQUE</span>
+    </div>
+    <h4 style="margin: 0 0 0.5rem 0; font-size: 1.3rem; color: #3b2c50;">
+      <span data-en="Complete Strategy" data-fr="Stratégie Complète">Stratégie Complète</span>
+    </h4>
+    <p style="font-size: 2rem; font-weight: 800; color: #6c4ba7; margin: 0 0 0.5rem 0;">
+      <span data-en="On quote" data-fr="Sur devis">Sur devis</span>
+    </p>
+    <p style="color: #666; font-size: 0.9rem; margin: 0 0 1rem 0;">
+      <span data-en="⏱️ 6-8 weeks" data-fr="⏱️ 6-8 semaines">⏱️ 6-8 semaines</span>
+    </p>
+    <p style="font-size: 0.85rem; color: #666; font-style: italic; margin: 0 0 1.5rem 0; line-height: 1.4;">
+      <span data-en="Complete transformation: audit, end-to-end strategy & full implementation" 
+            data-fr="Transformation complète : audit, stratégie de A à Z & implémentation totale">
+        Transformation complète : audit, stratégie de A à Z & implémentation totale
+      </span>
+    </p>
+    <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem 0; line-height: 1.8; flex-grow: 1;">
+      <li style="padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem;">
+        <span style="position: absolute; left: 0; color: #4CAF50;">✓</span>
+        <span data-en="Complete data audit" data-fr="Audit data complet">Audit data complet</span>
+      </li>
+      <li style="padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem;">
+        <span style="position: absolute; left: 0; color: #4CAF50;">✓</span>
+        <span data-en="End-to-end data strategy" data-fr="Stratégie data de A à Z">Stratégie data de A à Z</span>
+      </li>
+      <li style="padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem;">
+        <span style="position: absolute; left: 0; color: #4CAF50;">✓</span>
+        <span data-en="5+ custom dashboards" data-fr="5+ dashboards personnalisés">5+ dashboards personnalisés</span>
+      </li>
+      <li style="padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem;">
+        <span style="position: absolute; left: 0; color: #4CAF50;">✓</span>
+        <span data-en="Full automation & alerts" data-fr="Automatisation complète & alertes">Automatisation complète & alertes</span>
+      </li>
+      <li style="padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem;">
+        <span style="position: absolute; left: 0; color: #4CAF50;">✓</span>
+        <span data-en="Team training & documentation" data-fr="Formation équipe & documentation">Formation équipe & documentation</span>
+      </li>
+      <li style="padding-left: 1.5rem; position: relative;">
+        <span style="position: absolute; left: 0; color: #4CAF50;">✓</span>
+        <span data-en="2 months support" data-fr="Support 2 mois">Support 2 mois</span>
+      </li>
+    </ul>
+    <a href="mailto:ali.belabbas.success@gmail.com?subject=Demande de devis Stratégie Complète" 
+       style="display: block; text-align: center; background: #6c4ba7; color: #fff; padding: 0.8rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.3s; margin-top: auto;"
+       onmouseover="this.style.background='#5a3d91'" 
+       onmouseout="this.style.background='#6c4ba7'">
+      <span data-en="Request a quote" data-fr="Demander un devis">Demander un devis</span>
+    </a>
+  </div>
+</div>
+
+    <div style="background: #f8f6ff; padding: 2rem; border-radius: 12px; max-width: 900px; margin: 0 auto; border-left: 4px solid #6c4ba7;">
+      <h3 style="margin: 0 0 1.5rem 0; text-align: center; color: #3b2c50; font-size: 1.2rem;">
+        <span data-en="📊 Concrete Results" data-fr="📊 Résultats concrets">📊 Résultats concrets</span>
+      </h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        <div>
+          <p style="margin: 0 0 0.5rem 0; font-weight: 700; color: #2d7a50; font-size: 1rem;">
+            <span data-en="⏱️ Time savings" data-fr="⏱️ Gains de temps">⏱️ Gains de temps</span>
+          </p>
+          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.6; font-size: 0.95rem;">
+            <li data-en="Fast reporting" data-fr="Reportings rapides">Reportings rapides</li>
+            <li data-en="No more data search" data-fr="Recherche de données éliminée">Recherche de données éliminée</li>
+            <li data-en="More time to analyze & act" data-fr="Plus de temps pour analyser et agir">Plus de temps pour analyser et agir</li>
+          </ul>
+        </div>
+        <div>
+          <p style="margin: 0 0 0.5rem 0; font-weight: 700; color: #6c4ba7; font-size: 1rem;">
+            <span data-en="⚙️ Operational gains" data-fr="⚙️ Gains opérationnels">⚙️ Gains opérationnels</span>
+          </p>
+          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.6; font-size: 0.95rem;">
+            <li data-en="Aligned team" data-fr="Équipe alignée">Équipe alignée</li>
+            <li data-en="Automated alerts" data-fr="Alertes automatiques">Alertes automatiques</li>
+            <li data-en="Real-time visibility" data-fr="Visibilité temps réel">Visibilité temps réel</li>
+            <li data-en="Complete centralization" data-fr="Centralisation complète">Centralisation complète</li>
+          </ul>
+        </div>
+        <div>
+          <p style="margin: 0 0 0.5rem 0; font-weight: 700; color: #a66a00; font-size: 1rem;">
+            <span data-en="💰 Financial gains" data-fr="💰 Gains financiers">💰 Gains financiers</span>
+          </p>
+          <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.6; font-size: 0.95rem;">
+            <li data-en="Team time saved" data-fr="Temps d'équipe économisé">Temps d'équipe économisé</li>
+            <li data-en="Risks detected early" data-fr="Risques détectés en avance">Risques détectés en avance</li>
+            <li data-en="Opportunities captured" data-fr="Opportunités capturées">Opportunités capturées</li>
+            <li data-en="Fast ROI" data-fr="ROI rapide">ROI rapide</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- SERVICES -->
   <section id="services">
@@ -524,164 +777,172 @@ I reveal hidden insights in your data to boost your performance by <strong>25% o
     <div class="services">
       <div class="card">
         <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" alt="Data Cleaning Icon">
-        <strong data-en="Data Cleaning" data-fr="Nettoyage de données">Data Cleaning</strong>
+        <strong data-en="Data Cleaning" data-fr="Nettoyage de données">Nettoyage de données</strong>
         <p data-en="Clean and structure raw data to improve readability and relevance. Handle errors, outliers, and type transformations."
            data-fr="Nettoyer et structurer vos données pour les rendre exploitables et fiables. Traitement des erreurs, outliers, typage.">
-           Clean and structure raw data to improve readability and relevance. Handle errors, outliers, and type transformations.</p>
+           Nettoyer et structurer vos données pour les rendre exploitables et fiables. Traitement des erreurs, outliers, typage.</p>
         <p data-en="Tools: Python, Excel, Google Sheets, PySpark (for large datasets)"
-           data-fr="Outils : Python, Excel, Google Sheets, PySpark (gros volumes)">Tools: Python, Excel, Google Sheets, PySpark (for large datasets)</p>
+           data-fr="Outils : Python, Excel, Google Sheets, PySpark (gros volumes)">Outils : Python, Excel, Google Sheets, PySpark (gros volumes)</p>
       </div>
       <div class="card">
         <img class="icon" src="https://cdn-icons-png.flaticon.com/512/4299/4299717.png" alt="Data Analysis Icon">
-        <strong data-en="Data Analysis" data-fr="Analyse de données">Data Analysis</strong>
+        <strong data-en="Data Analysis" data-fr="Analyse de données">Analyse de données</strong>
         <p data-en="Transform your data sources into clear and actionable insights using SQL, Python, and more to inform both technical and non-technical teams."
            data-fr="Transformer vos sources en insights clairs et concrètes (SQL, Python...). Vulgarisation métier ou tech.">
-           Transform your data sources into clear and actionable insights using SQL, Python, and more to inform both technical and non-technical teams.</p>
+           Transformer vos sources en insights clairs et concrètes (SQL, Python...). Vulgarisation métier ou tech.</p>
         <p data-en="Tools: SQL, Python, Spreadsheets (Excel, Google Sheets), Kibana (ElasticSearch)"
-           data-fr="Outils : SQL, Python, Tableurs (Excel, Google Sheets), Kibana (ElasticSearch)">Tools: SQL, Python, Spreadsheets (Excel, Google Sheets), Kibana (ElasticSearch)</p>
+           data-fr="Outils : SQL, Python, Tableurs (Excel, Google Sheets), Kibana (ElasticSearch)">Outils : SQL, Python, Tableurs (Excel, Google Sheets), Kibana (ElasticSearch)</p>
       </div>
       <div class="card">
         <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2799/2799577.png" alt="Dashboard Icon">
         <strong data-en="Dashboards" data-fr="Dashboards">Dashboards</strong>
         <p data-en="Design and implement interactive dashboards to consolidate and visualize your data for continuous performance tracking."
            data-fr="Création de dashboards interactifs, visualisez vos KPIs et vos performances en temps réel.">
-           Design and implement interactive dashboards to consolidate and visualize your data for continuous performance tracking.</p>
+           Création de dashboards interactifs, visualisez vos KPIs et vos performances en temps réel.</p>
         <p data-en="Tools: Looker, PowerBI, Salesforce Dashboards"
-           data-fr="Outils : Looker, PowerBI, Dashboards Salesforce">Tools: Looker, PowerBI, Salesforce Dashboards</p>
+           data-fr="Outils : Looker, PowerBI, Dashboards Salesforce">Outils : Looker, PowerBI, Dashboards Salesforce</p>
       </div>
       <div class="card">
         <img class="icon" src="https://cdn-icons-png.flaticon.com/512/3964/3964079.png" alt="API Icon">
-        <strong data-en="REST APIs & Technical Expertise" data-fr="APIs & Expertise technique">REST APIs & Technical Expertise</strong>
+        <strong data-en="REST APIs & Technical Expertise" data-fr="APIs & Expertise technique">APIs & Expertise technique</strong>
         <p data-en="Expertise in REST APIs and request structures. I help define optimal workflows for your clients based on data analysis."
-           data-fr="Expertise REST APIs, structure de requêtes, définition de workflows optimums pour vos clients via l’analyse data.">
-           Expertise in REST APIs and request structures. I help define optimal workflows for your clients based on data analysis.</p>
+           data-fr="Expertise REST APIs, structure de requêtes, définition de workflows optimums pour vos clients via l'analyse data.">
+           Expertise REST APIs, structure de requêtes, définition de workflows optimums pour vos clients via l'analyse data.</p>
         <p data-en="Tools: API Collections, Postman, Kibana"
-           data-fr="Outils : Collections API, Postman, Kibana">Tools: API Collections, Postman, Kibana</p>
+           data-fr="Outils : Collections API, Postman, Kibana">Outils : Collections API, Postman, Kibana</p>
       </div>
       <div class="card">
         <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2857/2857380.png" alt="Process Icon">
-        <strong data-en="Process Improvement" data-fr="Amélioration de process">Process Improvement</strong>
+        <strong data-en="Process Improvement" data-fr="Amélioration de process">Amélioration de process</strong>
         <p data-en="Improve internal workflows or client lifecycles to streamline operations and reduce onboarding time across teams."
            data-fr="Optimiser vos process internes ou cycles clients. Réduction des délais et de la charge sur les équipes.">
-           Improve internal workflows or client lifecycles to streamline operations and reduce onboarding time across teams.</p>
+           Optimiser vos process internes ou cycles clients. Réduction des délais et de la charge sur les équipes.</p>
         <p data-en="Tools: Salesforce, Confluence, Ticketing tools"
-           data-fr="Outils : Salesforce, Confluence, outils de ticketing">Tools: Salesforce, Confluence, outils de ticketing</p>
+           data-fr="Outils : Salesforce, Confluence, outils de ticketing">Outils : Salesforce, Confluence, outils de ticketing</p>
       </div>
       <div class="card">
         <img class="icon" src="https://cdn-icons-png.flaticon.com/512/4350/4350644.png" alt="Consulting Icon">
-        <strong data-en="Consulting & Decision Support" data-fr="Conseil & aide à la décision">Consulting & Decision Support</strong>
+        <strong data-en="Consulting & Decision Support" data-fr="Conseil & aide à la décision">Conseil & aide à la décision</strong>
         <p data-en="Strategic advice based on data analysis. Support decision-making on pricing, operations, payment methods, countries, and business strategy."
            data-fr="Conseil stratégique basé sur la data : tarification, méthodes de paiement, pays, vision business, opérations.">
-           Strategic advice based on data analysis. Support decision-making on pricing, operations, payment methods, countries, and business strategy.</p>
+           Conseil stratégique basé sur la data : tarification, méthodes de paiement, pays, vision business, opérations.</p>
         <p data-en="Tools: Market knowledge, Data insight, Collaboration"
-           data-fr="Outils : Veille marché, insights data, collaboration">Tools: Market knowledge, Data insight, Collaboration</p>
+           data-fr="Outils : Veille marché, insights data, collaboration">Outils : Veille marché, insights data, collaboration</p>
       </div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
   <section id="experience">
-    <h2 data-en="Professional Experience" data-fr="Expérience professionnelle">Professional Experience</h2>
+    <h2 data-en="Professional Experience" data-fr="Expérience professionnelle">Expérience professionnelle</h2>
     <div class="services">
-      <!-- Other Experiences -->
+	<!-- Other Experiences -->
       <div class="card">
         <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png" alt="Experience Icon" />
-        <strong data-en="Other Experiences" data-fr="Autres expériences">Other Experiences</strong>
-        <span style="font-size:0.96em;color:#555;">2016 – 2018</span>
+        <strong data-en="Other Experiences" data-fr="Autres expériences">Autres expériences</strong>
+        <span style="font-size:0.96em;color:#555;">2016 — 2018</span>
         <div class="compact-section">
           <img src="https://cdn-icons-png.flaticon.com/512/3703/3703300.png" alt="Consultant Icon"/>
-          <span data-en="IT Consultant (permanent contract), Devoteam – Top Team / AXA France, Nanterre Prefecture<br><img src='https://cdn-icons-png.flaticon.com/512/3721/3721743.png' style='width:16px;height:16px;vertical-align:middle;margin-right:3px;'> Production monitoring (GED and Web application)"
-                data-fr="Consultant IT (CDI), Devoteam – Top Team / AXA France, Nanterre Préfecture<br><img src='https://cdn-icons-png.flaticon.com/512/3721/3721743.png' style='width:16px;height:16px;vertical-align:middle;margin-right:3px;'> Suivi de production GED & application web">
-            IT Consultant (permanent contract), Devoteam – Top Team / AXA France, Nanterre Prefecture<br>
+          <span data-en="IT Consultant (permanent contract), Devoteam — Top Team / AXA France, Nanterre Prefecture<br><img src='https://cdn-icons-png.flaticon.com/512/3721/3721743.png' style='width:16px;height:16px;vertical-align:middle;margin-right:3px;'> Production monitoring (GED and Web application)"
+                data-fr="Consultant IT (CDI), Devoteam — Top Team / AXA France, Nanterre Préfecture<br><img src='https://cdn-icons-png.flaticon.com/512/3721/3721743.png' style='width:16px;height:16px;vertical-align:middle;margin-right:3px;'> Suivi de production GED & application web">
+            Consultant IT (CDI), Devoteam — Top Team / AXA France, Nanterre Préfecture<br>
             <img src="https://cdn-icons-png.flaticon.com/512/3721/3721743.png" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;">
-            Production monitoring (GED and Web application)
+            Suivi de production GED & application web
           </span>
         </div>
-        <span style="font-size:0.96em;color:#555;">2015 – 2016</span>
+        <span style="font-size:0.96em;color:#555;">2015 — 2016</span>
         <div class="compact-section">
           <img src="https://cdn-icons-png.flaticon.com/512/3819/3819895.png" alt="Developer Icon"/>
-          <span data-en="IT Developer (apprenticeship), Paris City Hall – Paris 12th<br><img src='https://cdn-icons-png.flaticon.com/512/5948/5948425.png' style='width:16px;height:16px;vertical-align:middle;margin-right:3px;'> Deployment & customization of Alfresco GED application"
-                data-fr="Développeur informatique (alternance), Mairie de Paris – Paris 12e<br><img src='https://cdn-icons-png.flaticon.com/512/5948/5948425.png' style='width:16px;height:16px;vertical-align:middle;margin-right:3px;'> Mise en place et personnalisation GED Alfresco">
-            IT Developer (apprenticeship), Paris City Hall – Paris 12th<br>
+          <span data-en="IT Developer (apprenticeship), Paris City Hall — Paris 12th<br><img src='https://cdn-icons-png.flaticon.com/512/5948/5948425.png' style='width:16px;height:16px;vertical-align:middle;margin-right:3px;'> Deployment & customization of Alfresco GED application"
+                data-fr="Développeur informatique (alternance), Mairie de Paris — Paris 12e<br><img src='https://cdn-icons-png.flaticon.com/512/5948/5948425.png' style='width:16px;height:16px;vertical-align:middle;margin-right:3px;'> Mise en place et personnalisation GED Alfresco">
+            Développeur informatique (alternance), Mairie de Paris — Paris 12e<br>
             <img src="https://cdn-icons-png.flaticon.com/512/5948/5948425.png" style="width:16px;height:16px;vertical-align:middle;margin-right:3px;">
-            Deployment & customization of Alfresco GED application
+            Mise en place et personnalisation GED Alfresco
           </span>
         </div>
       </div>
       <!-- Mangopay -->
       <div class="card">
         <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" alt="Mangopay Icon" />
-        <strong>MANGOPAY – Senior Customer Success Analyst</strong>
-        <span style="font-size:0.96em;color:#555;">2018 – 2024</span>
+        <strong>MANGOPAY — Senior Customer Success Analyst</strong>
+        <span style="font-size:0.96em;color:#555;">2018 — 2024</span>
         <div class="compact-section">
           <img src="https://cdn-icons-png.flaticon.com/512/2636/2636989.png" alt="Projects Icon"/>
           <span data-en="Projects: Data support, dashboards (Snowflake/Looker), process automation, Tier 3 support"
                 data-fr="Projets : Support data, dashboards (Snowflake/Looker), automatisation de process, support Tier 3">
-            Projects: Data support, dashboards (Snowflake/Looker), process automation, Tier 3 support
+            Projets : Support data, dashboards (Snowflake/Looker), automatisation de process, support Tier 3
           </span>
         </div>
         <div class="compact-section">
           <img src="https://cdn-icons-png.flaticon.com/512/1183/1183672.png" alt="Skills Icon"/>
           <span data-en="Skills: Data modeling, Excel analytics, client-facing support, project management"
                 data-fr="Compétences : Modélisation data, Excel, support client, gestion de projet">
-            Skills: Data modeling, Excel analytics, client-facing support, project management
+            Compétences : Modélisation data, Excel, support client, gestion de projet
           </span>
         </div>
         <div class="compact-section">
           <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Tools Icon"/>
           <span data-en="Tools: Snowflake, Looker, CRM Analytics, Excel, Confluence, JIRA, Postman, Kibana"
                 data-fr="Outils : Snowflake, Looker, CRM Analytics, Excel, Confluence, JIRA, Postman, Kibana">
-            Tools: Snowflake, Looker, CRM Analytics, Excel, Confluence, JIRA, Postman, Kibana
+            Outils : Snowflake, Looker, CRM Analytics, Excel, Confluence, JIRA, Postman, Kibana
           </span>
         </div>
       </div>
+      
       <!-- Freelance -->
-      <div class="card">
-        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/3649/3649465.png" alt="Freelance Icon" />
-        <strong data-en="Freelance – Data Analyst & Consultant" data-fr="Freelance – Data Analyst & Consultant">Freelance – Data Analyst & Consultant</strong>
-        <span style="font-size:0.96em;color:#555;">2025 – Present</span>
-        <div class="compact-section">
-          <img src="https://cdn-icons-png.flaticon.com/512/3534/3534066.png" alt="Domain Icon" />
-          <span data-en="Business insights, data pipelines, dashboarding, strategy (tech & finance clients)"
-                data-fr="Business insights, pipelines data, dashboarding, stratégie (clients tech & finance)">
-            Business insights, data pipelines, dashboarding, strategy (tech & finance clients)
-          </span>
-        </div>
-        <div class="compact-section">
-          <img src="https://cdn-icons-png.flaticon.com/512/1907/1907555.png" alt="Skills Icon" />
-          <span data-en="Consulting, automation, process improvement, training"
-                data-fr="Consulting, automatisation, amélioration process, formation">
-            Consulting, automation, process improvement, training
-          </span>
-        </div>
-        <div class="compact-section">
-          <img src="https://cdn-icons-png.flaticon.com/512/3192/3192541.png" alt="Tools Icon" />
-          <span data-en="Python, Power BI, SQL, Salesforce, Looker, Notion"
-                data-fr="Python, Power BI, SQL, Salesforce, Looker, Notion">
-            Python, Power BI, SQL, Salesforce, Looker, Notion
-          </span>
-        </div>
-      </div>
+<div class="card">
+  <img class="icon" src="https://cdn-icons-png.flaticon.com/512/3649/3649465.png" alt="Freelance Icon" />
+  <strong data-en="Freelance — Data Analyst & Consultant" data-fr="Freelance — Data Analyst & Consultant">Freelance — Data Analyst & Consultant</strong>
+  <span style="font-size:0.96em;color:#555;">
+    <span data-en="2025 — Present" data-fr="2025 — Présent">2025 — Présent</span>
+  </span>
+  
+  <div class="compact-section">
+    <img src="https://cdn-icons-png.flaticon.com/512/3534/3534066.png" alt="Domain Icon" />
+    <span data-en="Specialized in B2B SaaS scale-ups (tech & fintech). End-to-end data strategy from audit to implementation."
+          data-fr="Spécialisé scale-ups SaaS B2B (tech & fintech). Stratégie data de bout en bout : audit, architecture, dashboards.">
+      Spécialisé scale-ups SaaS B2B (tech & fintech). Stratégie data de bout en bout : audit, architecture, dashboards.
+    </span>
+  </div>
+  
+  <div class="compact-section">
+    <img src="https://cdn-icons-png.flaticon.com/512/1907/1907555.png" alt="Skills Icon" />
+    <span data-en="Key deliverables: Operational dashboards, data pipelines, process automation, team training & autonomy"
+          data-fr="Livrables clés : Dashboards opérationnels, pipelines data, automatisation process, formation & autonomie équipes">
+      Livrables clés : Dashboards opérationnels, pipelines data, automatisation process, formation & autonomie équipes
+    </span>
+  </div>
+  
+  <div class="compact-section">
+    <img src="https://cdn-icons-png.flaticon.com/512/3192/3192541.png" alt="Tools Icon" />
+    <span data-en="Stack: Python, SQL, Power BI, Looker, Snowflake, Salesforce, Excel, Notion"
+          data-fr="Stack : Python, SQL, Power BI, Looker, Snowflake, Salesforce, Excel, Notion">
+      Stack : Python, SQL, Power BI, Looker, Snowflake, Salesforce, Excel, Notion
+    </span>
+  </div>
+</div>
+      
+      
     </div>
   </section>
 
   <!-- EDUCATION -->
   <section id="education">
-    <h2 data-en="Education & Certifications" data-fr="Formation & Certifications">Education & Certifications</h2>
+    <h2 data-en="Education & Certifications" data-fr="Formation & Certifications">Formation & Certifications</h2>
     <div class="edu-container">
       <div class="edu-group">
-        <h3><img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" class="edu-icon" alt="Degree Icon"> <span data-en="Academic Background" data-fr="Parcours académique">Academic Background</span></h3>
+        <h3><img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" class="edu-icon" alt="Degree Icon"> <span data-en="Academic Background" data-fr="Parcours académique">Parcours académique</span></h3>
         <ul>
-          <li data-en="BTS SIO (SLAM) – IT Services for Organizations, specialization: Software Solutions & Business Applications (French 2-year technical degree), CFA IMC Randstad – 2014" data-fr="BTS SIO – option SLAM (Solutions logicielles et applications métiers), CFA IMC Randstad – 2014">BTS SIO (SLAM) – IT Services for Organizations, specialization: Software Solutions & Business Applications (French 2-year technical degree), CFA IMC Randstad – 2014</li>
-          <li data-en="Professional Bachelor’s Degree in Digital and Multimedia, University of Versailles – 2016" data-fr="Licence pro – Métiers du numérique & du multimédia, Université de Versailles – 2016">Professional Bachelor’s Degree in Digital and Multimedia, University of Versailles – 2016</li>
+          <li data-en="BTS SIO (SLAM) — IT Services for Organizations, specialization: Software Solutions & Business Applications (French 2-year technical degree), CFA IMC Randstad — 2014" data-fr="BTS SIO — option SLAM (Solutions logicielles et applications métiers), CFA IMC Randstad — 2014">BTS SIO — option SLAM (Solutions logicielles et applications métiers), CFA IMC Randstad — 2014</li>
+          <li data-en="Professional Bachelor's Degree in Digital and Multimedia, University of Versailles — 2016" data-fr="Licence pro — Métiers du numérique & du multimédia, Université de Versailles — 2016">Licence pro — Métiers du numérique & du multimédia, Université de Versailles — 2016</li>
         </ul>
       </div>
       <div class="edu-group">
-        <h3><img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" class="edu-icon" alt="Certificate Icon"> <span data-en="Certifications & Training" data-fr="Certifications & Formations">Certifications & Training</span></h3>
+        <h3><img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" class="edu-icon" alt="Certificate Icon"> <span data-en="Certifications & Training" data-fr="Certifications & Formations">Certifications & Formations</span></h3>
         <ul>
-          <li data-en="Python for Data (Udemy) – 2025" data-fr="Python pour la Data (Udemy) – 2025">Python for Data (Udemy) – 2025</li>
-          <li data-en="Power BI (Udemy) – 2025" data-fr="Power BI (Udemy) – 2025">Power BI (Udemy) – 2025</li>
-          <li data-en="Agile: Scrum Master (Udemy) – 2025" data-fr="Agile : Scrum Master (Udemy) – 2025">Agile: Scrum Master (Udemy) – 2025</li>
+          <li data-en="Python for Data (Udemy) — 2025" data-fr="Python pour la Data (Udemy) — 2025">Python pour la Data (Udemy) — 2025</li>
+          <li data-en="Power BI (Udemy) — 2025" data-fr="Power BI (Udemy) — 2025">Power BI (Udemy) — 2025</li>
+          <li data-en="Agile: Scrum Master (Udemy) — 2025" data-fr="Agile : Scrum Master (Udemy) — 2025">Agile : Scrum Master (Udemy) — 2025</li>
         </ul>
       </div>
     </div>
@@ -689,46 +950,46 @@ I reveal hidden insights in your data to boost your performance by <strong>25% o
 
   <!-- PROJECTS -->
   <section id="projects">
-    <h2 data-en="Projects" data-fr="Projets">Projects</h2>
+    <h2 data-en="Projects" data-fr="Projets">Projets</h2>
     <div class="projects">
       <div class="project-card">
         <img src="img/Behavioral_Payment_Analysis.jpg" alt="Behavioral Payment Analysis">
         <div class="overlay">
-          <strong data-en="Behavioral Payment Analysis" data-fr="Analyse comportementale des paiements">Behavioral Payment Analysis</strong>
+          <strong data-en="Behavioral Payment Analysis" data-fr="Analyse comportementale des paiements">Analyse comportementale des paiements</strong>
           <p data-en="Built SQL queries to extract user payment patterns and conversion rates."
              data-fr="Extraction des parcours & taux de conversion via requêtes SQL.">
-             Built SQL queries to extract user payment patterns and conversion rates.</p>
-          <a href="project1.html" data-en="View project" data-fr="Voir le projet">View project</a>
+             Extraction des parcours & taux de conversion via requêtes SQL.</p>
+          <a href="project1.html" data-en="View project" data-fr="Voir le projet">Voir le projet</a>
         </div>
       </div>
       <div class="project-card">
         <img src="img/KYC_project.jpg" alt="KYC/KYB Dashboard">
         <div class="overlay">
-          <strong data-en="KYC/KYB Dashboard" data-fr="Dashboard KYC/KYB">KYC/KYB Dashboard</strong>
+          <strong data-en="KYC/KYB Dashboard" data-fr="Dashboard KYC/KYB">Dashboard KYC/KYB</strong>
           <p data-en="Created an interactive dashboard to monitor KYC/KYB status and risk scoring."
              data-fr="Dashboard interactif : suivi des statuts KYC/KYB et scoring risques.">
-             Created an interactive dashboard to monitor KYC/KYB status and risk scoring.</p>
-          <a href="project2.html" data-en="View project" data-fr="Voir le projet">View project</a>
+             Dashboard interactif : suivi des statuts KYC/KYB et scoring risques.</p>
+          <a href="project2.html" data-en="View project" data-fr="Voir le projet">Voir le projet</a>
         </div>
       </div>
       <div class="project-card">
         <img src="img/python.jpg" alt="Data Processing with Python & PySpark">
         <div class="overlay">
-          <strong data-en="Data Processing with Python & PySpark" data-fr="Traitement Data avec Python & PySpark">Data Processing with Python & PySpark</strong>
+          <strong data-en="Data Processing with Python & PySpark" data-fr="Traitement Data avec Python & PySpark">Traitement Data avec Python & PySpark</strong>
           <p data-en="Automated large CSV transformations and cleaned customer data pipelines."
              data-fr="Automatisation de la transformation de gros CSV & pipelines data clients.">
-             Automated large CSV transformations and cleaned customer data pipelines.</p>
-          <a href="project3.html" data-en="View project" data-fr="Voir le projet">View project</a>
+             Automatisation de la transformation de gros CSV & pipelines data clients.</p>
+          <a href="project3.html" data-en="View project" data-fr="Voir le projet">Voir le projet</a>
         </div>
       </div>
       <div class="project-card">
         <img src="img/Customer.jpg" alt="Customer Acquisition Monitoring">
         <div class="overlay">
-          <strong data-en="Customer Acquisition Monitoring" data-fr="Suivi acquisition clients">Customer Acquisition Monitoring</strong>
+          <strong data-en="Customer Acquisition Monitoring" data-fr="Suivi acquisition clients">Suivi acquisition clients</strong>
           <p data-en="Built Salesforce dashboard to track acquisition funnel and conversion KPIs."
              data-fr="Dashboard Salesforce : suivi funnel acquisition et KPIs conversion.">
-             Built Salesforce dashboard to track acquisition funnel and conversion KPIs.</p>
-          <a href="project4.html" data-en="View project" data-fr="Voir le projet">View project</a>
+             Dashboard Salesforce : suivi funnel acquisition et KPIs conversion.</p>
+          <a href="project4.html" data-en="View project" data-fr="Voir le projet">Voir le projet</a>
         </div>
       </div>
     </div>
@@ -738,7 +999,7 @@ I reveal hidden insights in your data to boost your performance by <strong>25% o
   <section id="contact">
     <h2 data-en="Contact" data-fr="Contact">Contact</h2>
     <p data-en="Ready to transform your data into growth? Let's discuss your project!" data-fr="Prêt à transformer vos données en croissance ? Discutons de votre projet !">
-      Ready to transform your data into growth? Let's discuss your project!
+      Prêt à transformer vos données en croissance ? Discutons de votre projet !
     </p>
     
     <div class="contact-links">
@@ -754,7 +1015,7 @@ I reveal hidden insights in your data to boost your performance by <strong>25% o
         <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Icon">
         <div>
           <strong>LinkedIn</strong>
-          <span data-en="Professional profile" data-fr="Profil professionnel">Professional profile</span>
+          <span data-en="Professional profile" data-fr="Profil professionnel">Profil professionnel</span>
         </div>
       </a>
       
@@ -762,24 +1023,24 @@ I reveal hidden insights in your data to boost your performance by <strong>25% o
         <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Malt Icon">
         <div>
           <strong>Malt</strong>
-          <span data-en="Freelance profile & reviews" data-fr="Profil freelance & avis">Freelance profile & reviews</span>
+          <span data-en="Freelance profile & reviews" data-fr="Profil freelance & avis">Profil freelance & avis</span>
         </div>
       </a>
     </div>
     
     <div class="contact-cta">
-      <p data-en="🎁 <strong>Free 1-hour consultation</strong> to analyze your data challenges" data-fr="🎁 <strong>Consultation gratuite de 1h</strong> pour analyser vos défis data">
-        🎁 <strong>Free 1-hour consultation</strong> to analyze your data challenges
+      <p data-en="📅 <strong>Free 30-min consultation</strong> to analyze your data challenges" data-fr="📅 <strong>Consultation gratuite de 30 min</strong> pour analyser vos défis data">
+        📅 <strong>Consultation gratuite de 30 min</strong> pour analyser vos défis data
       </p>
       <a href="https://calendly.com/ali-belabbas-success/30min" target="_blank" class="contact-btn" data-en="📅 Schedule a call" data-fr="📅 Planifier un appel">
-        📅 Schedule a call
+        📅 Planifier un appel
       </a>
     </div>
   </section>
 
-  <footer>&copy; 2025 Ali Belabbas – All rights reserved
+  <footer>&copy; 2025 Ali Belabbas — Tous droits réservés
     <br>
-  <a href="mentions_legales.html">Legal Notices / Mentions légales</a>
+  <a href="mentions_legales.html">Mentions légales / Legal Notices</a>
   </footer>
 
  <script>
@@ -843,8 +1104,8 @@ I reveal hidden insights in your data to boost your performance by <strong>25% o
     // Click handlers
     langBtns.forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
 
-    // Init: English first
-    setLang('en');
+    // Init: French first
+    setLang('fr');
 </script>
 </body>
 </html>
