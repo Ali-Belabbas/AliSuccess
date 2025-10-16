@@ -111,9 +111,62 @@
     }
     .use-case img {
       width: 100%;
+      max-width: 700px;
+      height: auto;
       border-radius: 8px;
-      margin: 1rem 0;
+      margin: 1rem auto;
+      display: block;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .use-case img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      overflow: auto;
+    }
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 95%;
+      max-height: 95%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10000;
+    }
+    .close-modal:hover {
+      color: #bbb;
+    }
+    .modal-caption {
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
     }
     .tech-stack {
       background: #f8f6ff;
@@ -163,6 +216,7 @@
       .container { padding: 1.5rem; }
       h1 { font-size: 1.5rem; }
       .key-results { grid-template-columns: 1fr; }
+      .close-modal { top: 10px; right: 15px; font-size: 30px; }
     }
   </style>
 </head>
@@ -180,7 +234,6 @@
       Analyse SQL • Fintech • 8 Cas d'usage
     </p>
 
-    <!-- Important Info -->
     <div class="important-info">
       <strong data-en="ℹ️ Important Information" data-fr="ℹ️ Informations importantes">ℹ️ Informations importantes</strong><br>
       <span data-en="All data shown is fictional for demonstration purposes. This project showcases the type of analysis performed during my experience at Mangopay."
@@ -189,7 +242,6 @@
       </span>
     </div>
 
-    <!-- Context -->
     <div class="context-box">
       <h2 data-en="🎯 Context & Objective" data-fr="🎯 Contexte & Objectif">🎯 Contexte & Objectif</h2>
       <p data-en="<strong>Challenge:</strong> Payment API managing transactions across multiple platforms with 3 payment methods (Card, Wallet, Bank Transfer) via 2 PSPs."
@@ -202,7 +254,6 @@
       </p>
     </div>
 
-    <!-- Key Results -->
     <h2 style="color: #3b2c50; margin-top: 2rem;" data-en="📊 Key Analyses Performed" data-fr="📊 Analyses Clés Réalisées">📊 Analyses Clés Réalisées</h2>
     <div class="key-results">
       <div class="result-card">
@@ -219,15 +270,14 @@
       </div>
     </div>
 
-    <!-- Sample Use Cases -->
     <div class="use-case">
       <h3 data-en="Use Case 1: Volume & Revenue by Payment Method" data-fr="Cas d'usage 1 : Volume & Revenu par Méthode">Cas d'usage 1 : Volume & Revenu par Méthode</h3>
       <p data-en="Analysis comparing transaction volumes, total amounts, and profitability across Card, Wallet, and Bank Transfer methods."
          data-fr="Analyse comparant les volumes de transactions, montants totaux et rentabilité entre Carte, E-wallet et Virement.">
         Analyse comparant les volumes de transactions, montants totaux et rentabilité entre Carte, E-wallet et Virement.
       </p>
-      <img src="img/SQL/UC1_SQL.JPG" alt="SQL Query 1">
-      <img src="img/SQL/UC1_res.JPG" alt="Results 1">
+      <img src="img/SQL/UC1_SQL.JPG" alt="SQL Query 1" class="clickable-image">
+      <img src="img/SQL/UC1_res.JPG" alt="Results 1" class="clickable-image">
       <p><strong data-en="Impact:" data-fr="Impact :">Impact :</strong> 
         <span data-en="Supports PSP negotiation and UX optimization based on cost efficiency."
               data-fr="Aide aux négociations PSP et à l'optimisation UX basée sur l'efficacité des coûts.">
@@ -242,8 +292,8 @@
          data-fr="Identifie les paiements effectués avec des cartes expirées pour révéler les vulnérabilités système ou tentatives de fraude.">
         Identifie les paiements effectués avec des cartes expirées pour révéler les vulnérabilités système ou tentatives de fraude.
       </p>
-      <img src="img/SQL/UC5_SQL.JPG" alt="SQL Query 5">
-      <img src="img/SQL/UC5_res.JPG" alt="Results 5">
+      <img src="img/SQL/UC5_SQL.JPG" alt="SQL Query 5" class="clickable-image">
+      <img src="img/SQL/UC5_res.JPG" alt="Results 5" class="clickable-image">
       <p><strong data-en="Impact:" data-fr="Impact :">Impact :</strong>
         <span data-en="Enables automated alerts and improves security monitoring."
               data-fr="Permet des alertes automatisées et améliore la surveillance sécurité.">
@@ -259,12 +309,10 @@
       </em>
     </p>
 
-    <!-- Tech Stack -->
     <div class="tech-stack" data-en="🛠️ Stack: SQL • Supabase • PostgreSQL • Fintech APIs" data-fr="🛠️ Stack : SQL • Supabase • PostgreSQL • API Fintech">
       🛠️ Stack : SQL • Supabase • PostgreSQL • API Fintech
     </div>
 
-    <!-- CTA -->
     <div class="cta-section">
       <h2 data-en="Need Similar Analysis?" data-fr="Besoin d'Analyses Similaires ?">Besoin d'Analyses Similaires ?</h2>
       <p data-en="I can design custom SQL analyses and dashboards tailored to your payment flows and business needs."
@@ -276,6 +324,12 @@
         Me Contacter
       </a>
     </div>
+  </div>
+
+  <div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImage">
+    <div class="modal-caption" id="modalCaption"></div>
   </div>
 
   <script>
@@ -296,6 +350,35 @@
       });
     }
     toggleBtn.onclick = switchLang;
+
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    const closeBtn = document.querySelector('.close-modal');
+
+    document.querySelectorAll('.clickable-image').forEach(img => {
+      img.onclick = function() {
+        modal.style.display = 'block';
+        modalImg.src = this.src;
+        modalCaption.textContent = this.alt;
+      }
+    });
+
+    closeBtn.onclick = function() {
+      modal.style.display = 'none';
+    }
+
+    modal.onclick = function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === 'block') {
+        modal.style.display = 'none';
+      }
+    });
   </script>
 </body>
 </html>
