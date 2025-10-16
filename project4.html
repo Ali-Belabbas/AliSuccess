@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="favicon-as-plain.ico">
-  <title data-en="Client Acquisition & Onboarding Dashboard (Salesforce Simulation)" data-fr="Tableau de bord Acquisition & Onboarding Client (Simulation Salesforce)">
-    Client Acquisition & Onboarding Dashboard (Salesforce Simulation)
-  </title>
+  <title>Salesforce Dashboard - Client Acquisition Tracking</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -37,299 +35,345 @@
       color: #3b2c50;
     }
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       background: white;
       border-radius: 12px;
-      padding: 2rem;
+      padding: 2.5rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    section {
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 1rem;
-      background-color: #fafafa;
-      margin-bottom: 2.5rem;
-    }
-    h1, h2 {
-      color: #3b2c50;
-    }
     h1 {
+      color: #3b2c50;
       text-align: center;
-      font-size: 2.3rem;
-      margin-bottom: 1.8rem;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
     }
-    h2 {
-      font-size: 1.22rem;
-      margin-top: 1.6rem;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .subtitle {
-      font-size: 1.07rem;
-      font-weight: 600;
-      color: #222;
-      margin-top: 1.15rem;
-      margin-bottom: 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+    .subtitle-main {
+      text-align: center;
+      color: #6c4ba7;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      font-weight: 500;
     }
     .important-info {
-      border-left: 5px solid #fd7e14;
+      border-left: 4px solid #fd7e14;
       background: #fff7ea;
       padding: 1rem 1.2rem;
-      border-radius: 7px;
-      margin-bottom: 1.6rem;
-      font-size: 1.05rem;
+      border-radius: 6px;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
       color: #a74a00;
     }
-    .image-placeholder {
-      width: 96%;
-      max-width: 600px;
-      min-height: 120px;
-      background: #ececec;
-      color: #999;
+    .context-box {
+      background: #f8f6ff;
       border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .context-box h2 {
+      color: #3b2c50;
+      font-size: 1.3rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .key-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .result-card {
+      background: white;
+      border: 2px solid #e8e4f3;
+      border-radius: 8px;
+      padding: 1rem;
       text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    }
+    .result-number {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #6c4ba7;
+      margin-bottom: 0.3rem;
+    }
+    .result-label {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .dashboard-preview {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .dashboard-preview img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      margin: 1rem 0;
+    }
+    .feature-section {
+      margin: 2rem 0;
+      border-top: 1px solid #e8e4f3;
+      padding-top: 1.5rem;
+    }
+    .feature-section h3 {
+      color: #3b2c50;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .feature-card {
+      background: #f8f6ff;
+      border-radius: 8px;
+      padding: 1.2rem;
+    }
+    .feature-card h4 {
+      color: #6c4ba7;
       font-size: 1.05rem;
-      margin: 1.3rem auto 1.6rem auto;
-      border: 2px dashed #c1bcbc;
-      font-style: italic;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
     }
-    .tools {
-      margin-top: 0.7rem;
-      font-style: italic;
-      font-size: 0.99rem;
+    .feature-card img {
+      width: 100%;
+      border-radius: 6px;
+      margin: 0.8rem 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    a { color: #6c4ba7; text-decoration: none; }
-    ul,ol { margin-top: 0.5rem; padding-left: 1.4rem;}
-    @media (max-width: 800px) {
-      .container { padding: 0.5rem; }
-      h1 { font-size: 1.4rem; }
-      section { padding: 0.7rem; }
-      .image-placeholder { min-height: 70px; font-size: 0.92rem; }
-      .lang-toggle { right: 0.7rem; top: 0.7rem; }
+    .tech-stack {
+      background: #f8f6ff;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 2rem 0;
+      text-align: center;
+      font-weight: 500;
+      color: #6c4ba7;
+    }
+    .cta-section {
+      background: #f8f6ff;
+      border-radius: 12px;
+      padding: 2.5rem;
+      text-align: center;
+      margin-top: 3rem;
+      border: 2px solid #e8e4f3;
+    }
+    .cta-section h2 {
+      color: #3b2c50;
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+    .cta-section p {
+      color: #666;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
+    .cta-button {
+      display: inline-block;
+      background: #6c4ba7;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .cta-button:hover {
+      background: #5a3d8f;
+    }
+    a {
+      color: #6c4ba7;
+      text-decoration: none;
+    }
+    ul {
+      line-height: 1.8;
+      color: #555;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 1.5rem; }
+      h1 { font-size: 1.5rem; }
+      .key-results, .feature-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <button class="lang-toggle" id="lang-toggle">🇫🇷</button>
-  <p>
-    <a href="index.html" data-en="← Back to portfolio" data-fr="← Retour au portfolio">← Back to portfolio</a>
+  <button class="lang-toggle" id="lang-toggle">🇬🇧</button>
+  <p style="margin-bottom: 2rem;">
+    <a href="index.html" data-en="← Back to portfolio" data-fr="← Retour au portfolio">← Retour au portfolio</a>
   </p>
+  
   <div class="container">
-
-    <h1 data-en="Client Acquisition & Onboarding Dashboard (Salesforce Simulation)" data-fr="Tableau de bord Acquisition & Onboarding Client (Simulation Salesforce)">
-      Client Acquisition & Onboarding Dashboard (Salesforce Simulation)
+    <h1 data-en="Salesforce Dashboard - Client Acquisition Tracking" data-fr="Dashboard Salesforce - Suivi Acquisition Client">
+      Dashboard Salesforce - Suivi Acquisition Client
     </h1>
+    <p class="subtitle-main" data-en="Salesforce • CRM • Onboarding Monitoring" data-fr="Salesforce • CRM • Monitoring Onboarding">
+      Salesforce • CRM • Monitoring Onboarding
+    </p>
 
-    <!-- Section 1 -->
-    <section>
-      <h2 data-en="ℹ️ Important Information" data-fr="ℹ️ Informations importantes">ℹ️ Important Information</h2>
-      <div class="important-info"
-        data-en="Due to strict regulations and the sensitivity of the data in this field, all data and names (clients, amounts, etc.) shown here are entirely fictitious. The sole purpose of this project is to present my work at Mangopay and the kind of results expected."
-        data-fr="En raison de la réglementation stricte et de la sensibilité des données dans ce domaine, toutes les données et tous les noms (clients, montants, etc.) présentés ici sont entièrement fictifs. Le seul but de ce projet est de présenter mon travail chez Mangopay et les résultats attendus.">
-        Due to strict regulations and the sensitivity of the data in this field, all data and names (clients, amounts, etc.) shown here are entirely fictitious. The sole purpose of this project is to present my work at Mangopay and the kind of results expected.
+    <!-- Important Info -->
+    <div class="important-info">
+      <strong data-en="ℹ️ Important Information" data-fr="ℹ️ Informations importantes">ℹ️ Informations importantes</strong><br>
+      <span data-en="All data and client names are fictional. This project demonstrates the type of Salesforce dashboard designed during my experience at Mangopay."
+            data-fr="Toutes les données et noms de clients sont fictifs. Ce projet démontre le type de dashboard Salesforce conçu lors de mon expérience chez Mangopay.">
+        Toutes les données et noms de clients sont fictifs. Ce projet démontre le type de dashboard Salesforce conçu lors de mon expérience chez Mangopay.
+      </span>
+    </div>
+
+    <!-- Context -->
+    <div class="context-box">
+      <h2 data-en="🎯 Context & Objective" data-fr="🎯 Contexte & Objectif">🎯 Contexte & Objectif</h2>
+      <p data-en="<strong>Challenge:</strong> No centralized view of the client acquisition and onboarding journey, causing delays, resource misallocation, and missed SLA targets."
+         data-fr="<strong>Challenge :</strong> Absence de vue centralisée du parcours d'acquisition et d'onboarding client, causant retards, mauvaise allocation des ressources et non-respect des SLA.">
+        <strong>Challenge :</strong> Absence de vue centralisée du parcours d'acquisition et d'onboarding client, causant retards, mauvaise allocation des ressources et non-respect des SLA.
+      </p>
+      <p data-en="<strong>Solution:</strong> Designed a comprehensive Salesforce dashboard tracking the full lifecycle from commercial qualification to go-live, with custom objects (Platform, Revenue) and automated milestone monitoring."
+         data-fr="<strong>Solution :</strong> Conception d'un dashboard Salesforce complet suivant le cycle de vie complet de la qualification commerciale au go-live, avec objets personnalisés (Platform, Revenue) et monitoring automatisé des jalons.">
+        <strong>Solution :</strong> Conception d'un dashboard Salesforce complet suivant le cycle de vie complet de la qualification commerciale au go-live, avec objets personnalisés (Platform, Revenue) et monitoring automatisé des jalons.
+      </p>
+    </div>
+
+    <!-- Key Results -->
+    <h2 style="color: #3b2c50; margin-top: 2rem;" data-en="📊 Key Metrics Tracked" data-fr="📊 Métriques Clés Suivies">📊 Métriques Clés Suivies</h2>
+    <div class="key-results">
+      <div class="result-card">
+        <div class="result-number">29</div>
+        <div class="result-label" data-en="Clients in Acquisition" data-fr="Clients en Acquisition">Clients en Acquisition</div>
       </div>
-      <h2 data-en="🌟 Preface" data-fr="🌟 Préambule">🌟 Preface</h2>
-      <p data-en="This project illustrates a typical mission I carried out at MANGOPAY, using Salesforce Developer, a free and limited version of Salesforce. The structure here is deliberately simplified for demonstration; in reality, I worked on much more complex and advanced Salesforce environments."
-         data-fr="Ce projet illustre une mission type que j’ai menée chez MANGOPAY, avec Salesforce Developer (version gratuite et limitée de Salesforce). La structure est volontairement simplifiée : en réalité, j’ai travaillé sur des environnements Salesforce bien plus complexes et avancés.">
-        This project illustrates a typical mission I carried out at MANGOPAY, using Salesforce Developer, a free and limited version of Salesforce. The structure here is deliberately simplified for demonstration; in reality, I worked on much more complex and advanced Salesforce environments.
+      <div class="result-card">
+        <div class="result-number">97</div>
+        <div class="result-label" data-en="Clients in Integration" data-fr="Clients en Intégration">Clients en Intégration</div>
+      </div>
+      <div class="result-card">
+        <div class="result-number">€1.8M</div>
+        <div class="result-label" data-en="New Revenues" data-fr="Nouveaux Revenus">Nouveaux Revenus</div>
+      </div>
+      <div class="result-card">
+        <div class="result-number">6</div>
+        <div class="result-label" data-en="Integration Phases" data-fr="Phases d'Intégration">Phases d'Intégration</div>
+      </div>
+    </div>
+
+    <!-- Dashboard Preview -->
+    <div class="dashboard-preview">
+      <h2 style="color: #3b2c50; margin-bottom: 1rem;" data-en="Dashboard Overview" data-fr="Vue d'Ensemble Dashboard">Vue d'Ensemble Dashboard</h2>
+      <img src="img/SF/Client Onboarding Monitoring.png" alt="Main Dashboard">
+    </div>
+
+    <!-- Data Model -->
+    <div class="feature-section">
+      <h3 data-en="🗂️ Salesforce Data Model" data-fr="🗂️ Modèle de Données Salesforce">🗂️ Modèle de Données Salesforce</h3>
+      <p data-en="Custom objects and relationships designed to track the complete client lifecycle:"
+         data-fr="Objets personnalisés et relations conçus pour suivre le cycle de vie client complet :">
+        Objets personnalisés et relations conçus pour suivre le cycle de vie client complet :
       </p>
-      <h2 data-en="🎯 Objective" data-fr="🎯 Objectif">🎯 Objective</h2>
-      <p data-en="The goal is to have an acquisition tracking dashboard, allowing real-time visualization of the client journey, key steps, and all essential information (platform status, milestone dates, delays, first revenues, etc.), from contract signature through to go-live and client stabilization."
-         data-fr="L’objectif est d’avoir un tableau de bord de suivi de l’acquisition, permettant de visualiser en temps réel le parcours client, les étapes clés et toutes les informations essentielles (statut plateforme, dates jalons, retards, premiers revenus…), depuis la signature du contrat jusqu’au go-live et à la stabilisation du client.">
-        The goal is to have an acquisition tracking dashboard, allowing real-time visualization of the client journey, key steps, and all essential information (platform status, milestone dates, delays, first revenues, etc.), from contract signature through to go-live and client stabilization.
+      <ul>
+        <li data-en="<strong>Account:</strong> Client companies" data-fr="<strong>Account :</strong> Entreprises clientes"><strong>Account :</strong> Entreprises clientes</li>
+        <li data-en="<strong>Opportunity:</strong> Commercial processes (Qualification → Signature)" data-fr="<strong>Opportunity :</strong> Processus commerciaux (Qualification → Signature)"><strong>Opportunity :</strong> Processus commerciaux (Qualification → Signature)</li>
+        <li data-en="<strong>Platform (Custom):</strong> Technical integrations (Kick-off → Go-live → Run)" data-fr="<strong>Platform (Custom) :</strong> Intégrations techniques (Kick-off → Go-live → Run)"><strong>Platform (Custom) :</strong> Intégrations techniques (Kick-off → Go-live → Run)</li>
+        <li data-en="<strong>Revenue (Custom):</strong> Generated revenues per platform" data-fr="<strong>Revenue (Custom) :</strong> Revenus générés par plateforme"><strong>Revenue (Custom) :</strong> Revenus générés par plateforme</li>
+      </ul>
+      <img src="img/SF/Schéma relationnel SF.jpg" alt="Data Model" style="width: 80%; margin: 1.5rem auto; display: block; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    </div>
+
+    <!-- Key Features -->
+    <div class="feature-section">
+      <h3 data-en="🎯 Key Dashboard Features" data-fr="🎯 Fonctionnalités Clés">🎯 Fonctionnalités Clés</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4 data-en="Platform Distribution" data-fr="Répartition Plateformes">Répartition Plateformes</h4>
+          <p data-en="Breakdown by integration phase (Kick-off, Config, Tests, Go-live, Monitoring, Run) to identify bottlenecks."
+             data-fr="Répartition par phase d'intégration (Kick-off, Config, Tests, Go-live, Monitoring, Run) pour identifier les goulets.">
+            Répartition par phase d'intégration (Kick-off, Config, Tests, Go-live, Monitoring, Run) pour identifier les goulets.
+          </p>
+          <img src="img/SF/Platforms by integration phase.png" alt="Platforms by Phase">
+        </div>
+        
+        <div class="feature-card">
+          <h4 data-en="Revenue Dynamics" data-fr="Dynamique Revenus">Dynamique Revenus</h4>
+          <p data-en="Monthly revenue tracking to monitor growth trends and forecast cash flow."
+             data-fr="Suivi mensuel des revenus pour monitorer les tendances de croissance et prévoir les flux de trésorerie.">
+            Suivi mensuel des revenus pour monitorer les tendances de croissance et prévoir les flux de trésorerie.
+          </p>
+          <img src="img/SF/Account Revenues per month.png" alt="Revenue Trends">
+        </div>
+        
+        <div class="feature-card">
+          <h4 data-en="Geographic Distribution" data-fr="Répartition Géographique">Répartition Géographique</h4>
+          <p data-en="Client breakdown by European region to target commercial actions and allocate regional resources."
+             data-fr="Répartition clients par région européenne pour cibler les actions commerciales et allouer les ressources régionales.">
+            Répartition clients par région européenne pour cibler les actions commerciales et allouer les ressources régionales.
+          </p>
+          <img src="img/SF/Clients in Acquisition per Region.png" alt="Geographic View">
+        </div>
+        
+        <div class="feature-card">
+          <h4 data-en="Time-to-Live Tracking" data-fr="Suivi Time-to-Live">Suivi Time-to-Live</h4>
+          <p data-en="Platform-level monitoring of integration delays with color-coded alerts for at-risk cases exceeding targets."
+             data-fr="Suivi des retards d'intégration par plateforme avec alertes colorées pour les cas à risque dépassant les objectifs.">
+            Suivi des retards d'intégration par plateforme avec alertes colorées pour les cas à risque dépassant les objectifs.
+          </p>
+          <img src="img/SF/Platform time to live_1.png" alt="Time to Live">
+        </div>
+      </div>
+    </div>
+
+    <!-- Impact -->
+    <div class="context-box">
+      <h2 data-en="✅ Business Impact" data-fr="✅ Impact Métier">✅ Impact Métier</h2>
+      <ul>
+        <li data-en="<strong>Centralized visibility:</strong> Single source of truth for sales, delivery, and management teams"
+            data-fr="<strong>Visibilité centralisée :</strong> Source unique de vérité pour les équipes sales, delivery et direction">
+          <strong>Visibilité centralisée :</strong> Source unique de vérité pour les équipes sales, delivery et direction
+        </li>
+        <li data-en="<strong>Early risk detection:</strong> Automated alerts for SLA breaches and integration delays"
+            data-fr="<strong>Détection précoce des risques :</strong> Alertes automatisées pour dépassements SLA et retards d'intégration">
+          <strong>Détection précoce des risques :</strong> Alertes automatisées pour dépassements SLA et retards d'intégration
+        </li>
+        <li data-en="<strong>Resource optimization:</strong> Data-driven allocation based on pipeline volume and phase distribution"
+            data-fr="<strong>Optimisation ressources :</strong> Allocation basée sur les données selon le volume pipeline et la répartition des phases">
+          <strong>Optimisation ressources :</strong> Allocation basée sur les données selon le volume pipeline et la répartition des phases
+        </li>
+        <li data-en="<strong>Accelerated onboarding:</strong> Clear visibility on bottlenecks enables targeted interventions"
+            data-fr="<strong>Onboarding accéléré :</strong> Visibilité claire sur les goulets permet des interventions ciblées">
+          <strong>Onboarding accéléré :</strong> Visibilité claire sur les goulets permet des interventions ciblées
+        </li>
+        <li data-en="<strong>Revenue tracking:</strong> Real-time monitoring of commercial performance and conversion"
+            data-fr="<strong>Suivi revenus :</strong> Monitoring temps réel de la performance commerciale et conversion">
+          <strong>Suivi revenus :</strong> Monitoring temps réel de la performance commerciale et conversion
+        </li>
+      </ul>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="tech-stack" data-en="🛠️ Stack: Salesforce Developer • Custom Objects • Reports & Dashboards" data-fr="🛠️ Stack : Salesforce Developer • Objets Custom • Reports & Dashboards">
+      🛠️ Stack : Salesforce Developer • Objets Custom • Reports & Dashboards
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2 data-en="Need a Salesforce Dashboard?" data-fr="Besoin d'un Dashboard Salesforce ?">Besoin d'un Dashboard Salesforce ?</h2>
+      <p data-en="I can design custom Salesforce solutions with tailored data models, automated workflows, and executive dashboards for your business needs."
+         data-fr="Je peux concevoir des solutions Salesforce sur-mesure avec modèles de données adaptés, workflows automatisés et dashboards executive pour vos besoins métier.">
+        Je peux concevoir des solutions Salesforce sur-mesure avec modèles de données adaptés, workflows automatisés et dashboards executive pour vos besoins métier.
       </p>
-      <h2 data-en="🗂️ Context" data-fr="🗂️ Contexte">🗂️ Context</h2>
-      <p data-en="The project involved modeling and tracking the entire customer acquisition and onboarding journey within Salesforce, from commercial qualification to post-onboarding follow-up. To represent this cycle, I created Platform and Revenue objects, enhanced standard objects (Account, Opportunity), and managed their relationships, to build a synthetic dashboard for efficient activity management. This project highlights my ability to analyze business needs, structure data, and propose relevant models for operational management in Salesforce."
-         data-fr="Le projet a consisté à modéliser et suivre tout le cycle d’acquisition et d’onboarding client dans Salesforce, de la qualification commerciale au suivi post-onboarding. Pour représenter ce cycle, j’ai créé des objets Platform et Revenue, enrichi les objets standards (Account, Opportunity) et géré leurs relations, pour construire un dashboard synthétique adapté à la gestion opérationnelle. Ce projet met en avant ma capacité à analyser un besoin métier, structurer des données et proposer un modèle pertinent pour le pilotage dans Salesforce.">
-        The project involved modeling and tracking the entire customer acquisition and onboarding journey within Salesforce, from commercial qualification to post-onboarding follow-up. To represent this cycle, I created Platform and Revenue objects, enhanced standard objects (Account, Opportunity), and managed their relationships, to build a synthetic dashboard for efficient activity management. This project highlights my ability to analyze business needs, structure data, and propose relevant models for operational management in Salesforce.
-      </p>
-      <h2 data-en="🛠️ Main Salesforce Objects" data-fr="🛠️ Objets Salesforce principaux">🛠️ Main Salesforce Objects</h2>
-      <ul>
-        <li data-en="Account: Represents each client/company." data-fr="Account : Représente chaque client/entreprise."><b>Account:</b> Represents each client/company.</li>
-        <li data-en="Opportunity: A commercial process for an account (can be several per account: new offers, renewals, etc.)." data-fr="Opportunity : Un processus commercial pour un compte (plusieurs possibles par compte : nouvelles offres, renouvellements, etc.)."><b>Opportunity:</b> A commercial process for an account (can be several per account: new offers, renewals, etc.).</li>
-        <li data-en="Platform: Represents each technical integration (API, web/mobile environment, SaaS module, etc.) set up for a client (can be several per account)." data-fr="Platform : Représente chaque intégration technique (API, environnement web/mobile, module SaaS…) mise en place pour un client (plusieurs possibles par compte)."><b>Platform:</b> Represents each technical integration (API, web/mobile environment, SaaS module, etc.) set up for a client (can be several per account).</li>
-        <li data-en="Revenue: Represents revenues or invoices generated per platform (custom object for demo purposes)." data-fr="Revenue : Représente les revenus ou factures générés par plateforme (objet custom pour la démo)."><b>Revenue:</b> Represents revenues or invoices generated per platform (custom object for demo purposes).</li>
-      </ul>
-      <div class="subtitle" data-en="🔗 Main Relationships" data-fr="🔗 Principales relations">🔗 Main Relationships</div>
-      <ul>
-        <li data-en="One Account can have multiple Opportunities" data-fr="Un Account peut avoir plusieurs Opportunities">One Account can have multiple Opportunities</li>
-        <li data-en="One Account can have multiple Platforms" data-fr="Un Account peut avoir plusieurs Platforms">One Account can have multiple Platforms</li>
-        <li data-en="One Platform belongs to one Account and can have multiple Revenues" data-fr="Une Platform appartient à un Account et peut avoir plusieurs Revenues">One Platform belongs to one Account and can have multiple Revenues</li>
-      </ul>
-      <div class="image-placeholder"><img src="img/SF/Schéma relationnel SF.jpg" alt="schema screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
-      <div class="tools" data-en="Tools used: Salesforce, Excel" data-fr="Outils utilisés : Salesforce, Excel"><b>Tools used:</b> Salesforce, Excel</div>
-    </section>
-
-    <!-- Section 2 -->
-    <section>
-      <h2 data-en="🔄 Key Lifecycle Information" data-fr="🔄 Informations clés du cycle de vie">🔄 Key Lifecycle Information</h2>
-      <ul>
-        <li data-en="Acquisition steps (Opportunity): Qualification, Proposal, Signature, Integration Prep" data-fr="Étapes d’acquisition (Opportunity) : Qualification, Proposition, Signature, Préparation intégration"><b>Acquisition steps (Opportunity):</b> Qualification, Proposal, Signature, Integration Prep</li>
-        <li data-en="Integration phases (Platform): Kick-off, Configuration, Tests, Go-live, Monitoring, Run" data-fr="Phases d’intégration (Platform) : Kick-off, Configuration, Tests, Go-live, Monitoring, Run"><b>Integration phases (Platform):</b> Kick-off, Configuration, Tests, Go-live, Monitoring, Run</li>
-        <li data-en="Milestone dates: Contract signature, integration start, go-live, run phase, etc." data-fr="Dates jalons : Signature du contrat, début intégration, go-live, phase Run, etc."><b>Milestone dates:</b> Contract signature, integration start, go-live, run phase, etc.</li>
-        <li data-en="Status tracking: Account & Platform status" data-fr="Suivi du statut : Statut Account & Platform"><b>Status tracking:</b> Account & Platform status</li>
-        <li data-en="Revenue tracking (Revenue): Amount, status, due and payment dates" data-fr="Suivi revenus (Revenue) : Montant, statut, dates d’échéance et de paiement"><b>Revenue tracking (Revenue):</b> Amount, status, due and payment dates</li>
-      </ul>
-
-      <h2 data-en="📊 Dashboard Content" data-fr="📊 Contenu du tableau de bord">📊 Dashboard Content</h2>
-      <ul>
-        <li data-en="Tracking of client volume per phase (acquisition vs integration)" data-fr="Suivi du volume de clients par phase (acquisition vs intégration)">Tracking of client volume per phase (acquisition vs integration)</li>
-        <li data-en="Distribution of platforms by integration phase (from Kick-off to Run)" data-fr="Répartition des plateformes par phase d’intégration (de Kick-off à Run)">Distribution of platforms by integration phase (from Kick-off to Run)</li>
-        <li data-en="Monthly revenue dynamics to analyze growth" data-fr="Dynamique des revenus mensuels pour analyser la croissance">Monthly revenue dynamics to analyze growth</li>
-        <li data-en="Geographic distribution of clients in acquisition (by European region)" data-fr="Répartition géographique des clients en acquisition (par région européenne)">Geographic distribution of clients in acquisition (by European region)</li>
-        <li data-en="Monitoring integration delays (Time to go live) per platform, with visual highlights of gaps and potential delays" data-fr="Suivi des retards d’intégration (Time to go live) par plateforme, avec mise en avant des écarts et retards potentiels">Monitoring integration delays (Time to go live) per platform, with visual highlights of gaps and potential delays</li>
-      </ul>
-      <p data-en="Each indicator is interactive, relying on custom Salesforce reports, providing a clear, actionable view for sales, operational, and management teams. This dashboard fosters early detection of bottlenecks, effective team management, and optimization of the client onboarding process."
-         data-fr="Chaque indicateur est interactif, basé sur des rapports Salesforce custom, pour une vue claire et actionnable pour les équipes sales, opérationnelles et de direction. Ce dashboard permet la détection précoce des blocages, le pilotage efficace des équipes et l’optimisation de l’onboarding client.">
-        Each indicator is interactive, relying on custom Salesforce reports, providing a clear, actionable view for sales, operational, and management teams. This dashboard fosters early detection of bottlenecks, effective team management, and optimization of the client onboarding process.
-      </p>
-      <div class="image-placeholder"><img src="img/SF/Client Onboarding Monitoring.png" alt="Dashboard screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
-    </section>
-
-    <!-- Section 3 -->
-    <section>
-      <h2 data-en="👥 Clients in Acquisition" data-fr="👥 Clients en acquisition">👥 Clients in Acquisition</h2>
-      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
-      <p data-en="Total number of clients currently in the commercial acquisition phase." data-fr="Nombre total de clients actuellement en phase d’acquisition commerciale.">Total number of clients currently in the commercial acquisition phase.</p>
-      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
-      <ul>
-        <li data-en="Measures the volume of active opportunities and potential workload for Delivery/Tech teams." data-fr="Mesure le volume d’opportunités actives et la charge de travail potentielle pour les équipes Delivery/Tech.">Measures the volume of active opportunities and potential workload for Delivery/Tech teams.</li>
-      </ul>
-      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
-      <p data-en="With 29 clients in acquisition, the commercial pipeline is well supplied, suggesting a steady flow for upcoming phases." data-fr="Avec 29 clients en acquisition, le pipe commercial est bien alimenté, ce qui laisse présager un flux régulier pour les phases à venir.">With 29 clients in acquisition, the commercial pipeline is well supplied, suggesting a steady flow for upcoming phases.</p>
-      <div class="image-placeholder"><img src="img/SF/Clients in Acquisition.png" alt="Acquisition screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
-    </section>
-
-    <section>
-      <h2 data-en="🔌 Clients in Integration Phase" data-fr="🔌 Clients en phase d’intégration">🔌 Clients in Integration Phase</h2>
-      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
-      <p data-en="Total number of clients currently undergoing technical/project integration." data-fr="Nombre total de clients actuellement en cours d’intégration technique/projet.">Total number of clients currently undergoing technical/project integration.</p>
-      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
-      <ul>
-        <li data-en="Tracks the operational workload of Delivery/Tech teams and the overall portfolio progress." data-fr="Suit la charge opérationnelle des équipes Delivery/Tech et l’avancement du portefeuille global.">Tracks the operational workload of Delivery/Tech teams and the overall portfolio progress.</li>
-      </ul>
-      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
-      <p data-en="97 clients are in the integration phase, reflecting a growing portfolio and the need for robust onboarding/support resources to avoid bottlenecks." data-fr="97 clients sont en phase d’intégration, reflet d’un portefeuille en croissance et du besoin de ressources solides pour éviter les goulets d’étranglement.">97 clients are in the integration phase, reflecting a growing portfolio and the need for robust onboarding/support resources to avoid bottlenecks.</p>
-      <div class="image-placeholder"><img src="img/SF/Client in Integration phase.png" alt="Integration screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
-    </section>
-
-    <section>
-      <h2 data-en="💶 Total New Revenues" data-fr="💶 Total nouveaux revenus">💶 Total New Revenues</h2>
-      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
-      <p data-en="Cumulative revenue generated by new clients or recently onboarded platforms." data-fr="Revenus cumulés générés par les nouveaux clients ou plateformes récemment onboardées.">Cumulative revenue generated by new clients or recently onboarded platforms.</p>
-      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
-      <ul>
-        <li data-en="Provides a synthetic view of commercial performance as clients convert and onboard." data-fr="Fournit une vision synthétique de la performance commerciale au fil des conversions et onboardings clients.">Provides a synthetic view of commercial performance as clients convert and onboard.</li>
-      </ul>
-      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
-      <p data-en="With €1.8M in new revenues, client conversion/onboarding is efficiently translating into real business." data-fr="Avec 1,8 M € de nouveaux revenus, la conversion/onboarding client se traduit efficacement en business réel.">With €1.8M in new revenues, client conversion/onboarding is efficiently translating into real business.</p>
-      <div class="image-placeholder"><img src="img/SF/Total New Revenues.png" alt="Integration screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
-    </section>
-
-    <section>
-      <h2 data-en="🛠️ Platforms by Integration Phase" data-fr="🛠️ Plateformes par phase d’intégration">🛠️ Platforms by Integration Phase</h2>
-      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
-      <p data-en="Distribution of client platforms by their integration phase: Kick-off, Configuration, Tests, Go-live, Monitoring, Run." data-fr="Répartition des plateformes clients par phase d’intégration : Kick-off, Configuration, Tests, Go-live, Monitoring, Run.">Distribution of client platforms by their integration phase: Kick-off, Configuration, Tests, Go-live, Monitoring, Run.</p>
-      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
-      <ul>
-        <li data-en="Quickly identify bottlenecks and prioritize actions to accelerate go-live." data-fr="Identifier rapidement les goulets d’étranglement et prioriser les actions pour accélérer le go-live.">Quickly identify bottlenecks and prioritize actions to accelerate go-live.</li>
-      </ul>
-      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
-      <p data-en="Most platforms are in &quot;Tests&quot; and &quot;Go-live&quot;, which may indicate an accumulation at these steps; close monitoring is advised to avoid production delays." data-fr="La majorité des plateformes sont en « Tests » et « Go-live », ce qui peut indiquer une accumulation à ces étapes : une vigilance accrue est conseillée pour éviter les retards de mise en production.">Most platforms are in "Tests" and "Go-live", which may indicate an accumulation at these steps; close monitoring is advised to avoid production delays.</p>
-      <div class="image-placeholder"><img src="img/SF/Platforms by integration phase.png" alt="Integration screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
-    </section>
-
-    <section>
-      <h2 data-en="📆 Account Revenues per Month" data-fr="📆 Revenus compte par mois">📆 Account Revenues per Month</h2>
-      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
-      <p data-en="Evolution of client account revenues, broken down by month (based on “Due Date”)." data-fr="Évolution des revenus comptes clients, ventilés par mois (basé sur la « Due Date »).">Evolution of client account revenues, broken down by month (based on “Due Date”).</p>
-      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
-      <ul>
-        <li data-en="Visualize seasonality and cash-inflow trends across the period." data-fr="Visualiser la saisonnalité et les tendances d’encaissement sur la période.">Visualize seasonality and cash-inflow trends across the period.</li>
-      </ul>
-      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
-      <p data-en="Notable peak in March (€448k), with sustained revenue through May, then a slight drop—possibly due to seasonality or delays in some integrations." data-fr="Pic marqué en mars (448 k €), revenus maintenus jusqu’en mai, puis légère baisse : sans doute un effet saisonnier ou des retards sur certaines intégrations.">Notable peak in March (€448k), with sustained revenue through May, then a slight drop—possibly due to seasonality or delays in some integrations.</p>
-      <div class="image-placeholder"><img src="img/SF/Account Revenues per month.png" alt="Revenues screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
-    </section>
-
-    <section>
-      <h2 data-en="🌍 Clients in Acquisition per Region" data-fr="🌍 Clients en acquisition par région">🌍 Clients in Acquisition per Region</h2>
-      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
-      <p data-en="Breakdown of clients in acquisition by European region (North, East, West, South EU)." data-fr="Répartition des clients en acquisition par région européenne (Nord, Est, Ouest, Sud UE).">Breakdown of clients in acquisition by European region (North, East, West, South EU).</p>
-      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
-      <ul>
-        <li data-en="Helps identify the most dynamic regions or target specific commercial actions." data-fr="Permet d’identifier les régions les plus dynamiques ou de cibler des actions commerciales spécifiques.">Helps identify the most dynamic regions or target specific commercial actions.</li>
-      </ul>
-      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
-      <p data-en="South EU has the largest number of clients in acquisition (9), indicating high growth potential or an active commercial strategy in this area." data-fr="Le Sud de l’UE compte le plus grand nombre de clients en acquisition (9), ce qui révèle un potentiel de croissance élevé ou une stratégie commerciale active sur la zone.">South EU has the largest number of clients in acquisition (9), indicating high growth potential or an active commercial strategy in this area.</p>
-      <div class="image-placeholder"><img src="img/SF/Clients in Acquisition per Region.png" alt="Acquisition screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
-    </section>
-
-    <section>
-      <h2 data-en="⏳ Platform Time to Live" data-fr="⏳ Time to live des plateformes">⏳ Platform Time to Live</h2>
-      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
-      <p data-en="Detailed table for each platform showing contract signature date, planned go-live date, and actual “Time to go live”, with color coding for critical delays." data-fr="Tableau détaillé pour chaque plateforme : date signature contrat, date de go-live prévue et « Time to go live » réel, avec colorisation des retards critiques.">Detailed table for each platform showing contract signature date, planned go-live date, and actual “Time to go live”, with color coding for critical delays.</p>
-      <div class="subtitle" data-en="🚀 Business Value" data-fr="🚀 Valeur métier">🚀 Business Value</div>
-      <ul>
-        <li data-en="Prioritize at-risk platforms, identify integration delays, and act early to meet commitments." data-fr="Prioriser les plateformes à risque, repérer les retards d’intégration et agir tôt pour tenir les engagements.">Prioritize at-risk platforms, identify integration delays, and act early to meet commitments.</li>
-      </ul>
-      <div class="subtitle" data-en="📊 Result Analysis" data-fr="📊 Analyse des résultats">📊 Result Analysis</div>
-      <p data-en="Several platforms have a high “Time to go live” (highlighted in red/orange), signaling delays or complex integrations needing close attention." data-fr="Plusieurs plateformes ont un « Time to go live » élevé (surligné en rouge/orange), ce qui signale des retards ou intégrations complexes nécessitant une attention particulière.">Several platforms have a high “Time to go live” (highlighted in red/orange), signaling delays or complex integrations needing close attention.</p>
-      <div class="image-placeholder"><img src="img/SF/Platform time to live_1.png" alt="Time to live screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
-    </section>
-
-    <!-- Section 4 -->
-    <section>
-      <h2 data-en="✅ Overall Conclusion" data-fr="✅ Conclusion générale">✅ Overall Conclusion</h2>
-      <p data-en="This dashboard offers a clear and dynamic overview of the client acquisition and onboarding journey, from commercial phase to revenue generation. All indicators allow real-time tracking of client progress, anticipation of friction points, and fast identification of optimization levers at each lifecycle stage."
-         data-fr="Ce dashboard offre une vision claire et dynamique du parcours d’acquisition et d’onboarding client, de la phase commerciale à la génération de revenus. Tous les indicateurs permettent un suivi temps réel de l’avancement, d’anticiper les points de friction et d’identifier rapidement les leviers d’optimisation à chaque étape du cycle de vie.">
-        This dashboard offers a clear and dynamic overview of the client acquisition and onboarding journey, from commercial phase to revenue generation. All indicators allow real-time tracking of client progress, anticipation of friction points, and fast identification of optimization levers at each lifecycle stage.
-      </p>
-      <div class="subtitle" data-en="💡 Overall Business Value" data-fr="💡 Valeur métier globale">💡 Overall Business Value</div>
-      <ul>
-        <li data-en="Centralized tool for decision support" data-fr="Outil centralisé d’aide à la décision">Centralized tool for decision support</li>
-        <li data-en="Eases sales and operations team management" data-fr="Facilite le pilotage des équipes sales & opérations">Eases sales and operations team management</li>
-        <li data-en="Better anticipation of delays and bottlenecks" data-fr="Meilleure anticipation des retards et blocages">Better anticipation of delays and bottlenecks</li>
-        <li data-en="Improves client follow-up and onboarding efficiency" data-fr="Améliore le suivi client et l’efficacité de l’onboarding">Improves client follow-up and onboarding efficiency</li>
-        <li data-en="Accelerates time-to-revenue while securing client experience" data-fr="Accélère le time-to-revenue tout en sécurisant l’expérience client">Accelerates time-to-revenue while securing client experience</li>
-        <li data-en="Cross-visualization (phases, regions, delays, revenue) helps target commercial actions and optimize resource allocation" data-fr="La cross-visualisation (phases, régions, retards, revenu) aide à cibler les actions commerciales et optimiser l’allocation des ressources">Cross-visualization (phases, regions, delays, revenue) helps target commercial actions and optimize resource allocation</li>
-      </ul>
-
-      <div class="subtitle" data-en="📅 Next Steps / Further Analysis" data-fr="📅 Next steps / analyses à approfondir">📅 Next Steps / Further Analysis</div>
-      <ul>
-        <li data-en="Deeper analysis of delay causes in critical integration phases (file quality, resources, technical complexity...)" data-fr="Analyse plus poussée des causes de retard dans les phases d’intégration critiques (qualité dossier, ressources, complexité technique…)">Deeper analysis of delay causes in critical integration phases (file quality, resources, technical complexity...)</li>
-        <li data-en="Set up automated alerts for at-risk cases (delays, deadlines exceeded...)" data-fr="Mise en place d’alertes automatisées pour les cas à risque (retards, échéances dépassées…)">Set up automated alerts for at-risk cases (delays, deadlines exceeded...)</li>
-        <li data-en="Refine KPIs, e.g., by tracking post-onboarding client satisfaction or churn in the first months" data-fr="Affiner les KPIs, ex : suivi de la satisfaction ou du churn post-onboarding">Refine KPIs, e.g., by tracking post-onboarding client satisfaction or churn in the first months</li>
-        <li data-en="Automate reminders and tasks for teams based on steps or statuses" data-fr="Automatiser les relances et tâches pour les équipes selon étapes ou statuts">Automate reminders and tasks for teams based on steps or statuses</li>
-        <li data-en="Extend tracking to existing clients for portfolio monitoring, upsell/cross-sell rates, and post-integration support management" data-fr="Étendre le suivi aux clients existants (pilotage portefeuille, taux d’upsell/cross-sell, gestion du support post-intégration)">Extend tracking to existing clients for portfolio monitoring, upsell/cross-sell rates, and post-integration support management</li>
-      </ul>
-    </section>
+      <a href="mailto:ali.belabbas.success@gmail.com?subject=Salesforce Dashboard Project" class="cta-button" 
+         data-en="Get in Touch" data-fr="Me Contacter">
+        Me Contacter
+      </a>
+    </div>
   </div>
+
   <script>
     const toggleBtn = document.getElementById('lang-toggle');
-    let currentLang = "en";
+    let currentLang = "fr";
     function switchLang() {
-      currentLang = currentLang === "en" ? "fr" : "en";
-      toggleBtn.textContent = currentLang === "en" ? "🇫🇷" : "🇬🇧";
-      // Change <title>
-      document.title = document.querySelector("title").getAttribute("data-" + currentLang);
-      // All other elements
+      currentLang = currentLang === "fr" ? "en" : "fr";
+      toggleBtn.textContent = currentLang === "fr" ? "🇬🇧" : "🇫🇷";
       document.querySelectorAll('[data-en]').forEach(el => {
         let val = el.getAttribute('data-' + currentLang);
         if (val) {
-          if (
-            el.tagName === 'P' || el.tagName === 'DIV' || el.tagName === 'SPAN' ||
-            el.tagName === 'B' || el.tagName === 'H1' || el.tagName === 'H2'
-          ) {
+          if (['P', 'DIV', 'SPAN', 'STRONG', 'LI', 'H1', 'H2', 'H3', 'H4', 'A'].includes(el.tagName)) {
             el.innerHTML = val;
           } else {
             el.textContent = val;
@@ -337,8 +381,6 @@
         }
       });
     }
-    // Init correct title at load
-    document.title = document.querySelector("title").getAttribute("data-en");
     toggleBtn.onclick = switchLang;
   </script>
 </body>

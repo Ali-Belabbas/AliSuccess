@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="favicon-as-plain.ico">
-  <title data-en="Financial Data Cross-Referencing & Big Data Processing with Python / PySpark" data-fr="Croisement de données financières & Big Data avec Python / PySpark">
-    Financial Data Cross-Referencing & Big Data Processing with Python / PySpark
-  </title>
+  <title>Big Data Pipeline - Python/PySpark</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -37,351 +35,296 @@
       color: #3b2c50;
     }
     .container {
-      max-width: 820px;
+      max-width: 900px;
       margin: 0 auto;
       background: white;
       border-radius: 12px;
-      padding: 2rem;
+      padding: 2.5rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    section {
-      border: 1.5px solid #fafafa;
-      border-radius: 10px;
-      padding: 1.4rem 1.2rem;
-      background-color: #fafafa;
-      margin-bottom: 2.7rem;
-    }
-    h1, h2 {
-      color: #3b2c50;
-    }
     h1 {
+      color: #3b2c50;
       text-align: center;
-      font-size: 2.3rem;
-      margin-bottom: 1.8rem;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
     }
-    h2 {
-      font-size: 1.22rem;
-      margin-top: 1.6rem;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 7px;
+    .subtitle-main {
+      text-align: center;
+      color: #6c4ba7;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      font-weight: 500;
     }
     .important-info {
-      border-left: 7px solid #ff7137;
-      background: #fff3e3;
-      padding: 1.15rem 1.5rem;
-      border-radius: 9px;
-      margin-bottom: 1.7rem;
-      font-size: 1.09rem;
+      border-left: 4px solid #fd7e14;
+      background: #fff7ea;
+      padding: 1rem 1.2rem;
+      border-radius: 6px;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
       color: #a74a00;
-      box-shadow: 0 2px 10px #ffe0c2;
     }
-    .image-placeholder {
-      width: 100%;
-      max-width: 100%;
-      min-height: 230px;
-      background: #ececec;
-      color: #999;
-      border-radius: 14px;
+    .context-box {
+      background: #f8f6ff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .context-box h2 {
+      color: #3b2c50;
+      font-size: 1.3rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .pipeline-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .step-card {
+      background: white;
+      border: 2px solid #e8e4f3;
+      border-radius: 8px;
+      padding: 1.2rem;
       text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.23rem;
-      margin: 1.5rem auto 1.7rem auto;
-      border: 2px dashed #c1bcbc;
-      font-style: italic;
+    }
+    .step-number {
+      font-size: 1.5rem;
       font-weight: bold;
-      letter-spacing: 0.3px;
-      box-shadow: 0 4px 16px #d5cbff42;
-      padding: 2.5rem 0;
+      color: #6c4ba7;
+      margin-bottom: 0.5rem;
+    }
+    .step-title {
+      font-size: 0.95rem;
+      color: #333;
+      font-weight: 600;
+    }
+    .code-section {
+      margin: 2rem 0;
+      border-top: 1px solid #e8e4f3;
+      padding-top: 1.5rem;
+    }
+    .code-section h3 {
+      color: #3b2c50;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    .code-section img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 1rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .tech-stack {
+      background: #f8f6ff;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 2rem 0;
+      text-align: center;
+      font-weight: 500;
+      color: #6c4ba7;
+    }
+    .cta-section {
+      background: #f8f6ff;
+      border-radius: 12px;
+      padding: 2.5rem;
+      text-align: center;
+      margin-top: 3rem;
+      border: 2px solid #e8e4f3;
+    }
+    .cta-section h2 {
+      color: #3b2c50;
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+    .cta-section p {
+      color: #666;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
+    .cta-button {
+      display: inline-block;
+      background: #6c4ba7;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
       transition: background 0.2s;
     }
-    .image-placeholder img {
-      width: 96% !important;
-      max-width: 1400px !important;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px #0001;
-      margin: 0 auto;
-      display: block;
+    .cta-button:hover {
+      background: #5a3d8f;
     }
-    .subtitle {
-      font-size: 1.09rem;
-      font-weight: 600;
-      color: #4b36a8;
-      margin-top: 1.15rem;
-      margin-bottom: 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+    a {
+      color: #6c4ba7;
+      text-decoration: none;
     }
-    .tools {
-      margin-top: 0.7rem;
-      font-style: italic;
-      font-size: 1.02rem;
+    ul {
+      line-height: 1.8;
+      color: #555;
     }
-    a { color: #6c4ba7; text-decoration: none; }
-    ul,ol { margin-top: 0.5rem; padding-left: 1.4rem;}
-    @media (max-width: 800px) {
-      .container { padding: 0.5rem; }
-      h1 { font-size: 1.4rem; }
-      section { padding: 0.7rem; }
-      .image-placeholder { min-height: 110px; font-size: 1.05rem; padding: 1.1rem 0; }
-      .image-placeholder img { width: 99% !important; }
-      .lang-toggle { right: 0.7rem; top: 0.7rem; }
+    @media (max-width: 768px) {
+      .container { padding: 1.5rem; }
+      h1 { font-size: 1.5rem; }
+      .pipeline-steps { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <button class="lang-toggle" id="lang-toggle">🇫🇷</button>
-  <p>
-    <a href="index.html" data-en="← Back to portfolio" data-fr="← Retour au portfolio">← Back to portfolio</a>
+  <button class="lang-toggle" id="lang-toggle">🇬🇧</button>
+  <p style="margin-bottom: 2rem;">
+    <a href="index.html" data-en="← Back to portfolio" data-fr="← Retour au portfolio">← Retour au portfolio</a>
   </p>
+  
   <div class="container">
-
-    <h1
-      data-en="Financial Data Cross-Referencing & Big Data Processing<br>with Python / PySpark"
-      data-fr="Croisement de données financières & Big Data<br>avec Python / PySpark">
-      Financial Data Cross-Referencing & Big Data Processing<br>with Python / PySpark
+    <h1 data-en="Big Data Pipeline - Cross-referencing Financial Data" data-fr="Pipeline Big Data - Croisement Données Financières">
+      Pipeline Big Data - Croisement Données Financières
     </h1>
+    <p class="subtitle-main" data-en="Python/PySpark • Big Data • Financial Systems" data-fr="Python/PySpark • Big Data • Systèmes Financiers">
+      Python/PySpark • Big Data • Systèmes Financiers
+    </p>
 
-    <!-- Section 1: Important Information & Preface -->
-    <section>
-      <h2 data-en="ℹ️ Important Information" data-fr="ℹ️ Informations importantes">ℹ️ Important Information</h2>
-      <div class="important-info"
-        data-en="Due to strict regulations and data sensitivity in the financial sector, all data used and displayed in this project is entirely fictitious. Column and file names are invented and do not refer to any real individuals or organizations. The purpose of this project is to demonstrate technical expertise and the kind of results achievable in a real-world financial data context."
-        data-fr="En raison de la réglementation stricte et de la sensibilité des données dans le secteur financier, toutes les données utilisées et affichées dans ce projet sont entièrement fictives. Les noms de colonnes et de fichiers sont inventés et ne se réfèrent à aucune personne ou organisation réelle. Le but de ce projet est de démontrer une expertise technique et le type de résultats réalisables dans un contexte financier réel.">
-        Due to strict regulations and data sensitivity in the financial sector, all data used and displayed in this project is entirely fictitious. Column and file names are invented and do not refer to any real individuals or organizations. The purpose of this project is to demonstrate technical expertise and the kind of results achievable in a real-world financial data context.
+    <!-- Important Info -->
+    <div class="important-info">
+      <strong data-en="ℹ️ Important Information" data-fr="ℹ️ Informations importantes">ℹ️ Informations importantes</strong><br>
+      <span data-en="All data is fictional. Column/file names are invented. This project demonstrates the technical approach for processing large-scale financial datasets."
+            data-fr="Toutes les données sont fictives. Les noms de colonnes/fichiers sont inventés. Ce projet démontre l'approche technique pour le traitement de jeux de données financiers à grande échelle.">
+        Toutes les données sont fictives. Les noms de colonnes/fichiers sont inventés. Ce projet démontre l'approche technique pour le traitement de jeux de données financiers à grande échelle.
+      </span>
+    </div>
+
+    <!-- Context -->
+    <div class="context-box">
+      <h2 data-en="🎯 Context & Objective" data-fr="🎯 Contexte & Objectif">🎯 Contexte & Objectif</h2>
+      <p data-en="<strong>Challenge:</strong> Multiple internal applications generating debt and credit files across different zones, with no centralized view for anomaly detection or national-scale analysis."
+         data-fr="<strong>Challenge :</strong> Multiples applications internes générant des fichiers de dettes et crédits sur différentes zones, sans vue centralisée pour la détection d'anomalies ou l'analyse nationale.">
+        <strong>Challenge :</strong> Multiples applications internes générant des fichiers de dettes et crédits sur différentes zones, sans vue centralisée pour la détection d'anomalies ou l'analyse nationale.
+      </p>
+      <p data-en="<strong>Solution:</strong> Designed a Python/PySpark pipeline to collect, merge, deduplicate, enrich, and process millions of transactions from 6+ data sources into a unified dataset for BI dashboards."
+         data-fr="<strong>Solution :</strong> Conception d'un pipeline Python/PySpark pour collecter, fusionner, dédupliquer, enrichir et traiter des millions de transactions depuis 6+ sources vers un jeu de données unifié pour dashboards BI.">
+        <strong>Solution :</strong> Conception d'un pipeline Python/PySpark pour collecter, fusionner, dédupliquer, enrichir et traiter des millions de transactions depuis 6+ sources vers un jeu de données unifié pour dashboards BI.
+      </p>
+    </div>
+
+    <!-- Pipeline Steps -->
+    <h2 style="color: #3b2c50; margin-top: 2rem;" data-en="🔄 Pipeline Workflow" data-fr="🔄 Workflow du Pipeline">🔄 Workflow du Pipeline</h2>
+    <div class="pipeline-steps">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-title" data-en="Data Collection" data-fr="Collecte Données">Collecte Données</div>
       </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-title" data-en="Merge & Deduplicate" data-fr="Fusion & Dédup">Fusion & Dédup</div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-title" data-en="Enrichment" data-fr="Enrichissement">Enrichissement</div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <div class="step-title" data-en="PySpark Processing" data-fr="Traitement PySpark">Traitement PySpark</div>
+      </div>
+    </div>
 
-      <h2 data-en="🎯 Project Goals" data-fr="🎯 Objectifs du projet">🎯 Project Goals</h2>
-      <p data-en="The objective is to design a tool for cross-referencing user financial information (debts and assets) from various data sources: internal debt files and credit files. Initially limited to a pilot geographic area, the project now targets nationwide deployment."
-         data-fr="L’objectif est de concevoir un outil pour croiser les informations financières utilisateur (dettes et avoirs) issues de différentes sources de données : fichiers de dettes internes et fichiers de crédits. Initialement limité à une zone pilote, le projet vise désormais un déploiement national.">
-        The objective is to design a tool for cross-referencing user financial information (debts and assets) from various data sources: internal debt files and credit files. Initially limited to a pilot geographic area, the project now targets nationwide deployment.
+    <!-- Code Sections -->
+    <div class="code-section">
+      <h3 data-en="Part 1: Data Collection & Preparation" data-fr="Partie 1 : Collecte & Préparation">Partie 1 : Collecte & Préparation</h3>
+      <p data-en="Loading 6 files (3 debt + 3 credit) from different applications, marking user presence in each source, and renaming columns to avoid collisions."
+         data-fr="Chargement de 6 fichiers (3 dettes + 3 crédits) de différentes applications, marquage de la présence utilisateur dans chaque source et renommage des colonnes pour éviter les collisions.">
+        Chargement de 6 fichiers (3 dettes + 3 crédits) de différentes applications, marquage de la présence utilisateur dans chaque source et renommage des colonnes pour éviter les collisions.
       </p>
+      <img src="img/PY/Part1.JPG" alt="Part 1 Code">
+    </div>
 
-      <h2 data-en="🗂️ Functionality & Data Processed" data-fr="🗂️ Fonctionnalités & données traitées">🗂️ Functionality & Data Processed</h2>
-      <ul>
-        <li data-en="Aggregates and cross-references multiple types of financial and administrative data from internal and external systems."
-            data-fr="Agrège et croise plusieurs types de données financières et administratives provenant de systèmes internes et externes.">
-          Aggregates and cross-references multiple types of financial and administrative data from internal and external systems.
-        </li>
-        <li data-en="Main sources: specific credit and debt files; additional sources can be integrated later."
-            data-fr="Sources principales : fichiers de crédit et de dette spécifiques ; d’autres sources pourront être intégrées par la suite.">
-          Main sources: specific credit and debt files; additional sources can be integrated later.
-        </li>
-        <li data-en="An interactive data visualization interface will be developed for data exploration."
-            data-fr="Une interface de visualisation interactive sera développée pour l’exploration des données.">
-          An interactive data visualization interface will be developed for data exploration.
-        </li>
-      </ul>
-    </section>
-
-    <!-- Section 2: Technical Goals & Solution Structure -->
-    <section>
-      <h2 data-en="🛠️ Technical Objectives" data-fr="🛠️ Objectifs techniques">🛠️ Technical Objectives</h2>
-      <ul>
-        <li data-en="Data Access & Processing: Implement pipelines to retrieve, enrich, and cross-reference financial data."
-            data-fr="Accès et traitement des données : Mettre en place des pipelines pour récupérer, enrichir et croiser les données financières.">
-          <b>Data Access & Processing:</b> Implement pipelines to retrieve, enrich, and cross-reference financial data.
-        </li>
-        <li data-en="Visualization: Deliver a central dataset enabling dashboard development for detecting atypical situations or regularization opportunities at a national scale."
-            data-fr="Visualisation : Fournir un jeu de données central permettant le développement de tableaux de bord pour détecter les situations atypiques ou les opportunités de régularisation à l’échelle nationale.">
-          <b>Visualization:</b> Deliver a central dataset enabling dashboard development for detecting atypical situations or regularization opportunities at a national scale.
-        </li>
-      </ul>
-      <div class="subtitle" data-en="🔗 Resources & Tools" data-fr="🔗 Ressources & outils">🔗 Resources & Tools</div>
-      <ul>
-        <li data-en="3 Debt files (one per application)" data-fr="3 fichiers de dette (un par application)">3 Debt files (one per application)</li>
-        <li data-en="3 Credit files (one per application)" data-fr="3 fichiers de crédit (un par application)">3 Credit files (one per application)</li>
-        <li data-en="User reference file for complementary user information" data-fr="Fichier de référence utilisateur pour informations complémentaires">User reference file for complementary user information</li>
-        <li data-en="Company reference file for company-related details" data-fr="Fichier de référence société pour détails liés aux entreprises">Company reference file for company-related details</li>
-        <li data-en="Languages used: Python & PySpark" data-fr="Langages utilisés : Python & PySpark"><b>Languages used:</b> Python & PySpark</li>
-      </ul>
-      <div class="tools" data-en="Tools used: Python, PySpark, Excel" data-fr="Outils utilisés : Python, PySpark, Excel"><b>Tools used:</b> Python, PySpark, Excel</div>
-    </section>
-
-    <!-- Section 3: Solution Workflow -->
-    <section>
-      <h2 data-en="📋 Solution Workflow" data-fr="📋 Workflow de la solution">📋 Solution Workflow</h2>
-      <ol>
-        <li data-en="Data Collection and Preparation" data-fr="Collecte et préparation des données">Data Collection and Preparation</li>
-        <li data-en="Data Merging, Deduplication, and Cross-checking" data-fr="Fusion, déduplication et recoupement des données">Data Merging, Deduplication, and Cross-checking</li>
-        <li data-en="Enrichment, Cleaning, and Export for Dashboarding" data-fr="Enrichissement, nettoyage et export pour dashboarding">Enrichment, Cleaning, and Export for Dashboarding</li>
-        <li data-en="Processing High-Volume Data using PySpark" data-fr="Traitement des volumes massifs avec PySpark">Processing High-Volume Data using PySpark</li>
-      </ol>
-    </section>
-
-    <!-- Section 4: Part 1 -->
-    <section>
-      <h2 data-en="1️⃣ Part 1: Data Collection and Preparation" data-fr="1️⃣ Partie 1 : Collecte et préparation des données">1️⃣ Part 1: Data Collection and Preparation</h2>
-      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
-      <p data-en="The aim is to gather and prepare all financial data sources (debts and credits) from different internal applications for further cross-referencing."
-         data-fr="Le but est de rassembler et préparer toutes les sources de données financières (dettes et crédits) issues des différentes applications internes pour le croisement ultérieur.">
-        The aim is to gather and prepare all financial data sources (debts and credits) from different internal applications for further cross-referencing.
+    <div class="code-section">
+      <h3 data-en="Part 2: Cross-referencing & Aggregation" data-fr="Partie 2 : Croisement & Agrégation">Partie 2 : Croisement & Agrégation</h3>
+      <p data-en="Merging all sources by User_Id, creating multi-source indicators, and aggregating key financial fields (amounts, statuses) with smart deduplication logic."
+         data-fr="Fusion de toutes les sources par User_Id, création d'indicateurs multi-sources et agrégation des champs financiers clés (montants, statuts) avec logique de déduplication intelligente.">
+        Fusion de toutes les sources par User_Id, création d'indicateurs multi-sources et agrégation des champs financiers clés (montants, statuts) avec logique de déduplication intelligente.
       </p>
-      <ul>
-        <li data-en="Load debt and credit files separately; each comes from a distinct application (e.g., different zones or business units)."
-            data-fr="Charger séparément les fichiers de dettes et de crédits ; chacun provenant d’une application différente (ex : différentes zones ou directions métiers).">
-          Load debt and credit files separately; each comes from a distinct application (e.g., different zones or business units).
-        </li>
-        <li data-en="Mark user presence in each source (useful for identifying multi-source users)."
-            data-fr="Marquer la présence des utilisateurs dans chaque source (utile pour identifier les multi-sources).">
-          Mark user presence in each source (useful for identifying multi-source users).
-        </li>
-        <li data-en="Rename columns (except the main identifier) to avoid collisions during merges."
-            data-fr="Renommer les colonnes (sauf l’identifiant principal) pour éviter les collisions lors des fusions.">
-          Rename columns (except the main identifier) to avoid collisions during merges.
-        </li>
-      </ul>
-      <div class="image-placeholder"><img src="img/PY/Part1.JPG" alt="Part1 screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
-    </section>
+      <img src="img/PY/Part2.JPG" alt="Part 2 Code">
+    </div>
 
-    <!-- Section 5: Part 2 -->
-    <section>
-      <h2 data-en="2️⃣ Part 2: Data Merging, Deduplication, and Cross-checking" data-fr="2️⃣ Partie 2 : Fusion, déduplication et recoupement des données">2️⃣ Part 2: Data Merging, Deduplication, and Cross-checking</h2>
-      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
-      <p data-en="Cross-reference user information across all sources, identify users present in multiple files, and aggregate key financial data."
-         data-fr="Recouper les informations utilisateur entre toutes les sources, identifier les utilisateurs présents dans plusieurs fichiers, et agréger les données financières clés.">
-        Cross-reference user information across all sources, identify users present in multiple files, and aggregate key financial data.
+    <div class="code-section">
+      <h3 data-en="Part 3: Enrichment & BI Export" data-fr="Partie 3 : Enrichissement & Export BI">Partie 3 : Enrichissement & Export BI</h3>
+      <p data-en="Joining with reference files (User, Company), harmonizing data types, translating field names to English, and exporting the final dataset ready for BI integration."
+         data-fr="Jointure avec fichiers de référence (Utilisateur, Entreprise), harmonisation des types, traduction des noms de champs en anglais et export du dataset final prêt pour intégration BI.">
+        Jointure avec fichiers de référence (Utilisateur, Entreprise), harmonisation des types, traduction des noms de champs en anglais et export du dataset final prêt pour intégration BI.
       </p>
-      <ul>
-        <li data-en="Merge all data sources using the user identifier (User_Id) for a complete user overview."
-            data-fr="Fusionner toutes les sources à partir de l’identifiant utilisateur (<b>User_Id</b>) pour avoir une vision complète de chaque utilisateur.">
-          Merge all data sources using the user identifier (<b>User_Id</b>) for a complete user overview.
-        </li>
-        <li data-en="Create an indicator counting the number of sources where a user appears—helps flag risk or opportunity profiles (multi-source presence)."
-            data-fr="Créer un indicateur du nombre de sources où apparaît chaque utilisateur — utile pour repérer profils à risque ou opportunité (présence multi-sources).">
-          Create an indicator counting the number of sources where a user appears—helps flag risk or opportunity profiles (multi-source presence).
-        </li>
-        <li data-en="For each key field (amount, status, type, etc.), keep the first non-null value found among all sources for a synthetic, actionable view."
-            data-fr="Pour chaque champ clé (montant, statut, type…), conserver la première valeur non nulle trouvée parmi toutes les sources, pour une vue synthétique et exploitable.">
-          For each key field (amount, status, type, etc.), keep the first non-null value found among all sources for a synthetic, actionable view.
-        </li>
-      </ul>
-      <div class="image-placeholder"><img src="img/PY/Part2.JPG" alt="Part2 screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
-    </section>
+      <img src="img/PY/Part3.JPG" alt="Part 3 Code">
+    </div>
 
-    <!-- Section 6: Part 3 -->
-    <section>
-      <h2 data-en="3️⃣ Part 3: Enrichment, Cleaning, and Export for Dashboarding" data-fr="3️⃣ Partie 3 : Enrichissement, nettoyage et export pour dashboarding">3️⃣ Part 3: Enrichment, Cleaning, and Export for Dashboarding</h2>
-      <div class="subtitle" data-en="📝 Description" data-fr="📝 Description">📝 Description</div>
-      <p data-en="Enrich the dataset with administrative reference data, clean and harmonize fields (types, translations), and prepare the file for use in BI tools or national dashboards."
-         data-fr="Enrichir la base avec des données de référence administratives, nettoyer et harmoniser les champs (types, traductions), et préparer le fichier pour exploitation en BI ou dashboards nationaux.">
-        Enrich the dataset with administrative reference data, clean and harmonize fields (types, translations), and prepare the file for use in BI tools or national dashboards.
+    <div class="code-section">
+      <h3 data-en="Part 4: PySpark for High-Volume Processing" data-fr="Partie 4 : PySpark pour Volumes Massifs">Partie 4 : PySpark pour Volumes Massifs</h3>
+      <p data-en="Using PySpark to process large statistical files (too large for pandas), performing distributed joins, window calculations (total debts/credits per user), and dynamic categorization."
+         data-fr="Utilisation de PySpark pour traiter les gros fichiers statistiques (trop volumineux pour pandas), réalisation de jointures distribuées, calculs window (total dettes/crédits par utilisateur) et catégorisation dynamique.">
+        Utilisation de PySpark pour traiter les gros fichiers statistiques (trop volumineux pour pandas), réalisation de jointures distribuées, calculs window (total dettes/crédits par utilisateur) et catégorisation dynamique.
       </p>
+      <img src="img/PY/Part4_1.JPG" alt="Part 4 Code 1">
+      <img src="img/PY/Part4_2.JPG" alt="Part 4 Code 2">
+      <p><strong data-en="Key Operations:" data-fr="Opérations Clés :">Opérations Clés :</strong></p>
       <ul>
-        <li data-en="Create a join key (e.g., Code ID or Authorization ID) linking financial and reference information."
-            data-fr="Créer une clé de jointure (ex : <b>Code ID</b> ou <b>ID Autorisation</b>) entre données financières et données de référence.">
-          Create a join key (e.g., <b>Code ID</b> or <b>Authorization ID</b>) linking financial and reference information.
+        <li data-en="Spark join on User_Id for enrichment" data-fr="Jointure Spark sur User_Id pour enrichissement">Jointure Spark sur User_Id pour enrichissement</li>
+        <li data-en="Per-user calculations via Spark windows" data-fr="Calculs par utilisateur via Spark windows">Calculs par utilisateur via Spark windows</li>
+        <li data-en="Address reconstruction from multiple fields" data-fr="Reconstruction d'adresse depuis plusieurs champs">Reconstruction d'adresse depuis plusieurs champs</li>
+        <li data-en="Debt/Credit categorization" data-fr="Catégorisation Dettes/Crédits">Catégorisation Dettes/Crédits</li>
+      </ul>
+    </div>
+
+    <!-- Results Summary -->
+    <div class="context-box">
+      <h2 data-en="✅ Results & Impact" data-fr="✅ Résultats & Impact">✅ Résultats & Impact</h2>
+      <ul>
+        <li data-en="<strong>Centralized dataset</strong> enabling nationwide anomaly detection and regularization actions"
+            data-fr="<strong>Dataset centralisé</strong> permettant la détection d'anomalies et actions de régularisation à l'échelle nationale">
+          <strong>Dataset centralisé</strong> permettant la détection d'anomalies et actions de régularisation à l'échelle nationale
         </li>
-        <li data-en="Harmonize data types and translate all field names/titles into English for easy exploitation in BI, dataviz, and national reporting."
-            data-fr="Harmoniser les types de champs et traduire tous les noms de colonnes / titres en anglais pour faciliter l’exploitation BI, dataviz et reporting national.">
-          Harmonize data types and translate all field names/titles into English for easy exploitation in BI, dataviz, and national reporting.
+        <li data-en="<strong>Multi-source profiling</strong> identifying users present in multiple systems (risk/opportunity flags)"
+            data-fr="<strong>Profilage multi-sources</strong> identifiant les utilisateurs présents dans plusieurs systèmes (signaux risque/opportunité)">
+          <strong>Profilage multi-sources</strong> identifiant les utilisateurs présents dans plusieurs systèmes (signaux risque/opportunité)
         </li>
-        <li data-en="The final exported file centralizes all data needed for anomaly detection or regularization actions."
-            data-fr="Le fichier final exporté centralise toutes les données nécessaires à la détection d’anomalies ou à des actions de régularisation.">
-          The final exported file centralizes all data needed for anomaly detection or regularization actions.
+        <li data-en="<strong>Scalable processing</strong> with PySpark for millions of records without RAM limitations"
+            data-fr="<strong>Traitement scalable</strong> avec PySpark pour des millions d'enregistrements sans limites RAM">
+          <strong>Traitement scalable</strong> avec PySpark pour des millions d'enregistrements sans limites RAM
+        </li>
+        <li data-en="<strong>BI-ready export</strong> with harmonized English column names for dashboard integration"
+            data-fr="<strong>Export prêt BI</strong> avec noms de colonnes anglais harmonisés pour intégration dashboard">
+          <strong>Export prêt BI</strong> avec noms de colonnes anglais harmonisés pour intégration dashboard
         </li>
       </ul>
-      <div class="image-placeholder"><img src="img/PY/Part3.JPG" alt="Part3 screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
-    </section>
+    </div>
 
-    <!-- Section 7: Part 4 PySpark -->
-    <section>
-      <h2 data-en="4️⃣ Part 4: Processing High-Volume Data Using PySpark" data-fr="4️⃣ Partie 4 : Traitement des gros volumes avec PySpark">4️⃣ Part 4: Processing High-Volume Data Using PySpark</h2>
-      <div class="subtitle" data-en="📝 Why PySpark?" data-fr="📝 Pourquoi PySpark ?">📝 Why PySpark?</div>
-      <p data-en="The Transverse-statistical_file.csv is too large for classic Python/pandas processing on standard machines (RAM limits). This step uses PySpark—a distributed framework designed for big data."
-         data-fr="Le fichier <b>Transverse-statistical_file.csv</b> est trop volumineux pour un traitement classique Python/pandas sur machine standard (limites RAM). Cette étape exploite donc PySpark — un framework distribué taillé pour le big data.">
-        The <b>Transverse-statistical_file.csv</b> is too large for classic Python/pandas processing on standard machines (RAM limits). This step uses PySpark—a distributed framework designed for big data.
+    <!-- Tech Stack -->
+    <div class="tech-stack" data-en="🛠️ Stack: Python • PySpark • Pandas • CSV • Excel" data-fr="🛠️ Stack : Python • PySpark • Pandas • CSV • Excel">
+      🛠️ Stack : Python • PySpark • Pandas • CSV • Excel
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2 data-en="Need a Data Pipeline?" data-fr="Besoin d'un Pipeline Data ?">Besoin d'un Pipeline Data ?</h2>
+      <p data-en="I can design scalable Python/PySpark pipelines for processing, enriching, and consolidating large datasets from multiple sources."
+         data-fr="Je peux concevoir des pipelines Python/PySpark scalables pour traiter, enrichir et consolider de gros volumes de données provenant de sources multiples.">
+        Je peux concevoir des pipelines Python/PySpark scalables pour traiter, enrichir et consolider de gros volumes de données provenant de sources multiples.
       </p>
-      <div class="subtitle" data-en="🎯 Goals" data-fr="🎯 Objectifs">🎯 Goals</div>
-      <ul>
-        <li data-en="Load and enrich the consolidated dataset with the large statistical file, joining by user identifier."
-            data-fr="Charger et enrichir la base consolidée avec le gros fichier statistique, jointure sur l’identifiant utilisateur.">
-          Load and enrich the consolidated dataset with the large statistical file, joining by user identifier.
-        </li>
-        <li data-en="Calculate total debts and credits per user (aggregates)." data-fr="Calculer les dettes et crédits totaux par utilisateur (agrégats).">
-          Calculate total debts and credits per user (aggregates).
-        </li>
-        <li data-en="Classify records (Debt / Credit / Unknown)." data-fr="Classifier chaque ligne (Dette / Crédit / Inconnu).">
-          Classify records (Debt / Credit / Unknown).
-        </li>
-        <li data-en="Build billing addresses from multiple address fields." data-fr="Reconstituer les adresses de facturation à partir de plusieurs champs adresse.">
-          Build billing addresses from multiple address fields.
-        </li>
-        <li data-en="Clean missing values." data-fr="Nettoyer les valeurs manquantes.">
-          Clean missing values.
-        </li>
-        <li data-en="Export the finalized results, ready for BI integration." data-fr="Exporter les résultats finalisés, prêts pour intégration BI.">
-          Export the finalized results, ready for BI integration.
-        </li>
-      </ul>
-      <div class="image-placeholder"><img src="img/PY/Part4_1.JPG" alt="Part4_1 screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
-      <div class="image-placeholder"><img src="img/PY/Part4_2.JPG" alt="Part4_2 screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 2px 8px #0001;"></div>
-      <div class="subtitle" data-en="🧑‍💻 Main Processing Steps" data-fr="🧑‍💻 Étapes principales de traitement">🧑‍💻 Main Processing Steps</div>
-      <ul>
-        <li data-en="PySpark join on User_Id to enrich the final DataFrame with all statistical info."
-            data-fr="Jointure PySpark sur <b>User_Id</b> pour enrichir le DataFrame final avec toutes les infos statistiques.">
-          PySpark join on <b>User_Id</b> to enrich the final DataFrame with all statistical info.
-        </li>
-        <li data-en="Per-user calculations using Spark windows (total debts, total credits)."
-            data-fr="Calculs par utilisateur via Spark windows (total dettes, total crédits).">
-          Per-user calculations using Spark windows (total debts, total credits).
-        </li>
-        <li data-en="Dynamic categorization by presence of debts/credits."
-            data-fr="Catégorisation dynamique selon présence de dettes/crédits.">
-          Dynamic categorization by presence of debts/credits.
-        </li>
-        <li data-en="Complete billing address creation (concatenation of several address fields)."
-            data-fr="Création complète de l’adresse de facturation (concaténation de plusieurs champs adresse).">
-          Complete billing address creation (concatenation of several address fields).
-        </li>
-        <li data-en="Column renaming to harmonize all datasets."
-            data-fr="Renommage des colonnes pour harmoniser tous les jeux de données.">
-          Column renaming to harmonize all datasets.
-        </li>
-      </ul>
-    </section>
-
-    <!-- Section 8: Summary & Conclusion -->
-    <section>
-      <h2 data-en="✅ Summary & Key Learnings" data-fr="✅ Synthèse & enseignements clés">✅ Summary & Key Learnings</h2>
-      <ul>
-        <li data-en="Collection & Preparation: Import, traceability, and renaming of raw data to ease multi-source merging."
-            data-fr="Collecte & préparation : Import, traçabilité et renommage des données brutes pour faciliter la fusion multi-sources.">
-          <b>Collection & Preparation:</b> Import, traceability, and renaming of raw data to ease multi-source merging.
-        </li>
-        <li data-en="Cross-referencing & Aggregation: Smart user-based merging, key field aggregation, and profiling for risk/opportunity identification."
-            data-fr="Croisement & agrégation : Fusion intelligente par utilisateur, agrégation des champs clés, profilage pour identification risques/opportunités.">
-          <b>Cross-referencing & Aggregation:</b> Smart user-based merging, key field aggregation, and profiling for risk/opportunity identification.
-        </li>
-        <li data-en="Enrichment & BI Prep: Adding reference info, type harmonization, English renaming, and export for nationwide BI deployment."
-            data-fr="Enrichissement & BI : Ajout des infos de référence, harmonisation des types, renommage anglais, export pour déploiement BI national.">
-          <b>Enrichment & BI Prep:</b> Adding reference info, type harmonization, English renaming, and export for nationwide BI deployment.
-        </li>
-        <li data-en="Big Data Processing (PySpark): PySpark for processing large statistical files, advanced per-user calculations, and export of enriched data for large-scale analysis."
-            data-fr="Traitement big data (PySpark) : PySpark pour traiter les fichiers statistiques volumineux, calculs avancés par utilisateur, export des données enrichies pour analyse à grande échelle.">
-          <b>Big Data Processing (PySpark):</b> PySpark for processing large statistical files, advanced per-user calculations, and export of enriched data for large-scale analysis.
-        </li>
-      </ul>
-    </section>
-
+      <a href="mailto:ali.belabbas.success@gmail.com?subject=Data Pipeline Project" class="cta-button" 
+         data-en="Get in Touch" data-fr="Me Contacter">
+        Me Contacter
+      </a>
+    </div>
   </div>
+
   <script>
     const toggleBtn = document.getElementById('lang-toggle');
-    let currentLang = "en";
+    let currentLang = "fr";
     function switchLang() {
-      currentLang = currentLang === "en" ? "fr" : "en";
-      toggleBtn.textContent = currentLang === "en" ? "🇫🇷" : "🇬🇧";
-      // Change <title>
-      document.title = document.querySelector("title").getAttribute("data-" + currentLang);
-      // All other elements
+      currentLang = currentLang === "fr" ? "en" : "fr";
+      toggleBtn.textContent = currentLang === "fr" ? "🇬🇧" : "🇫🇷";
       document.querySelectorAll('[data-en]').forEach(el => {
         let val = el.getAttribute('data-' + currentLang);
         if (val) {
-          if (el.tagName === 'P' || el.tagName === 'DIV' || el.tagName === 'SPAN' || el.tagName === 'B' || el.tagName === 'H1' || el.tagName === 'H2') {
+          if (['P', 'DIV', 'SPAN', 'STRONG', 'LI', 'H1', 'H2', 'H3', 'A'].includes(el.tagName)) {
             el.innerHTML = val;
           } else {
             el.textContent = val;
@@ -389,8 +332,6 @@
         }
       });
     }
-    // Init correct title at load
-    document.title = document.querySelector("title").getAttribute("data-en");
     toggleBtn.onclick = switchLang;
   </script>
 </body>
