@@ -112,9 +112,62 @@
     }
     .code-section img {
       width: 100%;
+      max-width: 700px;
+      height: auto;
       border-radius: 8px;
-      margin: 1rem 0;
+      margin: 1rem auto;
+      display: block;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .code-section img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      overflow: auto;
+    }
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 95%;
+      max-height: 95%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10000;
+    }
+    .close-modal:hover {
+      color: #bbb;
+    }
+    .modal-caption {
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
     }
     .tech-stack {
       background: #f8f6ff;
@@ -168,6 +221,7 @@
       .container { padding: 1.5rem; }
       h1 { font-size: 1.5rem; }
       .pipeline-steps { grid-template-columns: 1fr; }
+      .close-modal { top: 10px; right: 15px; font-size: 30px; }
     }
   </style>
 </head>
@@ -185,7 +239,6 @@
       Python/PySpark • Big Data • Systèmes Financiers
     </p>
 
-    <!-- Important Info -->
     <div class="important-info">
       <strong data-en="ℹ️ Important Information" data-fr="ℹ️ Informations importantes">ℹ️ Informations importantes</strong><br>
       <span data-en="All data is fictional. Column/file names are invented. This project demonstrates the technical approach for processing large-scale financial datasets."
@@ -194,7 +247,6 @@
       </span>
     </div>
 
-    <!-- Context -->
     <div class="context-box">
       <h2 data-en="🎯 Context & Objective" data-fr="🎯 Contexte & Objectif">🎯 Contexte & Objectif</h2>
       <p data-en="<strong>Challenge:</strong> Multiple internal applications generating debt and credit files across different zones, with no centralized view for anomaly detection or national-scale analysis."
@@ -207,7 +259,6 @@
       </p>
     </div>
 
-    <!-- Pipeline Steps -->
     <h2 style="color: #3b2c50; margin-top: 2rem;" data-en="🔄 Pipeline Workflow" data-fr="🔄 Workflow du Pipeline">🔄 Workflow du Pipeline</h2>
     <div class="pipeline-steps">
       <div class="step-card">
@@ -228,14 +279,13 @@
       </div>
     </div>
 
-    <!-- Code Sections -->
     <div class="code-section">
       <h3 data-en="Part 1: Data Collection & Preparation" data-fr="Partie 1 : Collecte & Préparation">Partie 1 : Collecte & Préparation</h3>
       <p data-en="Loading 6 files (3 debt + 3 credit) from different applications, marking user presence in each source, and renaming columns to avoid collisions."
          data-fr="Chargement de 6 fichiers (3 dettes + 3 crédits) de différentes applications, marquage de la présence utilisateur dans chaque source et renommage des colonnes pour éviter les collisions.">
         Chargement de 6 fichiers (3 dettes + 3 crédits) de différentes applications, marquage de la présence utilisateur dans chaque source et renommage des colonnes pour éviter les collisions.
       </p>
-      <img src="img/PY/Part1.JPG" alt="Part 1 Code">
+      <img src="img/PY/Part1.JPG" alt="Part 1 Code" class="clickable-image">
     </div>
 
     <div class="code-section">
@@ -244,7 +294,7 @@
          data-fr="Fusion de toutes les sources par User_Id, création d'indicateurs multi-sources et agrégation des champs financiers clés (montants, statuts) avec logique de déduplication intelligente.">
         Fusion de toutes les sources par User_Id, création d'indicateurs multi-sources et agrégation des champs financiers clés (montants, statuts) avec logique de déduplication intelligente.
       </p>
-      <img src="img/PY/Part2.JPG" alt="Part 2 Code">
+      <img src="img/PY/Part2.JPG" alt="Part 2 Code" class="clickable-image">
     </div>
 
     <div class="code-section">
@@ -253,7 +303,7 @@
          data-fr="Jointure avec fichiers de référence (Utilisateur, Entreprise), harmonisation des types, traduction des noms de champs en anglais et export du dataset final prêt pour intégration BI.">
         Jointure avec fichiers de référence (Utilisateur, Entreprise), harmonisation des types, traduction des noms de champs en anglais et export du dataset final prêt pour intégration BI.
       </p>
-      <img src="img/PY/Part3.JPG" alt="Part 3 Code">
+      <img src="img/PY/Part3.JPG" alt="Part 3 Code" class="clickable-image">
     </div>
 
     <div class="code-section">
@@ -262,8 +312,8 @@
          data-fr="Utilisation de PySpark pour traiter les gros fichiers statistiques (trop volumineux pour pandas), réalisation de jointures distribuées, calculs window (total dettes/crédits par utilisateur) et catégorisation dynamique.">
         Utilisation de PySpark pour traiter les gros fichiers statistiques (trop volumineux pour pandas), réalisation de jointures distribuées, calculs window (total dettes/crédits par utilisateur) et catégorisation dynamique.
       </p>
-      <img src="img/PY/Part4_1.JPG" alt="Part 4 Code 1">
-      <img src="img/PY/Part4_2.JPG" alt="Part 4 Code 2">
+      <img src="img/PY/Part4_1.JPG" alt="Part 4 Code 1" class="clickable-image">
+      <img src="img/PY/Part4_2.JPG" alt="Part 4 Code 2" class="clickable-image">
       <p><strong data-en="Key Operations:" data-fr="Opérations Clés :">Opérations Clés :</strong></p>
       <ul>
         <li data-en="Spark join on User_Id for enrichment" data-fr="Jointure Spark sur User_Id pour enrichissement">Jointure Spark sur User_Id pour enrichissement</li>
@@ -273,7 +323,6 @@
       </ul>
     </div>
 
-    <!-- Results Summary -->
     <div class="context-box">
       <h2 data-en="✅ Results & Impact" data-fr="✅ Résultats & Impact">✅ Résultats & Impact</h2>
       <ul>
@@ -296,12 +345,10 @@
       </ul>
     </div>
 
-    <!-- Tech Stack -->
     <div class="tech-stack" data-en="🛠️ Stack: Python • PySpark • Pandas • CSV • Excel" data-fr="🛠️ Stack : Python • PySpark • Pandas • CSV • Excel">
       🛠️ Stack : Python • PySpark • Pandas • CSV • Excel
     </div>
 
-    <!-- CTA -->
     <div class="cta-section">
       <h2 data-en="Need a Data Pipeline?" data-fr="Besoin d'un Pipeline Data ?">Besoin d'un Pipeline Data ?</h2>
       <p data-en="I can design scalable Python/PySpark pipelines for processing, enriching, and consolidating large datasets from multiple sources."
@@ -313,6 +360,12 @@
         Me Contacter
       </a>
     </div>
+  </div>
+
+  <div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImage">
+    <div class="modal-caption" id="modalCaption"></div>
   </div>
 
   <script>
@@ -333,6 +386,35 @@
       });
     }
     toggleBtn.onclick = switchLang;
+
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    const closeBtn = document.querySelector('.close-modal');
+
+    document.querySelectorAll('.clickable-image').forEach(img => {
+      img.onclick = function() {
+        modal.style.display = 'block';
+        modalImg.src = this.src;
+        modalCaption.textContent = this.alt;
+      }
+    });
+
+    closeBtn.onclick = function() {
+      modal.style.display = 'none';
+    }
+
+    modal.onclick = function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === 'block') {
+        modal.style.display = 'none';
+      }
+    });
   </script>
 </body>
 </html>

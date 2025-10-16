@@ -105,9 +105,18 @@
     }
     .dashboard-preview img {
       width: 100%;
+      max-width: 750px;
+      height: auto;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      margin: 1rem 0;
+      margin: 1rem auto;
+      display: block;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .dashboard-preview img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
     }
     .feature-section {
       margin: 2rem 0;
@@ -118,6 +127,21 @@
       color: #3b2c50;
       font-size: 1.2rem;
       margin-bottom: 0.8rem;
+    }
+    .feature-section > img {
+      width: 80%;
+      max-width: 650px;
+      height: auto;
+      margin: 1.5rem auto;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-section > img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
     .feature-grid {
       display: grid;
@@ -138,9 +162,60 @@
     }
     .feature-card img {
       width: 100%;
+      height: auto;
       border-radius: 6px;
       margin: 0.8rem 0;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-card img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      overflow: auto;
+    }
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 95%;
+      max-height: 95%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10000;
+    }
+    .close-modal:hover {
+      color: #bbb;
+    }
+    .modal-caption {
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
     }
     .tech-stack {
       background: #f8f6ff;
@@ -194,6 +269,7 @@
       .container { padding: 1.5rem; }
       h1 { font-size: 1.5rem; }
       .key-results, .feature-grid { grid-template-columns: 1fr; }
+      .close-modal { top: 10px; right: 15px; font-size: 30px; }
     }
   </style>
 </head>
@@ -211,7 +287,6 @@
       Salesforce • CRM • Monitoring Onboarding
     </p>
 
-    <!-- Important Info -->
     <div class="important-info">
       <strong data-en="ℹ️ Important Information" data-fr="ℹ️ Informations importantes">ℹ️ Informations importantes</strong><br>
       <span data-en="All data and client names are fictional. This project demonstrates the type of Salesforce dashboard designed during my experience at Mangopay."
@@ -220,7 +295,6 @@
       </span>
     </div>
 
-    <!-- Context -->
     <div class="context-box">
       <h2 data-en="🎯 Context & Objective" data-fr="🎯 Contexte & Objectif">🎯 Contexte & Objectif</h2>
       <p data-en="<strong>Challenge:</strong> No centralized view of the client acquisition and onboarding journey, causing delays, resource misallocation, and missed SLA targets."
@@ -233,7 +307,6 @@
       </p>
     </div>
 
-    <!-- Key Results -->
     <h2 style="color: #3b2c50; margin-top: 2rem;" data-en="📊 Key Metrics Tracked" data-fr="📊 Métriques Clés Suivies">📊 Métriques Clés Suivies</h2>
     <div class="key-results">
       <div class="result-card">
@@ -254,13 +327,11 @@
       </div>
     </div>
 
-    <!-- Dashboard Preview -->
     <div class="dashboard-preview">
       <h2 style="color: #3b2c50; margin-bottom: 1rem;" data-en="Dashboard Overview" data-fr="Vue d'Ensemble Dashboard">Vue d'Ensemble Dashboard</h2>
-      <img src="img/SF/Client Onboarding Monitoring.png" alt="Main Dashboard">
+      <img src="img/SF/Client Onboarding Monitoring.png" alt="Main Dashboard" class="clickable-image">
     </div>
 
-    <!-- Data Model -->
     <div class="feature-section">
       <h3 data-en="🗂️ Salesforce Data Model" data-fr="🗂️ Modèle de Données Salesforce">🗂️ Modèle de Données Salesforce</h3>
       <p data-en="Custom objects and relationships designed to track the complete client lifecycle:"
@@ -273,10 +344,9 @@
         <li data-en="<strong>Platform (Custom):</strong> Technical integrations (Kick-off → Go-live → Run)" data-fr="<strong>Platform (Custom) :</strong> Intégrations techniques (Kick-off → Go-live → Run)"><strong>Platform (Custom) :</strong> Intégrations techniques (Kick-off → Go-live → Run)</li>
         <li data-en="<strong>Revenue (Custom):</strong> Generated revenues per platform" data-fr="<strong>Revenue (Custom) :</strong> Revenus générés par plateforme"><strong>Revenue (Custom) :</strong> Revenus générés par plateforme</li>
       </ul>
-      <img src="img/SF/Schéma relationnel SF.jpg" alt="Data Model" style="width: 80%; margin: 1.5rem auto; display: block; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="img/SF/Schéma relationnel SF.jpg" alt="Data Model" class="clickable-image">
     </div>
 
-    <!-- Key Features -->
     <div class="feature-section">
       <h3 data-en="🎯 Key Dashboard Features" data-fr="🎯 Fonctionnalités Clés">🎯 Fonctionnalités Clés</h3>
       <div class="feature-grid">
@@ -286,7 +356,7 @@
              data-fr="Répartition par phase d'intégration (Kick-off, Config, Tests, Go-live, Monitoring, Run) pour identifier les goulets.">
             Répartition par phase d'intégration (Kick-off, Config, Tests, Go-live, Monitoring, Run) pour identifier les goulets.
           </p>
-          <img src="img/SF/Platforms by integration phase.png" alt="Platforms by Phase">
+          <img src="img/SF/Platforms by integration phase.png" alt="Platforms by Phase" class="clickable-image">
         </div>
         
         <div class="feature-card">
@@ -295,7 +365,7 @@
              data-fr="Suivi mensuel des revenus pour monitorer les tendances de croissance et prévoir les flux de trésorerie.">
             Suivi mensuel des revenus pour monitorer les tendances de croissance et prévoir les flux de trésorerie.
           </p>
-          <img src="img/SF/Account Revenues per month.png" alt="Revenue Trends">
+          <img src="img/SF/Account Revenues per month.png" alt="Revenue Trends" class="clickable-image">
         </div>
         
         <div class="feature-card">
@@ -304,7 +374,7 @@
              data-fr="Répartition clients par région européenne pour cibler les actions commerciales et allouer les ressources régionales.">
             Répartition clients par région européenne pour cibler les actions commerciales et allouer les ressources régionales.
           </p>
-          <img src="img/SF/Clients in Acquisition per Region.png" alt="Geographic View">
+          <img src="img/SF/Clients in Acquisition per Region.png" alt="Geographic View" class="clickable-image">
         </div>
         
         <div class="feature-card">
@@ -313,12 +383,11 @@
              data-fr="Suivi des retards d'intégration par plateforme avec alertes colorées pour les cas à risque dépassant les objectifs.">
             Suivi des retards d'intégration par plateforme avec alertes colorées pour les cas à risque dépassant les objectifs.
           </p>
-          <img src="img/SF/Platform time to live_1.png" alt="Time to Live">
+          <img src="img/SF/Platform time to live_1.png" alt="Time to Live" class="clickable-image">
         </div>
       </div>
     </div>
 
-    <!-- Impact -->
     <div class="context-box">
       <h2 data-en="✅ Business Impact" data-fr="✅ Impact Métier">✅ Impact Métier</h2>
       <ul>
@@ -345,12 +414,10 @@
       </ul>
     </div>
 
-    <!-- Tech Stack -->
     <div class="tech-stack" data-en="🛠️ Stack: Salesforce Developer • Custom Objects • Reports & Dashboards" data-fr="🛠️ Stack : Salesforce Developer • Objets Custom • Reports & Dashboards">
       🛠️ Stack : Salesforce Developer • Objets Custom • Reports & Dashboards
     </div>
 
-    <!-- CTA -->
     <div class="cta-section">
       <h2 data-en="Need a Salesforce Dashboard?" data-fr="Besoin d'un Dashboard Salesforce ?">Besoin d'un Dashboard Salesforce ?</h2>
       <p data-en="I can design custom Salesforce solutions with tailored data models, automated workflows, and executive dashboards for your business needs."
@@ -362,6 +429,12 @@
         Me Contacter
       </a>
     </div>
+  </div>
+
+  <div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImage">
+    <div class="modal-caption" id="modalCaption"></div>
   </div>
 
   <script>
@@ -382,6 +455,35 @@
       });
     }
     toggleBtn.onclick = switchLang;
+
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    const closeBtn = document.querySelector('.close-modal');
+
+    document.querySelectorAll('.clickable-image').forEach(img => {
+      img.onclick = function() {
+        modal.style.display = 'block';
+        modalImg.src = this.src;
+        modalCaption.textContent = this.alt;
+      }
+    });
+
+    closeBtn.onclick = function() {
+      modal.style.display = 'none';
+    }
+
+    modal.onclick = function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === 'block') {
+        modal.style.display = 'none';
+      }
+    });
   </script>
 </body>
 </html>
