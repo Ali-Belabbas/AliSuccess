@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon-as-plain.ico">
+  <title>Dashboard Customer Success - Template Power BI</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f6f3fb;
+      color: #2a1f3c;
+      margin: 0;
+      padding: 2rem;
+    }
+    .lang-toggle {
+      position: absolute;
+      top: 1.2rem;
+      right: 2.2rem;
+      background: none;
+      border: none;
+      color: #6c4ba7;
+      font-weight: bold;
+      font-size: 1.25rem;
+      cursor: pointer;
+      border-bottom: 2.5px solid transparent;
+      transition: border 0.15s, color 0.15s;
+      padding: 0 12px;
+      outline: none;
+      user-select: none;
+      z-index: 1001;
+    }
+    .lang-toggle.active, .lang-toggle:hover {
+      border-bottom: 2.5px solid #6c4ba7;
+      color: #3b2c50;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #3b2c50;
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle-main {
+      text-align: center;
+      color: #6c4ba7;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    .important-info {
+      border-left: 4px solid #fd7e14;
+      background: #fff7ea;
+      padding: 1rem 1.2rem;
+      border-radius: 6px;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      color: #a74a00;
+    }
+    .context-box {
+      background: #f8f6ff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .context-box h2 {
+      color: #3b2c50;
+      font-size: 1.3rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .context-box h3 {
+      color: #6c4ba7;
+      font-size: 1.1rem;
+      margin: 1rem 0 0.5rem 0;
+    }
+    .context-box ul {
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+    }
+    .context-box li {
+      margin: 0.3rem 0;
+      line-height: 1.5;
+    }
+    .key-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .result-card {
+      background: white;
+      border: 2px solid #e8e4f3;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .result-number {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #6c4ba7;
+      margin-bottom: 0.3rem;
+    }
+    .result-label {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .video-section {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .video-section h3 {
+      color: #3b2c50;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      background: #000;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .dashboard-section {
+      margin: 2rem 0;
+      border-top: 1px solid #e8e4f3;
+      padding-top: 1.5rem;
+    }
+    .dashboard-section h3 {
+      color: #3b2c50;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    .dashboard-section img {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem auto;
+      display: block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .dashboard-section img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .zones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .zone-card {
+      padding: 1rem;
+      border-radius: 8px;
+      border: 2px solid;
+    }
+    .zone-card.green {
+      background: #e8f5e9;
+      border-color: #4caf50;
+    }
+    .zone-card.yellow {
+      background: #fff9e6;
+      border-color: #ffc107;
+    }
+    .zone-card.orange {
+      background: #fff3e0;
+      border-color: #ff9800;
+    }
+    .zone-card.red {
+      background: #ffebee;
+      border-color: #f44336;
+    }
+    .zone-card h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1rem;
+    }
+    .zone-card ul {
+      margin: 0.5rem 0 0 0;
+      padding-left: 1.2rem;
+      font-size: 0.9rem;
+    }
+    .zone-card li {
+      margin: 0.2rem 0;
+    }
+    .links-section {
+      background: #f8f6ff;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .links-section h3 {
+      color: #3b2c50;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .link-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      display: block;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .link-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .link-card h4 {
+      color: #3b2c50;
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+    }
+    .link-card p {
+      color: #666;
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .tech-stack {
+      text-align: center;
+      color: #6c4ba7;
+      font-size: 0.95rem;
+      margin: 2rem 0;
+      padding: 1rem;
+      background: #f8f6ff;
+      border-radius: 8px;
+    }
+    .cta-section {
+      background: linear-gradient(135deg, #6c4ba7 0%, #3b2c50 100%);
+      color: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .cta-section h2 {
+      color: white;
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+    .cta-section p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.95;
+    }
+    .cta-button {
+      display: inline-block;
+      background: white;
+      color: #6c4ba7;
+      padding: 0.9rem 2rem;
+      margin: 0.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 2001;
+    }
+    .close-modal:hover,
+    .close-modal:focus {
+      color: #bbb;
+    }
+
+  </style>
+</head>
+<body>
+  <button class="lang-toggle" id="lang-toggle">🇬🇧</button>
+  <p style="margin-bottom: 2rem;">
+    <a href="index.html" data-en="← Back to portfolio" data-fr="← Retour au portfolio">← Retour au portfolio</a>
+  </p>
+  
+  <div class="container">
+    <h1 data-en="Dashboard Customer Success" data-fr="Dashboard Customer Success">📊 Dashboard Customer Success</h1>
+    <p class="subtitle-main" data-en="Power BI Template to Manage Your CS Activity" data-fr="Template Power BI pour piloter votre activité CS">
+      Template Power BI pour piloter votre activité CS
+    </p>
+
+    <div class="important-info">
+      <strong data-en="ℹ️ Important Information" data-fr="ℹ️ Informations importantes">ℹ️ Informations importantes</strong><br>
+      <span data-en="All data shown is fictional for demonstration purposes. This dashboard is for CS Managers, CSMs, or VP Customer Success managing a B2B SaaS client portfolio."
+            data-fr="Toutes les données présentées sont fictives à des fins de démonstration. Ce dashboard est destiné aux CS Managers, CSM, ou VP Customer Success qui pilotent un portefeuille clients en SaaS B2B.">
+        Toutes les données présentées sont fictives à des fins de démonstration. Ce dashboard est destiné aux CS Managers, CSM, ou VP Customer Success qui pilotent un portefeuille clients en SaaS B2B.
+      </span>
+    </div>
+
+    <div class="context-box">
+      <h2 data-en="🎯 Context & Objective" data-fr="🎯 Contexte & Objectif">🎯 Contexte & Objectif</h2>
+      <p data-en="Customer Success teams face 3 critical problems:"
+         data-fr="Les équipes Customer Success font face à 3 problèmes critiques :">
+        <strong>Les équipes Customer Success font face à 3 problèmes critiques :</strong>
+      </p>
+      
+      <h3 data-en="🔴 No visibility on at-risk clients" data-fr="🔴 Aucune visibilité sur les clients à risque">🔴 Aucune visibilité sur les clients à risque</h3>
+      <p data-en="You discover too late that a client is about to churn. You spend hours in manual exports to identify who needs immediate intervention."
+         data-fr="Vous découvrez trop tard qu'un client est sur le point de churn. Vous passez des heures dans des exports manuels pour identifier qui nécessite une intervention immédiate.">
+        Vous découvrez trop tard qu'un client est sur le point de churn. Vous passez des heures dans des exports manuels pour identifier qui nécessite une intervention immédiate.
+      </p>
+      <p><strong data-en="Impact:" data-fr="Impact :">Impact :</strong> 
+        <span data-en="Revenue loss + reactive CS (firefighting mode)"
+              data-fr="Perte de revenus + CS réactif (mode pompier)">
+          Perte de revenus + CS réactif (mode pompier)
+        </span>
+      </p>
+
+      <h3 data-en="📊 Unpredictable renewals" data-fr="📊 Renewals imprévisibles">📊 Renewals imprévisibles</h3>
+      <p data-en="You don't know which renewals are coming in 90 days or which ones are at risk. Impossible to prioritize your CSM interventions."
+         data-fr="Vous ne savez pas quels renewals arrivent dans 90 jours ni lesquels sont à risque. Impossible de prioriser vos interventions CSM.">
+        Vous ne savez pas quels renewals arrivent dans 90 jours ni lesquels sont à risque. Impossible de prioriser vos interventions CSM.
+      </p>
+      <p><strong data-en="Impact:" data-fr="Impact :">Impact :</strong> 
+        <span data-en="Last-minute surprises + renewal panic"
+              data-fr="Surprises de dernière minute + panique sur les renewals">
+          Surprises de dernière minute + panique sur les renewals
+        </span>
+      </p>
+
+      <h3 data-en="❓ No clarity on where clients struggle" data-fr="❓ Aucune clarté sur où les clients patinent">❓ Aucune clarté sur où les clients patinent</h3>
+      <p data-en="You don't know which clients have low usage or high churn risk. You allocate CS resources blindly without data to prioritize."
+         data-fr="Vous ne savez pas quels clients ont un usage faible ou un churn risk élevé. Vous allouez vos ressources CS à l'aveugle sans données pour prioriser.">
+        Vous ne savez pas quels clients ont un usage faible ou un churn risk élevé. Vous allouez vos ressources CS à l'aveugle sans données pour prioriser.
+      </p>
+      <p><strong data-en="Impact:" data-fr="Impact :">Impact :</strong> 
+        <span data-en="CS budget wasted + missed retention opportunities"
+              data-fr="Budget CS gaspillé + opportunités de rétention ratées">
+          Budget CS gaspillé + opportunités de rétention ratées
+        </span>
+      </p>
+    </div>
+
+    <div class="video-section">
+      <h3 data-en="🎬 Demo Video (90s)" data-fr="🎬 Démo Vidéo (90s)">🎬 Démo Vidéo (90s)</h3>
+      <div class="video-container">
+        <!-- Remplace XXXXX par ton ID vidéo YouTube -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Oltiwr_027g?si=v-XDVXv-SLztOiQQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="context-box">
+      <h2 data-en="⚡ What You See" data-fr="⚡ Ce que vous voyez">⚡ Ce que vous voyez</h2>
+      
+      <h3 data-en="1️⃣ What are my attention points?" data-fr="1️⃣ Quels sont mes points d'attention ?">1️⃣ Quels sont mes points d'attention ?</h3>
+      <p data-en="At a glance:" data-fr="En un coup d'œil :">En un coup d'œil :</p>
+      <ul>
+        <li data-en="3 clients in Critical (immediate action)" data-fr="3 clients en Critical (action immédiate)">3 clients en Critical (action immédiate)</li>
+        <li data-en="3 clients to monitor this week" data-fr="3 clients à surveiller cette semaine">3 clients à surveiller cette semaine</li>
+        <li data-en="€160K ARR concerned" data-fr="160K€ d'ARR concernés">160K€ d'ARR concernés</li>
+      </ul>
+
+      <h3 data-en="2️⃣ Where to focus my efforts?" data-fr="2️⃣ Où concentrer mes efforts ?">2️⃣ Où concentrer mes efforts ?</h3>
+      <p data-en="The dashboard shows:" data-fr="Le dashboard montre :">Le dashboard montre :</p>
+      <ul>
+        <li data-en="By segment: ARR share per client category" data-fr="Par segment : Quelle part de l'ARR par catégorie client">Par segment : Quelle part de l'ARR par catégorie client</li>
+        <li data-en="By usage: Which clients use the product less" data-fr="Par usage : Quels clients utilisent peu le produit">Par usage : Quels clients utilisent peu le produit</li>
+        <li data-en="By satisfaction: Correlation between usage and NPS" data-fr="Par satisfaction : Corrélation entre usage et NPS">Par satisfaction : Corrélation entre usage et NPS</li>
+      </ul>
+
+      <h3 data-en="3️⃣ Are my renewals under control?" data-fr="3️⃣ Mes renewals sont-ils sous contrôle ?">3️⃣ Mes renewals sont-ils sous contrôle ?</h3>
+      <p data-en="90-day view:" data-fr="Vision sur 90 jours :">Vision sur 90 jours :</p>
+      <ul>
+        <li data-en="Number of renewals per month" data-fr="Nombre de renouvellements par mois">📅 Nombre de renouvellements par mois</li>
+        <li data-en="ARR to renew per period" data-fr="ARR à renouveler par période">💰 ARR à renouveler par période</li>
+        <li data-en="Renewals with risk level" data-fr="Renewals avec niveau de risque">⚠️ Renewals avec niveau de risque</li>
+      </ul>
+    </div>
+
+    <div class="key-results">
+      <div class="result-card">
+        <div class="result-number" data-en="€1M" data-fr="1M€">1M€</div>
+        <div class="result-label" data-en="Total ARR" data-fr="ARR Total">ARR Total</div>
+      </div>
+      <div class="result-card">
+        <div class="result-number">68%</div>
+        <div class="result-label" data-en="Global Health Score" data-fr="Health Score Global">Health Score Global</div>
+      </div>
+      <div class="result-card">
+        <div class="result-number">6</div>
+        <div class="result-label" data-en="At-Risk Clients" data-fr="Clients à Risque">Clients à Risque</div>
+      </div>
+      <div class="result-card">
+        <div class="result-number">7</div>
+        <div class="result-label" data-en="Average NPS" data-fr="NPS Moyen">NPS Moyen</div>
+      </div>
+    </div>
+
+    <div class="dashboard-section">
+      <h3 data-en="Page 1: Executive View" data-fr="Page 1 : Vue Executive">Page 1 : Vue Executive</h3>
+      
+      <p><strong data-en="Main KPIs (top):" data-fr="KPIs Principaux (en haut) :">KPIs Principaux (en haut) :</strong></p>
+      <ul>
+        <li data-en="<strong>Total ARR:</strong> Sum of annual recurring revenue from all active clients" 
+            data-fr="<strong>ARR Total :</strong> Somme des revenus récurrents annuels de tous vos clients actifs">
+          <strong>ARR Total :</strong> Somme des revenus récurrents annuels de tous vos clients actifs
+        </li>
+        <li data-en="<strong>Global Health Score:</strong> Average health score of your portfolio (0-100%)" 
+            data-fr="<strong>Health Score Global :</strong> Score moyen de santé de votre portefeuille (0-100%)">
+          <strong>Health Score Global :</strong> Score moyen de santé de votre portefeuille (0-100%)
+        </li>
+        <li data-en="<strong>At-Risk Clients:</strong> Number of accounts in Critical or High Risk requiring immediate action" 
+            data-fr="<strong>Clients à Risque :</strong> Nombre de comptes en Critical ou High Risk nécessitant une action immédiate">
+          <strong>Clients à Risque :</strong> Nombre de comptes en Critical ou High Risk nécessitant une action immédiate
+        </li>
+      </ul>
+
+      <!-- Placeholder pour screenshot 1 -->
+      <img src="img/Health/Health.jpg" alt="Dashboard Page 1 - Executive View" class="clickable-image">
+      
+      <p><strong data-en="Chart 3: Usage × Satisfaction (Scatter Chart)" data-fr="Graphique 3 : Usage × Satisfaction (Scatter Chart)">Graphique 3 : Usage × Satisfaction (Scatter Chart)</strong></p>
+      <p data-en="Each point = a client positioned by product usage (horizontal axis) and NPS (vertical axis)." 
+         data-fr="Chaque point = un client positionné selon son usage produit (axe horizontal) et son NPS (axe vertical).">
+        Chaque point = un client positionné selon son usage produit (axe horizontal) et son NPS (axe vertical).
+      </p>
+
+      <div class="zones-grid">
+        <div class="zone-card green">
+          <h4 data-en="🟢 Top-Right: Champions" data-fr="🟢 Haut-Droite : Champions">🟢 Haut-Droite : Champions</h4>
+          <ul>
+            <li data-en="High usage (>70%) + High NPS (8-10)" data-fr="Usage élevé (>70%) + NPS élevé (8-10)">Usage élevé (>70%) + NPS élevé (8-10)</li>
+            <li data-en="Action: Request referrals, identify upsell opportunities" data-fr="Action : Demander referrals, identifier opportunités d'upsell"><strong>Action :</strong> Demander referrals, identifier opportunités d'upsell</li>
+          </ul>
+        </div>
+        <div class="zone-card yellow">
+          <h4 data-en="🟡 Bottom-Right: Active but Unsatisfied" data-fr="🟡 Bas-Droite : Utilisateurs actifs insatisfaits">🟡 Bas-Droite : Utilisateurs actifs insatisfaits</h4>
+          <ul>
+            <li data-en="High usage but low NPS" data-fr="Usage élevé mais NPS faible">Usage élevé mais NPS faible</li>
+            <li data-en="Action: Understand frustrations, improve experience" data-fr="Action : Comprendre les frustrations, améliorer l'expérience"><strong>Action :</strong> Comprendre les frustrations, améliorer l'expérience</li>
+          </ul>
+        </div>
+        <div class="zone-card orange">
+          <h4 data-en="🟠 Top-Left: Satisfied but Not Engaged" data-fr="🟠 Haut-Gauche : Satisfaits non-engagés">🟠 Haut-Gauche : Satisfaits non-engagés</h4>
+          <ul>
+            <li data-en="High NPS but low usage" data-fr="NPS élevé mais usage faible">NPS élevé mais usage faible</li>
+            <li data-en="Action: Training, feature activation" data-fr="Action : Formation, activation des features"><strong>Action :</strong> Formation, activation des features</li>
+          </ul>
+        </div>
+        <div class="zone-card red">
+          <h4 data-en="🔴 Bottom-Left: Critical Risk" data-fr="🔴 Bas-Gauche : Risque critique">🔴 Bas-Gauche : Risque critique</h4>
+          <ul>
+            <li data-en="Low usage + Low NPS" data-fr="Usage faible + NPS faible">Usage faible + NPS faible</li>
+            <li data-en="Action: Urgent intervention, rescue plan" data-fr="Action : Intervention urgente, plan de sauvetage"><strong>Action :</strong> Intervention urgente, plan de sauvetage</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-section">
+      <h3 data-en="Page 2: Renewals Analysis" data-fr="Page 2 : Renewals Analysis">📅 Page 2 : Renewals Analysis</h3>
+      
+      <p><strong data-en="Chart 1: Renewals Timeline (Line Chart)" data-fr="Graphique 1 : Timeline des Renewals (Line Chart)">Graphique 1 : Timeline des Renewals (Line Chart)</strong></p>
+      <p data-en="Number of renewals per month over the next 12 months. Visualize the busiest months and critical periods to focus your efforts."
+         data-fr="Nombre de renouvellements par mois sur les 12 prochains mois. Visualisez les mois les plus chargés et identifiez les périodes critiques où concentrer vos efforts.">
+        Nombre de renouvellements par mois sur les 12 prochains mois. Visualisez les mois les plus chargés et identifiez les périodes critiques où concentrer vos efforts.
+      </p>
+
+      <!-- Placeholder pour screenshot 3 -->
+      <img src="img/Health/Renewal.jpg" alt="Dashboard Page 2 - Renewals Analysis" class="clickable-image">
+
+      <p><strong data-en="Chart 2: Renewal Details (Matrix)" data-fr="Graphique 2 : Détail des Renewals (Matrix)">Graphique 2 : Détail des Renewals (Matrix)</strong></p>
+      <p data-en="Detailed table of each account to renew with: Company Name, Renewal Date, ARR (color-coded), Health Score, Churn Risk, Days to Renewal"
+         data-fr="Tableau détaillé de chaque compte à renouveler avec : Company Name, Renewal Date, ARR (avec code couleur), Health Score, Churn Risk, Days to Renewal">
+        Tableau détaillé de chaque compte à renouveler avec : Company Name, Renewal Date, ARR (avec code couleur), Health Score, Churn Risk, Days to Renewal
+      </p>
+
+      <p><strong data-en="How to use it:" data-fr="Comment l'utiliser :">Comment l'utiliser :</strong></p>
+      <ul>
+        <li data-en="Sort by Days to Renewal → Focus on urgency" data-fr="Tri par Days to Renewal → Focus sur l'urgence"><strong>Tri par Days to Renewal</strong> → Focus sur l'urgence</li>
+        <li data-en="Sort by descending ARR → Prioritize large contracts" data-fr="Tri par ARR décroissant → Priorisez les gros contrats"><strong>Tri par ARR décroissant</strong> → Priorisez les gros contrats</li>
+        <li data-en="Cross with Churn Risk → Identify at-risk renewals" data-fr="Croiser avec Churn Risk → Identifiez les renewals à risque"><strong>Croiser avec Churn Risk</strong> → Identifiez les renewals à risque</li>
+      </ul>
+    </div>
+
+    <div class="links-section">
+      <h3 data-en="📚 Documentation & Download" data-fr="📚 Documentation & Téléchargement">📚 Documentation & Téléchargement</h3>
+      <p data-en="Access the complete documentation and download the template with sample data"
+         data-fr="Accédez à la documentation complète et téléchargez le template avec des données d'exemple">
+        Accédez à la documentation complète et téléchargez le template avec des données d'exemple
+      </p>
+      
+      <div class="links-grid">
+        <a href="https://tinyurl.com/ali-cs-dash" target="_blank" class="link-card">
+          <h4 data-en="📄 Complete Documentation" data-fr="📄 Documentation Complète">📄 Documentation Complète</h4>
+          <p data-en="Detailed guide: KPIs, usage, implementation process + glossary"
+             data-fr="Guide détaillé : KPIs, usage, processus de mise en place + glossaire">
+            Guide détaillé : KPIs, usage, processus de mise en place + glossaire
+          </p>
+        </a>
+        
+        <a href="https://drive.google.com/drive/folders/1FQgrUZYnp7cb7uOiX_hhMMBgOQFMx3ik?usp=sharing" target="_blank" class="link-card">
+          <h4 data-en="⬇️ Download Template" data-fr="⬇️ Télécharger le Template">⬇️ Télécharger le Template</h4>
+          <p data-en="Power BI template + sample data (22 fictive accounts) + installation guide"
+             data-fr="Template Power BI + données exemple (22 comptes fictifs) + guide d'installation">
+            Template Power BI + données exemple (22 comptes fictifs) + guide d'installation
+          </p>
+        </a>
+      </div>
+    </div>
+
+    <div class="tech-stack" data-en="🛠️ Stack: Power BI • SQL • Python • Hubspot/Pipedrive • Excel" data-fr="🛠️ Stack : Power BI • SQL • Python • Hubspot/Pipedrive • Excel">
+      🛠️ Stack : Power BI • SQL • Python • Hubspot/Pipedrive • Excel
+    </div>
+
+
+
+    <div class="context-box">
+      <h2 data-en="⚙️ Implementation" data-fr="⚙️ Mise en place">⚙️ Mise en place</h2>
+      
+      <h3 data-en="Quick Test (5 min)" data-fr="Test Immédiat (5 min)">Test Immédiat (5 min)</h3>
+      <ol>
+        <li data-en="Download Power BI Desktop (free)" data-fr="Télécharger Power BI Desktop (gratuit)">Télécharger Power BI Desktop (gratuit)</li>
+        <li data-en="Open the .pbix file" data-fr="Ouvrir le fichier .pbix">Ouvrir le fichier .pbix</li>
+        <li data-en="Explore with sample data" data-fr="Explorer avec les données exemple">Explorer avec les données exemple</li>
+      </ol>
+
+      <h3 data-en="Custom Version Process:" data-fr="Process Version Personnalisée :">Process Version Personnalisée :</h3>
+      <ol>
+        <li data-en="<strong>Data audit</strong> (2-3 days): Analyze your current sources (CRM, Pipedrive, Zendesk, etc.)"
+            data-fr="<strong>Audit de vos données</strong> (2-3 jours) : J'analyse vos sources actuelles (CRM, Pipedrive, Zendesk, etc.)">
+          <strong>Audit de vos données</strong> (2-3 jours) : J'analyse vos sources actuelles (CRM, Pipedrive, Zendesk, etc.)
+        </li>
+        <li data-en="<strong>Connect sources</strong> (3-5 days): Connect your tools and configure data flows"
+            data-fr="<strong>Connexion des sources</strong> (3-5 jours) : Je branche vos outils et configure les flux de données">
+          <strong>Connexion des sources</strong> (3-5 jours) : Je branche vos outils et configure les flux de données
+        </li>
+        <li data-en="<strong>Dashboard creation</strong> (5-8 days): Design visualizations, configure custom KPIs and alerts"
+            data-fr="<strong>Création du dashboard</strong> (5-8 jours) : Design des visualisations, configuration des KPIs personnalisés et alertes">
+          <strong>Création du dashboard</strong> (5-8 jours) : Design des visualisations, configuration des KPIs personnalisés et alertes
+        </li>
+        <li data-en="<strong>Team training</strong> (1-2 days): Train your team on dashboard usage"
+            data-fr="<strong>Formation de l'équipe</strong> (1-2 jours) : Je forme votre équipe à l'utilisation du dashboard">
+          <strong>Formation de l'équipe</strong> (1-2 jours) : Je forme votre équipe à l'utilisation du dashboard
+        </li>
+      </ol>
+      <p><strong data-en="Total duration: 3-4 weeks" data-fr="Durée totale : 3-4 semaines">Durée totale : 3-4 semaines</strong></p>
+    </div>
+
+    <div class="cta-section">
+      <h2 data-en="Need a Custom Version?" data-fr="Besoin d'une Version Personnalisée ?">Besoin d'une Version Personnalisée ?</h2>
+      <p data-en="I can adapt this dashboard to your needs: connect to your data sources (CRM, Pipedrive, Zendesk, Mixpanel...), add custom KPIs, complete automation with daily update, team training."
+         data-fr="Je peux adapter ce dashboard à vos besoins : connexion à vos sources de données (CRM, Pipedrive, Zendesk, Mixpanel...), ajout de KPIs personnalisés, automatisation complète avec mise à jour quotidienne, formation de votre équipe.">
+        Je peux adapter ce dashboard à vos besoins : connexion à vos sources de données (CRM, Pipedrive, Zendesk, Mixpanel...), ajout de KPIs personnalisés, automatisation complète avec mise à jour quotidienne, formation de votre équipe.
+      </p>
+      <a href="mailto:ali.belabbas.success@gmail.com?subject=Dashboard CS Project" class="cta-button" 
+         data-en="Get in Touch" data-fr="Me Contacter">
+        Me Contacter
+      </a>
+      <a href="https://calendly.com/ali-belabbas-success/30min" target="_blank" class="cta-button" 
+         data-en="Schedule a Call" data-fr="Planifier un Appel">
+        📅 Planifier un Appel
+      </a>
+    </div>
+  </div>
+
+  <div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('lang-toggle');
+    let currentLang = "fr";
+    function switchLang() {
+      currentLang = currentLang === "fr" ? "en" : "fr";
+      toggleBtn.textContent = currentLang === "fr" ? "🇬🇧" : "🇫🇷";
+      document.querySelectorAll('[data-en]').forEach(el => {
+        let val = el.getAttribute('data-' + currentLang);
+        if (val) {
+          if (['P', 'DIV', 'SPAN', 'STRONG', 'EM', 'H1', 'H2', 'H3', 'H4', 'A', 'LI'].includes(el.tagName)) {
+            el.innerHTML = val;
+          } else {
+            el.textContent = val;
+          }
+        }
+      });
+    }
+    toggleBtn.onclick = switchLang;
+
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.querySelector('.close-modal');
+
+    document.querySelectorAll('.clickable-image').forEach(img => {
+      img.onclick = function() {
+        modal.style.display = 'block';
+        modalImg.src = this.src;
+      }
+    });
+
+    closeBtn.onclick = function() {
+      modal.style.display = 'none';
+    }
+
+    modal.onclick = function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === 'block') {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
